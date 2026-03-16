@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/16 22:13:57 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/16 22:21:03 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int ft_parsecmd(t_s *s, char *src, t_listex **dst, char **envp)
 	int			ret;
 
 	ret = ERR_OK;
-	ret = lexing(tokens);
+	ret = lexer(tokens, src);
 }

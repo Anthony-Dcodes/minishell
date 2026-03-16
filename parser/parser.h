@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/16 22:13:11 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/16 22:51:07 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@
 typedef enum e_error
 {
 	ERR_OK,
+	ERR_MALLOC,
+	ERR_SYNTAX,
 } t_error;
 
 typedef enum e_quote
 {
-	SINGLE,
-	DOUBLE,
-	NONE
+	SINGLE_QUOTE,
+	DOUBLE_QUOTE,
+	NO_QUOTE
 } t_quote;
 
 typedef struct s_tokens
