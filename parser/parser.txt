@@ -1,0 +1,46 @@
+typedef struct s_listex
+{
+	char		**items;
+	char		*xattr_qc;
+	char		*xattr_pc;
+	char		*xattr_sc;
+	char		*xattr_pidx;
+	char		*xattr_rc;
+	size_t		size;
+}	t_listex;
+
+int	ft_parsecmd(t_s *s, char *src, t_listex *dst)
+{
+	t_listex		parsed_quotes;
+	t_listex		**parsed_pipes;
+	t_listex		**parsed_exp;
+	int				r;
+
+	ft_parsequotes2(s, &parsed_quotes, src)
+	-----ft_detectchargroups2(s, src)
+	-----ft_createchargroups2(s, src)
+	-----ft_parsesinglequotes2(s)
+	-----ft_parsedoublequotes2(s)
+	-----ft_copyandclean2(s, dst)
+	ft_parsepipes2(s, &parsed_pipes, &parsed_quotes)
+	ft_parseexp2(s, &parsed_exp, parsed_pipes)
+	ft_preparelist2(s, dst, parsed_exp)
+	ft_clean(s, &parsed_quotes, parsed_pipes, parsed_exp)
+	return (SUCCESS);
+}
+
+Hele to nebude potřeba, bylo by super abych od tebe dostal jeden t_listex **list kde
+(když má cmd jednu pipu)
+list[0] .items jsou slova první pipe
+list[1] .items jsou slova druhé pipe
+Ty atributy nemusíš dělat pro mě, jestli to použiješ pro sebe je na tobě
+Cmd echo a b | echo c ** výsledek
+list[0] .items[0]=echo
+list[0] .items[1]=a
+list[0] .items[2]=b
+list[1] .items[0]=echo
+list[1] .items[1]=c
+Od tebe potřebuju uvozovky, dvojitý uvozovky, pipes a expansions
+Pro expansions budeš potřebovat char **envp, což je seznam env proměnných, to dostaneš jako argument v té fci
+int ft_parsecmd(t_s *s, char *src, t_listex **dst, char **envp)
+dst = list = tvůj výsledek viz výše
