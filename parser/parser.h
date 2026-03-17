@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/16 22:51:07 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/17 21:11:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct s_tokens
 	char		*value;
 	int			is_pipe;
 	t_quote		quote;
-	t_tokens	*next;
-} t_tokens;
+	t_token		*next;
+} t_token;
 
 typedef struct s_listex
 {
