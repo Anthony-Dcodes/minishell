@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:40:54 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 21:41:08 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/17 22:39:15 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ int	get_string(int start, int end, char *src, char **dst)
 
 int	detect_quote(char c)
 {
-	if (c == SINGLE_QUOTE)
+	if (c == '\'')
 		return (SINGLE_QUOTE);
-	else if (c == DOUBLE_QUOTE)
+	else if (c == '"')
 		return (DOUBLE_QUOTE);
-	else if (c == NO_QUOTE)
+	else
 		return (NO_QUOTE);
 }
 
