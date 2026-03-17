@@ -6,13 +6,14 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 21:11:11 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/17 21:54:53 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <stdlib.h>
+#include <stdio.h>
 #define SUCCESS 0
 
 typedef enum e_error
@@ -48,4 +49,18 @@ typedef struct s_listex
 	size_t		size;
 }	t_listex;
 
-int ft_parsecmd(t_s *s, char *src, t_listex **dst, char **envp);
+//int ft_parsecmd(t_s *s, char *src, t_listex **dst, char **envp);
+
+// Linked list ops
+t_token *new_token(char *value, int	is_pipe, int quote, int *ret);
+void	append_token(t_token **head, t_token *new);
+
+// String helpers
+int	find_start_index(char *str, int start);
+int find_end_index(char *str, int start, int quote);
+int	get_string(int start, int end, char *src, char **dst);
+int	detect_quote(char c);
+int	detect_pipe(char c);
+
+// lexer
+int	lexer(t_token **head, char *src);
