@@ -6,13 +6,13 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:08:51 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 21:15:57 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/17 21:35:12 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 //echo a b | echo c
-int	lexer(t_token **tokens, char *src)
+int	lexer(t_token **head, char *src)
 {
 	int	ret;
 	int	start_index;
@@ -21,6 +21,7 @@ int	lexer(t_token **tokens, char *src)
 	char	*string;
 	int		quote;
 	int		pipe;
+	t_token *token;
 
 	start_index = 0;
 	ret = ERR_OK;
@@ -40,9 +41,13 @@ int	lexer(t_token **tokens, char *src)
 		ret = get_string(start_index, end_index, src, &string);
 		if (ret != ERR_OK)
 			return (ret);
-
-
+		token = new_token(string, pipe, quote, &ret);
+		if (ret != ERR_OK)
+			return (ret);
+		append_token(head, token);
+		start_index = end_index;
 	}
+	return (ret);
 }
 
 int	find_start_index(char *str, int start)
@@ -121,7 +126,35 @@ int	detect_pipe(char c)
 	return (0);
 }
 
-t_token *new_token(char *value, int	is_pipe, int quote)
+t_token *new_token(char *value, int	is_pipe, int quote, int *ret)
 {
+	t_token *new_token;
 
+	new_token = malloc(sizeof(t_token));
+	if (!new_token)
+	{
+		ret = ERR_MALLOC;
+		return ;
+	}
+	new_token->is_pipe = is_pipe;
+	new_token->quote = quote;
+	new_token->value = value;
+	new_token->next = NULL;
+	return (new_token);
+}
+
+void	append_token(t_token **head, t_token *new)
+{
+	t_token *temp_head;
+
+	if (*head == NULL)
+	{
+		*head = new;
+		return ;
+	}
+	temp_head = *head;
+	while (temp_head->next)
+		temp_head = temp_head->next;
+	temp_head->next = new;
+	return ;
 }
