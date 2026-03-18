@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:08:51 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 21:40:50 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/17 23:10:40 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,31 @@ int	lexer(t_token **head, char *src)
 	start_index = 0;
 	ret = ERR_OK;
 	str_end = 0;
+	//printf("No segfault");
 	while (!str_end && ret == ERR_OK)
 	{
 		start_index = find_start_index(src, start_index);
 		if (start_index == -1)
-			str_end = 1;
+			break;
 		quote = detect_quote(src[start_index]);
 		pipe = detect_pipe(src[start_index]);
 		end_index = find_end_index(src, start_index, quote);
+		printf("start index: %d, quote: %d, pipe: %d, end_index: %d\n", start_index, quote, pipe, end_index);
 		if (end_index == -1)
-			str_end = 1;
-		if (end_index == -2)
+			break;
+		else if (end_index == -2)
 			return (ERR_SYNTAX);
 		ret = get_string(start_index, end_index, src, &string);
 		if (ret != ERR_OK)
 			return (ret);
+		printf("go to new_toke\n");
 		token = new_token(string, pipe, quote, &ret);
+		printf("new token done\n");
 		if (ret != ERR_OK)
 			return (ret);
+		printf("token not appended!\n");
 		append_token(head, token);
+		printf("token appended!\n");
 		start_index = end_index;
 	}
 	return (ret);

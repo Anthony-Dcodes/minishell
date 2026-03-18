@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 21:54:53 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/17 23:10:55 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ typedef enum e_quote
 	NO_QUOTE
 } t_quote;
 
-typedef struct s_tokens
+typedef struct s_token
 {
 	char		*value;
 	int			is_pipe;
 	t_quote		quote;
-	t_token		*next;
+	struct s_token		*next;
 } t_token;
 
 typedef struct s_listex
@@ -53,7 +53,7 @@ typedef struct s_listex
 
 // Linked list ops
 t_token *new_token(char *value, int	is_pipe, int quote, int *ret);
-void	append_token(t_token **head, t_token *new);
+void	append_token(t_token **head, t_token *token);
 
 // String helpers
 int	find_start_index(char *str, int start);

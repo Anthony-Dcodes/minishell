@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:40:54 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 22:39:15 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/17 23:16:38 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,16 @@ int find_end_index(char *str, int start, int quote)
 		++end;
 	}
 	if (quote == NO_QUOTE)
-		return (-1);
+		return (end);
 	return (-2);
 }
 
 int	get_string(int start, int end, char *src, char **dst)
 {
-	int	ret;
 	int	len;
 	int i;
 
-	ret = ERR_OK;
-	len = end - start + 1;
+	len = end - start;
 	i = 0;
 	*dst = malloc(sizeof(char) * (len + 1));
 	if (!*dst)
@@ -67,8 +65,8 @@ int	get_string(int start, int end, char *src, char **dst)
 		(*dst)[i] = src[start + i];
 		++i;
 	}
-	*dst[i] = 0;
-	return (ret);
+	(*dst)[i] = 0;
+	return (ERR_OK);
 }
 
 int	detect_quote(char c)

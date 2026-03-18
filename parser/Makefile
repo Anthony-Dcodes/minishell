@@ -1,6 +1,6 @@
 NAME = parser
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra #-Werror
 
 SRCS = \
 	lexer.c \
@@ -18,8 +18,8 @@ OBJC = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CC_FLAGS) $(OBJC) -o (NAME)
+$(NAME): $(OBJC)
+	$(CC) $(CC_FLAGS) $(OBJC) -o $(NAME)
 
 clean:
 	rm -f $(OBJC)

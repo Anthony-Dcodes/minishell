@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 21:53:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/17 23:13:10 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,20 @@
 
 int main(void)
 {
-	t_token **head;
+	t_token *head;
+	t_token *current;
 	int	ret;
 	char	*string = "Helllo jak se mame? | ,okok se mame | done!";
 
-	ret = lexer(head, string);
-	while (*head)
+	head = NULL;
+	ret = lexer(&head, string);
+	if (ret != ERR_OK)
+		return (ret);
+	current = head;
+	while (current)
 	{
-		printf("%s\n", *head->value);
-		*head = *head->next;
+		printf("%s\n", current->value);
+		current = current->next;
 	}
-	return (0);
+	return (ret);
 }
