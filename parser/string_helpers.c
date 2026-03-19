@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:40:54 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 23:16:38 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/19 19:53:04 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	find_start_index(char *str, int start)
 {
-	if (start == -1)
-		return (-1);
 	while (str[start])
 	{
 		if (str[start] == ' ')
@@ -28,6 +26,7 @@ int	find_start_index(char *str, int start)
 	return (-1);
 }
 
+// Return last index of the string (exclusive)
 int find_end_index(char *str, int start, int quote)
 {
 	int	end;
@@ -38,16 +37,14 @@ int find_end_index(char *str, int start, int quote)
 	while (str[end])
 	{
 		if (quote == SINGLE_QUOTE && str[end] == '\'')
-				return (end);
+				return (end + 1);
 		else if (quote == DOUBLE_QUOTE && str[end] == '"')
-				return (end);
+				return (end + 1);
 		else if (quote == NO_QUOTE && str[end] == ' ')
 				return (end);
 		++end;
 	}
-	if (quote == NO_QUOTE)
-		return (end);
-	return (-2);
+	return (end);
 }
 
 int	get_string(int start, int end, char *src, char **dst)
