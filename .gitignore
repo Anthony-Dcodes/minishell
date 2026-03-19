@@ -1,3 +1,6 @@
 *.o
 parser
-
+.DS_Store
+/dparser
+/dparser_build
+*.zip
