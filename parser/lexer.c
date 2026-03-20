@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:08:51 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/20 10:54:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/20 23:18:56 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	lexer(t_token **head, char *src)
 		quote = detect_quote(src[start_index]);
 		pipe = detect_pipe(src[start_index]);
 		end_index = find_end_index(src, start_index, quote);
-	//printf("start index: %d, quote: %d, pipe: %d, end_index: %d\n a", start_index, quote, pipe, end_index);
+		//printf("start index: %d, quote: %d, pipe: %d, end_index: %d\n", start_index, quote, pipe, end_index);
 		if (end_index == -1 && start_index == -1 )
 			break;
 		ret = get_string(start_index, end_index, src, &string);
@@ -51,7 +51,7 @@ int	lexer(t_token **head, char *src)
 		//printf("token appended!\n");
 		start_index = end_index;
 	}
-	ret = check_quotes_syntax(head);
+	//ret = check_quotes_syntax(head);
 	return (ret);
 }
 

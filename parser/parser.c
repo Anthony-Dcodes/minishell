@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/20 12:32:39 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/20 23:32:23 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char *argv[], char **envp)
 	t_token *head;
 	t_token *current;
 	int	ret;
-	char	*string = "echo a | echo b | cat a 'error' sec";
+	char	*string = "'first''second'\"third\"";
 
 	//while (*envp)
 	//{
@@ -39,13 +39,13 @@ int main(int argc, char *argv[], char **envp)
 	//	envp++;
 	//}
 	head = NULL;
-	ret = lexer(&head, string);
+	ret = lexer(&head, argv[1]);
 	if (ret != ERR_OK)
 		return (ret);
 	current = head;
 	while (current)
 	{
-		printf("value: |%s|, is pipe: %d, quote: %d\n", current->value, current->is_pipe, current->quote);
+		printf("%s\n", current->value);
 		current = current->next;
 	}
 	return (ret);
