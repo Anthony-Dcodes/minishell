@@ -1,5 +1,5 @@
 *.o
-parser
+parser/parser
 .DS_Store
 /dparser
 /dparser_build
