@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:08:51 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/20 10:19:28 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/20 10:54:23 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	lexer(t_token **head, char *src)
 		//printf("token appended!\n");
 		start_index = end_index;
 	}
+	ret = check_quotes_syntax(head);
 	return (ret);
 }
 

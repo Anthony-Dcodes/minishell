@@ -6,13 +6,13 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 23:13:10 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:32:39 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "parser.h"
 
-// int ft_parsecmd(t_s *s, char *src, t_listex **dst, char **envp)
+//int ft_parsecmd(t_s *s, char *src, t_listex **dst, char **envp)
 // {
 // 	t_token	**head;
 // 	int			ret;
@@ -26,13 +26,18 @@
 // 	}
 // }
 
-int main(void)
+int main(int argc, char *argv[], char **envp)
 {
 	t_token *head;
 	t_token *current;
 	int	ret;
-	char	*string = "Helllo jak se mame? | ,okok se mame | done!";
+	char	*string = "echo a | echo b | cat a 'error' sec";
 
+	//while (*envp)
+	//{
+	//	printf("env variables: %s\n", *envp);
+	//	envp++;
+	//}
 	head = NULL;
 	ret = lexer(&head, string);
 	if (ret != ERR_OK)
@@ -40,7 +45,7 @@ int main(void)
 	current = head;
 	while (current)
 	{
-		printf("%s\n", current->value);
+		printf("value: |%s|, is pipe: %d, quote: %d\n", current->value, current->is_pipe, current->quote);
 		current = current->next;
 	}
 	return (ret);

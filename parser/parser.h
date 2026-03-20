@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 23:10:55 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:24:41 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,13 @@ int	get_string(int start, int end, char *src, char **dst);
 int	detect_quote(char c);
 int	detect_pipe(char c);
 
+// String utils
+size_t	ft_strlen(const char *s);
+
 // lexer
 int	lexer(t_token **head, char *src);
+
+// Syntax check
+int	compare_first_last_char(char *string);
+int	check_quotes_syntax(t_token **head);
+int	check_inner_quotes(char *string, int start_index, int end_index);

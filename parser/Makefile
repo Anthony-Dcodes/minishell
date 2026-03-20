@@ -6,7 +6,9 @@ SRCS = \
 	lexer.c \
 	linked_list_ops.c \
 	parser.c \
-	string_helpers.c
+	string_helpers.c \
+	string_utils.c \
+	syntax_check.c
 
 OBJC = $(SRCS:.c=.o)
 
@@ -22,7 +24,7 @@ $(NAME): $(OBJC)
 	$(CC) $(CC_FLAGS) $(OBJC) -o $(NAME)
 
 run: all
-	./$(NAME)
+	./$(NAME); echo "exit status: $$?"
 
 clean:
 	rm -f $(OBJC)
