@@ -21,6 +21,9 @@ all: $(NAME)
 $(NAME): $(OBJC)
 	$(CC) $(CC_FLAGS) $(OBJC) -o $(NAME)
 
+run: all
+	./$(NAME)
+
 clean:
 	rm -f $(OBJC)
 

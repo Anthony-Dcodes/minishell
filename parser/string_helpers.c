@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:40:54 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/19 19:53:04 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/20 10:18:22 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int find_end_index(char *str, int start, int quote)
 	int	end;
 
 	end = start + 1;
-	if (str[end] == 0 || start == -1)
+	if (start == -1)
 		return (-1);
 	while (str[end])
 	{
