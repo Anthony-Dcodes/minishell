@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:40:54 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/20 18:55:30 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/21 11:15:04 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,23 @@ int find_end_index(char *str, int start, int quote)
 		return (-1);
 	while (str[end])
 	{
-		if (quote == SINGLE_QUOTE || quote == DOUBLE_QUOTE)
+		if (quote == SINGLE_QUOTE)
 		{
-			if (str[end] == '"' || str[end] == '\'')
+			if (str[end] == '\'')
+				quote = NO_QUOTE;
+		}
+		else if (quote == DOUBLE_QUOTE)
+		{
+			if (str[end] == '"')
 				quote = NO_QUOTE;
 		}
 		else if (quote == NO_QUOTE)
 		{
 			if (str[end] == ' ')
 				return (end);
-			else if (str[end] == '"' || str[end] == '\'')
+			else if (str[end] == '"')
+				quote = DOUBLE_QUOTE;
+			else if (str[end] == '\'')
 				quote = SINGLE_QUOTE;
 		}
 		++end;
