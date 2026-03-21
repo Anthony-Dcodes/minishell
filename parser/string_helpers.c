@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:40:54 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/21 11:15:04 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/21 11:25:33 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,7 @@ int find_end_index(char *str, int start, int quote)
 		return (-1);
 	while (str[end])
 	{
-		if (quote == SINGLE_QUOTE)
-		{
-			if (str[end] == '\'')
-				quote = NO_QUOTE;
-		}
-		else if (quote == DOUBLE_QUOTE)
-		{
-			if (str[end] == '"')
-				quote = NO_QUOTE;
-		}
-		else if (quote == NO_QUOTE)
-		{
-			if (str[end] == ' ')
-				return (end);
-			else if (str[end] == '"')
-				quote = DOUBLE_QUOTE;
-			else if (str[end] == '\'')
-				quote = SINGLE_QUOTE;
-		}
+		quote = track_quote_state(quote, str[end]);
 		++end;
 	}
 	return (end);
@@ -94,4 +76,26 @@ int	detect_pipe(char c)
 	if (c == '|')
 		return (1);
 	return (0);
+}
+
+int	track_quote_state(int quote, char c)
+{
+	if (quote == SINGLE_QUOTE)
+	{
+		if (c == '\'')
+			return (NO_QUOTE);
+	}
+	else if (quote == DOUBLE_QUOTE)
+	{
+		if (c == '"')
+			return(NO_QUOTE);
+	}
+	else if (quote == NO_QUOTE)
+	{
+		if (c == '"')
+			return (DOUBLE_QUOTE);
+		else if (c == '\'')
+			return (SINGLE_QUOTE);
+	}
+	return (quote);
 }
