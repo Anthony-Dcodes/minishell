@@ -26,6 +26,9 @@ $(NAME): $(OBJC)
 run: all
 	./$(NAME); echo "exit status: $$?"
 
+test: all
+	./tester.sh
+
 clean:
 	rm -f $(OBJC)
 
@@ -34,4 +37,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re run
