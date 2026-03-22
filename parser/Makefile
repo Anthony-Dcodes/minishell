@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra #-Werror
 
 SRCS = \
-	lexer.c \
+	tokenizer.c \
 	linked_list_ops.c \
 	parser.c \
 	string_helpers.c \

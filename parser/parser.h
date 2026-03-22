@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 22:03:06 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 22:45:30 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,11 @@ int	track_quote_state(int quote, char c);
 
 // Tokenizer utils
 int	get_string_type(char c);
+int	tokenizer(t_token **head, char *src);
 
 // String utils
 size_t	ft_strlen(const char *s);
-
-// lexer
-int	lexer(t_token **head, char *src);
+int	ft_isspace(char c);
 
 // Syntax check
 int check_syntax(t_token *head);

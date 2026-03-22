@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:58:11 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 19:06:39 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 22:47:56 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,49 @@ int	get_string_type(char c)
 		return (END_FILE);
 	return (WORD);
 
+}
+
+int	find_start_index(char *str, int start)
+{
+	while (str[start])
+	{
+		if (str[start] == ' ')
+		{
+			++start;
+			continue;
+		}
+		return (start);
+	}
+	return (-1);
+}
+
+// Return last index of the string (exclusive)
+int find_end_index(char *str, int start, int quote)
+{
+	int	end;
+	char c;
+
+	end = start + 1;
+	if (start == -1)
+		return (-1);
+	if (str[start] == '|')
+		return (end);
+	if (str[start] == '<' || str[start] == '>')
+	{
+		if (str[start] == str[end] && str[end])
+			return (end + 1);
+		return (end);
+	}
+	while (str[end])
+	{
+		c = str[end];
+		quote = track_quote_state(quote, c);
+		if (quote == NO_QUOTE)
+		{
+			if (c == '<' || c == '>' || c == '|' || c == ' ')
+				return (end);
+		}
+		++end;
+	}
+	return (end);
 }

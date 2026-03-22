@@ -6,13 +6,13 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:08:51 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 19:54:06 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 22:35:46 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 //echo a b | echo c
-int	lexer(t_token **head, char *src)
+int	tokenizer(t_token **head, char *src)
 {
 	int	ret;
 	int	start_index;
