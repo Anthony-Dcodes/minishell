@@ -6,13 +6,13 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/17 23:11:20 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 18:47:54 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-t_token *new_token(char *value, int	is_pipe, int quote, int *ret)
+t_token *new_token(char *value, int	type, int quote, int *ret)
 {
 	t_token *node;
 
@@ -22,10 +22,11 @@ t_token *new_token(char *value, int	is_pipe, int quote, int *ret)
 		*ret = ERR_MALLOC;
 		return (NULL);
 	}
-	node->is_pipe = is_pipe;
+	node->type = type;
 	node->quote = quote;
 	node->value = value;
 	node->next = NULL;
+	node->previous = NULL;
 	return (node);
 }
 
@@ -42,5 +43,6 @@ void	append_token(t_token **head, t_token *token)
 	while (temp_head->next)
 		temp_head = temp_head->next;
 	temp_head->next = token;
+	temp_head->next->previous = temp_head;
 	return ;
 }

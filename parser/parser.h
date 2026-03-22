@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/21 11:25:44 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 18:37:31 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,21 @@ typedef enum e_quote
 	NO_QUOTE
 } t_quote;
 
+typedef enum e_type
+{
+	QUOTE,
+	WORD,
+	PIPE,
+	REDDIRECT
+} t_type;
+
 typedef struct s_token
 {
 	char		*value;
-	int			is_pipe;
 	t_quote		quote;
+	t_type		type;
 	struct s_token		*next;
+	struct s_token		*previous;
 } t_token;
 
 typedef struct s_listex
