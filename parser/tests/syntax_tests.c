@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:27:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 18:28:00 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 19:58:15 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,35 @@ int main(void)
     int result;
     int passed;
     int failed;
+	t_token *head;
+	int		ret;
 
     i = 0;
     passed = 0;
     failed = 0;
     while (tests[i].input != NULL)
     {
-        result = check_syntax(tokenize(tests[i].input));
-        if (result == tests[i].expected)
-        {
-            printf("OK:   %s\n", tests[i].input);
-            passed++;
-        }
-        else
-        {
-            printf("FAIL: %s (expected %d got %d)\n",
-                tests[i].input, tests[i].expected, result);
-            failed++;
-        }
-        i++;
+        head = NULL;
+		if (lexer(&head, tests[i].input) != ERR_OK)
+		{
+			printf("LEXER ERR: %s\n", tests[i].input);
+			i++;
+			continue ;
+		}
+		result = check_syntax(head);
+		if (result == tests[i].expected)
+		{
+			printf("OK:   %s\n", tests[i].input);
+			passed++;
+		}
+		else
+		{
+			printf("FAIL: %s (expected %d got %d)\n",
+				tests[i].input, tests[i].expected, result);
+			failed++;
+		}
+		//free_token_list(head);  // whatever your free function is called
+		i++;
     }
     printf("\n%d passed, %d failed\n", passed, failed);
 }

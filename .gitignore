@@ -5,3 +5,4 @@ parser/parser
 /dparser_build
 *.zip
 /tests*
+parser/tests/syntax_tests

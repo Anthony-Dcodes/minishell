@@ -6,11 +6,49 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:29:28 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/20 12:33:22 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 19:30:52 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+
+int check_syntax(t_token *head)
+{
+	t_token *temp;
+	int		previous;
+	int		current;
+	int		next;
+
+	temp = head;
+	while (temp)
+	{
+		if (temp->previous == NULL) // first node
+		{
+			if (temp->type == PIPE)
+				return (ERR_SYNTAX);
+		}
+		else if (temp->next == NULL) // last node
+		{
+			if (temp->type == PIPE || temp->type == REDDIRECT)
+				return (ERR_SYNTAX);
+		}
+		else // somewhere in the middle
+		{
+			previous = temp->previous->type;
+			current = temp->type;
+			next = temp->next->type;
+			if (current == PIPE || current == REDDIRECT)
+			{
+				if (next == PIPE || next == REDDIRECT)
+					return (ERR_SYNTAX);
+				else if (previous == PIPE || next == PIPE)
+					return (ERR_SYNTAX);
+			}
+		}
+		temp = temp->next;
+	}
+	return (ERR_OK);
+}
 
 int	check_quotes_syntax(t_token **head)
 {
