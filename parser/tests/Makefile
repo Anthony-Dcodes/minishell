@@ -12,6 +12,10 @@ SRCS = \
 
 OBJC = $(SRCS:.c=.o)
 
+# --- Rebuild if headers change ---
+%.o: %.c syntax_tests.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 all: $(NAME)
 
 $(NAME): $(OBJC)
