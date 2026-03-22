@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:58:11 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 22:47:56 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 22:49:46 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	find_start_index(char *str, int start)
 {
 	while (str[start])
 	{
-		if (str[start] == ' ')
+		if (ft_isispace(str[start]))
 		{
 			++start;
 			continue;
@@ -95,7 +95,7 @@ int find_end_index(char *str, int start, int quote)
 		quote = track_quote_state(quote, c);
 		if (quote == NO_QUOTE)
 		{
-			if (c == '<' || c == '>' || c == '|' || c == ' ')
+			if (c == '<' || c == '>' || c == '|' || ft_isspace(c))
 				return (end);
 		}
 		++end;
