@@ -8,7 +8,8 @@ SRCS = \
 	parser.c \
 	string_helpers.c \
 	string_utils.c \
-	syntax_check.c
+	syntax_check.c \
+	tokenizer_utils.c
 
 OBJC = $(SRCS:.c=.o)
 
@@ -37,4 +38,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re run test

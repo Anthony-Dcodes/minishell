@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 18:37:31 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 19:06:33 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef enum e_quote
 
 typedef enum e_type
 {
-	QUOTE,
 	WORD,
 	PIPE,
-	REDDIRECT
+	REDDIRECT,
+	END_FILE
 } t_type;
 
 typedef struct s_token
@@ -61,7 +61,7 @@ typedef struct s_listex
 //int ft_parsecmd(t_s *s, char *src, t_listex **dst, char **envp);
 
 // Linked list ops
-t_token *new_token(char *value, int	is_pipe, int quote, int *ret);
+t_token *new_token(char *value, int	type, int quote, int *ret);
 void	append_token(t_token **head, t_token *token);
 
 // String helpers
@@ -69,8 +69,10 @@ int	find_start_index(char *str, int start);
 int find_end_index(char *str, int start, int quote);
 int	get_string(int start, int end, char *src, char **dst);
 int	detect_quote(char c);
-int	detect_pipe(char c);
 int	track_quote_state(int quote, char c);
+
+// Tokenizer utils
+int	get_string_type(char c);
 
 // String utils
 size_t	ft_strlen(const char *s);

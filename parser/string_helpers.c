@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:40:54 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 14:39:14 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 18:58:09 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,43 +74,4 @@ int	get_string(int start, int end, char *src, char **dst)
 	}
 	(*dst)[i] = 0;
 	return (ERR_OK);
-}
-
-int	detect_quote(char c)
-{
-	if (c == '\'')
-		return (SINGLE_QUOTE);
-	else if (c == '"')
-		return (DOUBLE_QUOTE);
-	else
-		return (NO_QUOTE);
-}
-
-int	detect_pipe(char c)
-{
-	if (c == '|')
-		return (1);
-	return (0);
-}
-
-int	track_quote_state(int quote, char c)
-{
-	if (quote == SINGLE_QUOTE)
-	{
-		if (c == '\'')
-			return (NO_QUOTE);
-	}
-	else if (quote == DOUBLE_QUOTE)
-	{
-		if (c == '"')
-			return(NO_QUOTE);
-	}
-	else if (quote == NO_QUOTE)
-	{
-		if (c == '"')
-			return (DOUBLE_QUOTE);
-		else if (c == '\'')
-			return (SINGLE_QUOTE);
-	}
-	return (quote);
 }
