@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/20 23:32:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 19:26:54 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char *argv[], char **envp)
 	t_token *head;
 	t_token *current;
 	int	ret;
-	char	*string = "'first''second'\"third\"";
+	char	*string = "echo 'hello' \"hello\" | < >";
 
 	//while (*envp)
 	//{
@@ -39,13 +39,20 @@ int main(int argc, char *argv[], char **envp)
 	//	envp++;
 	//}
 	head = NULL;
-	ret = lexer(&head, argv[1]);
+	ret = lexer(&head, string);
+	if (ret != ERR_OK)
+		return (ret);
+	ret = check_syntax(head);
 	if (ret != ERR_OK)
 		return (ret);
 	current = head;
 	while (current)
 	{
-		printf("%s\n", current->value);
+		//if (current->previous)
+			//printf("previous: %s\n", current->previous->value);
+		printf("value: %s\n", current->value);
+		//if (current->next)
+			//printf("next: %s\n", current->next->value);
 		current = current->next;
 	}
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:20:16 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 19:30:12 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 21:40:50 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,23 @@ t_test tests[] = {
 	{"cat <", ERR_SYNTAX},
 	{"cat > > file", ERR_SYNTAX},
 	{"cat > | pipe", ERR_SYNTAX},
+	// Closed quotes
+	{"echo \"hello\"", ERR_OK},
+	{"echo \"hel''l'o'\"", ERR_OK},
+	{"'echo' \"hel''l'o'\"", ERR_OK},
+	{"'echo' 'hello''world'", ERR_OK},
+	{"echo \"hello\"'world'", ERR_OK},
+	{"echo \"hello\"'wo\"r\"ld'", ERR_OK},
+	{"echo \"hel'l'o'\"", ERR_OK},
 	// unclosed quotes
 	{"echo 'hello", ERR_SYNTAX},
 	{"echo \"hello", ERR_SYNTAX},
+	{"echo \" hello", ERR_SYNTAX},
+	{"echo '\"hello", ERR_SYNTAX},
+	{"echo \"he'llo", ERR_SYNTAX},
+	{"echo \"hel''lo", ERR_SYNTAX},
+	{"echo hello'rorld", ERR_SYNTAX},
+	{"echo \"hello'\"'", ERR_SYNTAX},
+
 	{NULL, 0}
 };

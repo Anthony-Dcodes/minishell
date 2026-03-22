@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:29:28 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 19:30:52 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/22 22:03:53 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,74 +45,26 @@ int check_syntax(t_token *head)
 					return (ERR_SYNTAX);
 			}
 		}
+		if (has_unclosed_quote(temp->value))
+			return (ERR_SYNTAX);
 		temp = temp->next;
 	}
 	return (ERR_OK);
 }
 
-int	check_quotes_syntax(t_token **head)
+int has_unclosed_quote(char *str)
 {
-	int		ret;
-	t_token *temp;
+	int		i;
 	int		quote_type;
 
-	temp = *head;
-	ret = ERR_OK;
-	while (temp)
+	i = 0;
+	quote_type = NO_QUOTE;
+	while (str[i])
 	{
-		quote_type = temp->quote;
-		if (quote_type == SINGLE_QUOTE || quote_type == DOUBLE_QUOTE)
-		{
-			ret = compare_first_last_char(temp->value);
-			if (ret != ERR_OK)
-				return (ERR_SYNTAX);
-			ret = check_inner_quotes(temp->value, 1, (int)ft_strlen(temp->value) - 1);
-			if (ret != ERR_OK)
-				return (ERR_SYNTAX);
-		}
-		if (quote_type == NO_QUOTE)
-			ret = check_inner_quotes(temp->value, 0, (int)ft_strlen(temp->value));
-		if (ret != ERR_OK)
-			return (ret);
-		temp = temp->next;
-	}
-	return (ret);
-}
-
-int	compare_first_last_char(char *string)
-{
-	int	len;
-	int	last_index;
-	int	first_index;
-
-	len = (int)ft_strlen(string);
-	last_index = len - 1;
-	first_index = 0;
-	if (string[first_index] == string[last_index])
-		return (0);
-	return (1);
-}
-
-int	check_inner_quotes(char *string, int start_index, int end_index)
-{
-	int	n_single_q;
-	int	n_double_q;
-	int	i;
-
-	i = start_index;
-	n_single_q = 0;
-	n_double_q = 0;
-	if (start_index == end_index)
-		return (ERR_OK);
-	while (i < end_index)
-	{
-		if (string[i] == '\'')
-			++n_single_q;
-		else if (string[i] == '"')
-			++n_double_q;
+		quote_type = track_quote_state(quote_type, str[i]);
 		++i;
 	}
-	if (n_single_q % 2 == 1 || n_double_q % 2 == 1)
-		return (ERR_SYNTAX);
-	return (ERR_OK);
+	if (quote_type == NO_QUOTE)
+		return (ERR_OK);
+	return (ERR_SYNTAX);
 }
