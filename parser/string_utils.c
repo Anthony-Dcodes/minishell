@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:44:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 22:47:21 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/23 22:34:01 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,14 @@ int	get_string(int start, int end, char *src, char **dst)
 	}
 	(*dst)[i] = 0;
 	return (ERR_OK);
+}
+
+// Return 1 if c is alphanumeric (letter or digit)
+int	ft_isalnum(int c)
+{
+	if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')
+		|| (c >= 'a' && c <= 'z'))
+		return (1);
+	else
+		return (0);
 }
