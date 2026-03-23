@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 19:26:54 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/23 22:14:23 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,12 @@ int main(int argc, char *argv[], char **envp)
 	//	envp++;
 	//}
 	head = NULL;
-	ret = lexer(&head, string);
+	while (*envp)
+	{
+		printf("%s\n", *envp);
+		++envp;
+	}
+	ret = tokenizer(&head, string);
 	if (ret != ERR_OK)
 		return (ret);
 	ret = check_syntax(head);

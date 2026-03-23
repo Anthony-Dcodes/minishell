@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 22:45:30 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:11:29 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef enum e_error
 	ERR_OK,
 	ERR_MALLOC,
 	ERR_SYNTAX,
+	ERR_VAR_SUBST,
 } t_error;
 
 typedef enum e_quote
@@ -78,7 +79,12 @@ int	tokenizer(t_token **head, char *src);
 // String utils
 size_t	ft_strlen(const char *s);
 int	ft_isspace(char c);
+int	ft_isalnum(int c);
 
 // Syntax check
 int check_syntax(t_token *head);
 int has_unclosed_quote(char *str);
+
+// Substitutions
+int	substitute_vars(t_token *head);
+int	find_closing_bracket(char	*string, int start_index);

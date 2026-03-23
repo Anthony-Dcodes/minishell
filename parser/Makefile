@@ -6,10 +6,10 @@ SRCS = \
 	tokenizer.c \
 	linked_list_ops.c \
 	parser.c \
-	string_helpers.c \
 	string_utils.c \
 	syntax_check.c \
-	tokenizer_utils.c
+	tokenizer_utils.c \
+	substitutions.c
 
 OBJC = $(SRCS:.c=.o)
 
