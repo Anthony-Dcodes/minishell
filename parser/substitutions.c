@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/24 21:29:07 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/24 21:45:24 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	substitute_vars(t_token *head)
 	int		i;
 	int		quote;
 	int		end_index;
+	int		start_index;
 	char	*substring;
 	char	*env_var;
 
@@ -38,9 +39,10 @@ int	substitute_vars(t_token *head)
 					if (str[i] == '$')
 					{
 						end_index = get_variable_end_index(str, i);
-						if (end_index == -1)
+						start_index = get_variable_start_index(str, i);
+						if (end_index == -1 || start_index == -1)
 							return (ERR_VAR_SUBST);
-						if (get_string(i, end_index, str, &substring) == ERR_MALLOC)
+						if (get_string(start_index, end_index, str, &substring) == ERR_MALLOC)
 							return (ERR_VAR_SUBST);
 						env_var = getenv(substring);
 						free(substring);
@@ -94,6 +96,21 @@ int	get_variable_end_index(char	*string, int start_index)
 		return (i);
 	}
 	return (-1);
+}
+
+int	get_variable_start_index(char *string, int start_index)
+{
+	int	i;
+
+	i = start_index;
+	if (string[i + 1] == '?')
+		return (i + 1);
+	else if (string[i + 1] == '{')
+		return (i + 2);
+	else if (ft_isalnum(string[i + 1]) || string[i + 1] == '_')
+		return (i + 1);
+	return (-1);
+
 }
 
 int	replace_variable(t_token *token, char *evn_var, int start_index, int end_index)
