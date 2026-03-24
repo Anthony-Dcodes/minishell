@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/24 21:45:24 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/24 21:48:39 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	substitute_vars(t_token *head)
 		}
 		temp = temp->next;
 	}
+	return (ERR_OK);
 }
 
 int	find_closing_bracket(char	*string, int start_index)
