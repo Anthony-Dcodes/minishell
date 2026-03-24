@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/23 23:11:29 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/24 20:18:32 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,3 +88,4 @@ int has_unclosed_quote(char *str);
 // Substitutions
 int	substitute_vars(t_token *head);
 int	find_closing_bracket(char	*string, int start_index);
+int	get_variable_end_index(char	*string, int start_index);
