@@ -51,9 +51,8 @@ int	substitute_vars(t_token *head)
 						str = temp->value;
 						i = i + (int)ft_strlen(env_var);
 					}
-					else
-						++i;
 				}
+				++i;
 			}
 		}
 		temp = temp->next;
