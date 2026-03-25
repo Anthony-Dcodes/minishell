@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:27:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 19:58:15 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/25 22:49:14 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int main(void)
     while (tests[i].input != NULL)
     {
         head = NULL;
-		if (lexer(&head, tests[i].input) != ERR_OK)
+		if (tokenizer(&head, tests[i].input) != ERR_OK)
 		{
-			printf("LEXER ERR: %s\n", tests[i].input);
+			printf("TOKENIZER ERR: %s\n", tests[i].input);
 			i++;
 			continue ;
 		}

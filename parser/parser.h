@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/24 21:44:32 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/25 23:18:02 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,3 +91,4 @@ int	find_closing_bracket(char	*string, int start_index);
 int	get_variable_end_index(char	*string, int start_index);
 int	replace_variable(t_token *token, char *evn_var, int start_index, int end_index);
 int	get_variable_start_index(char *string, int start_index);
+int get_substring_end_index(char *string, int start_index);

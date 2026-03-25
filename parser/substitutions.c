@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/24 21:48:39 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/25 23:21:08 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	substitute_vars(t_token *head)
 	int		quote;
 	int		end_index;
 	int		start_index;
+	int		end_of_sub_str;
 	char	*substring;
 	char	*env_var;
 
@@ -40,16 +41,19 @@ int	substitute_vars(t_token *head)
 					{
 						end_index = get_variable_end_index(str, i);
 						start_index = get_variable_start_index(str, i);
+						end_of_sub_str = get_substring_end_index(str, i);
+						//printf("start inde: %d, end index: %d\n", start_index, end_index);
 						if (end_index == -1 || start_index == -1)
 							return (ERR_VAR_SUBST);
-						if (get_string(start_index, end_index, str, &substring) == ERR_MALLOC)
+						if (get_string(start_index, end_of_sub_str, str, &substring) == ERR_MALLOC)
 							return (ERR_VAR_SUBST);
+						//printf("string to getenv: %s\n", substring);
 						env_var = getenv(substring);
 						free(substring);
 						if (replace_variable(temp, env_var, i, end_index) != ERR_OK)
 							return (ERR_VAR_SUBST);
 						str = temp->value;
-						i = i + (int)ft_strlen(env_var);
+						i = -1;
 					}
 				}
 				++i;
@@ -83,6 +87,30 @@ int	get_variable_end_index(char	*string, int start_index)
 		return (i + 2);
 	else if (string[i + 1] == '{')
 		return (find_closing_bracket(string, i + 2));
+	else if (ft_isalnum(string[i + 1]) || string[i + 1] == '_')
+	{
+		++i;
+		while (string[i])
+		{
+			if (ft_isalnum(string[i]) || string[i] == '_')
+				++i;
+			else
+				break;
+		}
+		return (i);
+	}
+	return (-1);
+}
+
+int get_substring_end_index(char *string, int start_index)
+{
+	int	i;
+
+	i = start_index;
+	if (string[i + 1] == '?')
+		return (i + 2);
+	else if (string[i + 1] == '{')
+		return (find_closing_bracket(string, i + 2) - 1);
 	else if (ft_isalnum(string[i + 1]) || string[i + 1] == '_')
 	{
 		++i;

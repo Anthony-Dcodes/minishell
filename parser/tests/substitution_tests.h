@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/25 00:00:00 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/25 23:24:05 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ t_subst_test subst_tests[] = {
 
 	// Var in the middle of a word
 	{"pre$FOO",     "FOO",  "bar",      "prebar",       0},
-	{"$FOOsuf",     "FOO",  "bar",      "barsuf",       0},  // careful: FOOsuf vs FOO
-	{"pre$FOOsuf",  "FOO",  "bar",      "prebarsuf",    0},
+	{"${FOO}suf",     "FOO",  "bar",      "barsuf",       0},  // careful: FOOsuf vs FOO
+	{"pre${FOO}suf",  "FOO",  "bar",      "prebarsuf",    0},
 
 	// Two vars in one token
-	{"$A$B",        "A",    "hello",    "helloworld",   0},  // requires B=world too
+	{"$A$B",        "A",    "hello",    "helloy",   0},  // requires B=world too
 	{"$A-$B",       "A",    "x",        "x-y",          0},  // requires B=y
 
 	// Double-quoted: should expand

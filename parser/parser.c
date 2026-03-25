@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/23 22:14:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/25 22:54:24 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int main(int argc, char *argv[], char **envp)
 	//	envp++;
 	//}
 	head = NULL;
-	while (*envp)
-	{
-		printf("%s\n", *envp);
-		++envp;
-	}
-	ret = tokenizer(&head, string);
+	// while (*envp)
+	// {
+	// 	printf("%s\n", *envp);
+	// 	++envp;
+	// }
+	ret = tokenizer(&head, argv[1]);
 	if (ret != ERR_OK)
 		return (ret);
 	ret = check_syntax(head);
@@ -55,7 +55,7 @@ int main(int argc, char *argv[], char **envp)
 	{
 		//if (current->previous)
 			//printf("previous: %s\n", current->previous->value);
-		printf("value: %s\n", current->value);
+		printf("%s\n", current->value);
 		//if (current->next)
 			//printf("next: %s\n", current->next->value);
 		current = current->next;
