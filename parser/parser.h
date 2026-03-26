@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/25 23:18:02 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/26 22:12:53 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,3 +92,8 @@ int	get_variable_end_index(char	*string, int start_index);
 int	replace_variable(t_token *token, char *evn_var, int start_index, int end_index);
 int	get_variable_start_index(char *string, int start_index);
 int get_substring_end_index(char *string, int start_index);
+
+// Remove quotes
+int	remove_quotes(t_token *head);
+int	find_next_quote(char *str, int start, char quote_char);
+int	remove_string_quotes(char *str, int first_quote, int second_quote, char **dest);

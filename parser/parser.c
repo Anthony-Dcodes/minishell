@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/25 22:54:24 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/26 22:57:21 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,21 @@ int main(int argc, char *argv[], char **envp)
 	t_token *head;
 	t_token *current;
 	int	ret;
-	char	*string = "echo 'hello' \"hello\" | < >";
+	char	*string = "echo '\"hello\"' \"hello\"";
+	// remove quotes: "hello'man'hello" -> hello'man'hello
+	// remove qutoes: hello"'man'hello" -> hello'man'hello
 
-	//while (*envp)
-	//{
-	//	printf("env variables: %s\n", *envp);
-	//	envp++;
-	//}
 	head = NULL;
-	// while (*envp)
-	// {
-	// 	printf("%s\n", *envp);
-	// 	++envp;
-	// }
 	ret = tokenizer(&head, argv[1]);
 	if (ret != ERR_OK)
 		return (ret);
 	ret = check_syntax(head);
+	if (ret != ERR_OK)
+		return (ret);
+	ret = substitute_vars(head);
+	if (ret != ERR_OK)
+		return (ret);
+	ret = remove_quotes(head);
 	if (ret != ERR_OK)
 		return (ret);
 	current = head;

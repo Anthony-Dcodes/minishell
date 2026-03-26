@@ -9,7 +9,8 @@ SRCS = \
 	string_utils.c \
 	syntax_check.c \
 	tokenizer_utils.c \
-	substitutions.c
+	substitutions.c \
+	remove_quotes.c
 
 OBJC = $(SRCS:.c=.o)
 
