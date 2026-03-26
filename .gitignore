@@ -6,3 +6,4 @@ parser/parser
 *.zip
 /tests*
 parser/tests/syntax_tests
+parser/tests/substitution_tests

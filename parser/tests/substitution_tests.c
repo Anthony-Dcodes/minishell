@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/25 00:00:00 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/26 21:12:39 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(void)
 	failed = 0;
     setenv("B", "world", 1);
     setenv("B", "y", 1);
+	setenv("C", "x", 1);
 	while (subst_tests[i].input != NULL)
 	{
 		// 1. Set up environment

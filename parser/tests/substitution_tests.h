@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/25 23:24:05 by advorace         ###   ########.fr       */
+/*   Updated: 2026/03/26 21:13:05 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,18 @@ t_subst_test subst_tests[] = {
 
 	// Single-quoted: should NOT expand — value passes through literally
 	{"'$FOO'",      "FOO",  "bar",      "'$FOO'",       0},
+
+	// Double-quoted: should expand
+	{"$C\"$FOO\"$B",    "FOO",  "bar",      "x\"bar\"y",      0},
+
+	// Single-quoted: should NOT expand — value passes through literally
+	{"$C'$FOO'$B",      "FOO",  "bar",      "x'$FOO'y",       0},
+
+	// Double-quoted: should expand
+	{"$C	\"$FOO\" $B",    "FOO",  "bar",      "x	\"bar\" y",      0},
+
+	// Single-quoted: should NOT expand — value passes through literally
+	{"$C	'$FOO'	$B",      "FOO",  "bar",      "x	'$FOO'	y",       0},
 
 	// $ at end of string — no var name, literal $
 	{"echo$",       NULL,   NULL,       "echo$",        0},
