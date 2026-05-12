@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void static	to_upper(char *str)
+static void	to_upper(char *str)
 {
 	int	i;
 
