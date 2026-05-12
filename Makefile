@@ -5,7 +5,8 @@ LIBFT_DIR = lib_ft
 LIBFT = $(LIBFT_DIR)/libft.a
 INCLUDES = -I$(LIBFT_DIR)/includes -Iincludes
 
-SRC = \
+SRCS = main.c \
+
 
 
 OBJS = $(SRCS:.c=.o)
@@ -13,7 +14,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -L$(LIBFT) -1ft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -32,3 +33,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
