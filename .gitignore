@@ -7,4 +7,5 @@ parser/parser
 /tests*
 parser/tests/syntax_tests
 parser/tests/substitution_tests
+parser/tests/tokenizer_tests
 libft.a
