@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_ops.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 18:47:54 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/19 17:55:32 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,19 @@ void	append_token(t_token **head, t_token *token)
 	temp_head->next = token;
 	temp_head->next->previous = temp_head;
 	return ;
+}
+
+void	free_tokens(t_token **head)
+{
+	t_token *next;
+	
+	if (!head)
+		return ;
+	while (*head)
+	{
+		next = (*head)->next;
+		free((*head)->value);
+		free(*head);
+		*head = next;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/26 22:12:53 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/19 17:49:16 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_listex
 // Linked list ops
 t_token *new_token(char *value, int	type, int quote, int *ret);
 void	append_token(t_token **head, t_token *token);
+void	free_tokens(t_token **head);
 
 // String helpers
 int	find_start_index(char *str, int start);
