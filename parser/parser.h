@@ -3,41 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/19 17:49:16 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 10:51:27 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <stdlib.h>
-#include <stdio.h>
-#define SUCCESS 0
-
-typedef enum e_error
-{
-	ERR_OK,
-	ERR_MALLOC,
-	ERR_SYNTAX,
-	ERR_VAR_SUBST,
-} t_error;
-
-typedef enum e_quote
-{
-	SINGLE_QUOTE,
-	DOUBLE_QUOTE,
-	NO_QUOTE
-} t_quote;
-
-typedef enum e_type
-{
-	WORD,
-	PIPE,
-	REDDIRECT,
-	END_FILE
-} t_type;
+#include "macros.h"
 
 typedef struct s_token
 {
