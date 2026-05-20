@@ -63,7 +63,7 @@ run_all: all
 	./$(NAME_SUBST)
 
 fclean:
-	rm -f $(OBJC) $(OBJC_SUBST) $(NAME) $(NAME_SUBST) $(NAME_TOKENIZER)
+	rm -f $(NAME_TOKENIZER) $(NAME_SYNTAX) $(NAME_SUBST) $(OBJC_TOKENIZER) $(OBJC_SYNTAX) $(OBJC_SUBST)
 
 re: fclean all
 
