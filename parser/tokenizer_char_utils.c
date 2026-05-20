@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:21:55 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 22:38:25 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:11:52 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	track_quote_state(int quote, char c)
 		else if (c == '\'')
 			return (SINGLE_QUOTE);
 	}
-	return (-1);
+	return (quote);
 }
 
 int	get_char_type(char c)
