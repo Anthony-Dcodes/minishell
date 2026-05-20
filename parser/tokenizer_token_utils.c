@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_list_ops.c                                  :+:      :+:    :+:   */
+/*   tokenizer_token_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 10:57:58 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:28:34 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "parser.h"
 
-t_token *new_token(char *value, int	type, int quote, int *ret)
+t_token *create_new_token(char *value, int	type, int quote, int *ret)
 {
 	t_token *node;
 
@@ -61,4 +61,25 @@ void	free_tokens(t_token **head)
 		free(*head);
 		*head = next;
 	}
+}
+
+t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index)
+{
+	int		quote;
+	int		char_type;
+	int		end_index;
+	char	*string;
+	t_token	*token;
+
+	start_index = find_start_index(src, start_index);
+	if (start_index == -1)
+		return (NULL);
+	quote = detect_quote(src[start_index]);
+	char_type = get_char_type(src[start_index]);
+	*end_index = find_end_index(src, start_index, quote);
+	*ret = get_string(start_index, *end_index, src, &string);
+	if (*ret != ERR_OK)
+		return (NULL);
+	token = create_new_token(string, char_type, quote, &ret);
+	return (token);
 }

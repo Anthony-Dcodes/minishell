@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:06:58 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 11:27:55 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:28:34 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 #include "structs.h"
 
 // Tokenizer token utils
-t_token *new_token(char *value, int	type, int quote, int *ret);
+t_token *create_new_token(char *value, int	type, int quote, int *ret);
 void	append_token(t_token **head, t_token *token);
 void	free_tokens(t_token **head);
+t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index);
 
 // Tokenizer char utils
 int	detect_quote(char c);
