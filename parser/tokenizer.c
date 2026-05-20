@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:08:51 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 22:27:52 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:29:43 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	tokenizer(t_token **head, char *src)
 	int		ret;
 	int		start_index;
 	int		end_index;
-	t_token *next_token;
+	t_token	*next_token;
 
 	start_index = 0;
 	end_index = 0;
@@ -29,10 +29,9 @@ int	tokenizer(t_token **head, char *src)
 		if (ret != ERR_OK)
 			return (ret);
 		if (!next_token)
-			break;
+			break ;
 		append_token(head, next_token);
 		start_index = end_index;
 	}
 	return (ret);
 }
-

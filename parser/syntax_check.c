@@ -6,11 +6,12 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:29:28 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 22:24:47 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:36:28 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include "tokenizer.h"
 
 int check_syntax(t_token *head)
 {

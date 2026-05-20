@@ -6,12 +6,12 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:44:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/23 22:34:01 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:36:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-#include <stddef.h>
+#include <stdlib.h>
 
 size_t	ft_strlen(const char *s)
 {

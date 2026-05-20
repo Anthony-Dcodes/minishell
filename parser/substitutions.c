@@ -6,11 +6,13 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/25 23:21:08 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:39:15 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include "tokenizer.h"
+#include <stdlib.h>
 
 int	substitute_vars(t_token *head)
 {

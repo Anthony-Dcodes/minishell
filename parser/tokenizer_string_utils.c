@@ -6,12 +6,13 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:58:11 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 11:21:54 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:34:00 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "macros.h"
 #include "parser.h"
+#include "tokenizer.h"
 
 int	find_start_index(char *str, int start)
 {
