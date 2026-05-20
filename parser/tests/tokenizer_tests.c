@@ -6,11 +6,11 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 15:52:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 10:15:52 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:30:30 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parser.h"
+#include "../tokenizer.h"
 #include "tokenizer_tests.h"
 #include <stdio.h>
 #include "macros.h"

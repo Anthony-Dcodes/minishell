@@ -6,12 +6,14 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:27:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 10:17:27 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:40:15 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "syntax_tests.h"
+#include "../tokenizer.h"
 #include "macros.h"
+#include <stdio.h>
 
 int main(void)
 {

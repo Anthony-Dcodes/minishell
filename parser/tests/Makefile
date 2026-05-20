@@ -6,27 +6,31 @@ CC = cc
 SRCS_TOKENIZER = \
 	tokenizer_tests.c \
 	../tokenizer.c \
-	../linked_list_ops.c \
+	../tokenizer_char_utils.c \
+	../tokenizer_string_utils.c \
+	../tokenizer_token_utils.c \
 	../string_utils.c \
 	../syntax_check.c \
-	../tokenizer_utils.c \
 	../substitutions.c
 
 SRCS_SYNTAX = \
 	syntax_tests.c \
 	../tokenizer.c \
-	../linked_list_ops.c \
+	../tokenizer_char_utils.c \
+	../tokenizer_string_utils.c \
+	../tokenizer_token_utils.c \
 	../string_utils.c \
 	../syntax_check.c \
-	../tokenizer_utils.c
+	../substitutions.c
 
 SRCS_SUBST = \
 	substitution_tests.c \
 	../tokenizer.c \
-	../linked_list_ops.c \
+	../tokenizer_char_utils.c \
+	../tokenizer_string_utils.c \
+	../tokenizer_token_utils.c \
 	../string_utils.c \
 	../syntax_check.c \
-	../tokenizer_utils.c \
 	../substitutions.c
 
 
