@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:08:51 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 11:25:21 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 11:27:55 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	tokenizer(t_token **head, char *src)
 		if (start_index == -1)
 			break;
 		quote = detect_quote(src[start_index]);
-		string_type = get_string_type(src[start_index]);
+		string_type = get_char_type(src[start_index]);
 		end_index = find_end_index(src, start_index, quote);
 		ret = get_string(start_index, end_index, src, &string);
 		if (ret != ERR_OK)
