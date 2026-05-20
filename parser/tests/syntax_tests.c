@@ -6,11 +6,12 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:27:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/25 22:49:14 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 10:17:27 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "syntax_tests.h"
+#include "macros.h"
 
 int main(void)
 {
@@ -48,5 +49,6 @@ int main(void)
 		//free_token_list(head);  // whatever your free function is called
 		i++;
     }
-    printf("\n%d passed, %d failed\n", passed, failed);
+    printf("\n%*s %d passed, %d failed\n", SPACES, "SYNTAX", passed, failed);
+	return (failed > 0);
 }

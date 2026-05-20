@@ -6,12 +6,13 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/26 21:12:39 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 10:17:30 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "substitution_tests.h"
 #include <string.h>
+#include "macros.h"
 
 // Builds a single WORD token directly — bypasses the lexer
 // so we can test substitute_vars in isolation
@@ -91,6 +92,6 @@ int	main(void)
 		// free_token_list(head);
 		i++;
 	}
-	printf("\n%d passed, %d failed\n", passed, failed);
+	printf("\n%*s %d passed, %d failed\n", SPACES, "SUBSTITUTIONS", passed, failed);
 	return (failed > 0);
 }

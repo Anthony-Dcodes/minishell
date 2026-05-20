@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_tests.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 15:52:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/19 18:10:54 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 10:15:52 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parser.h"
 #include "tokenizer_tests.h"
 #include <stdio.h>
+#include "macros.h"
 
 int main(void)
 {
@@ -21,6 +22,8 @@ int main(void)
 	t_token *temp_head;
 	int		ret;
 	int		total_tokens;
+	int		passed = 0;
+	int		failed = 0;
 
 	i = 0;
 	while (tokenize_tests[i].token != NULL)
@@ -43,7 +46,7 @@ int main(void)
 		}
 		if (total_tokens != tokenize_tests[i].number_of_tokens)
 		{
-			printf("Tokenizer test: %d failed, tokenizer token count: %d, should be: %d\n", i, total_tokens, tokenize_tests[i].number_of_tokens);
+			printf("FAIL:		expected: %d, got: %d\n", tokenize_tests[i].number_of_tokens, total_tokens);
 			printf("	Test: %s\n", tokenize_tests[i].token);
 			printf("	Tokenizer:\n");
 			temp_head = head;
@@ -52,13 +55,16 @@ int main(void)
 				printf("	%s\n", temp_head->value);
 				temp_head = temp_head->next;
 			}
+			++failed;
 		}
-		else 
+		else
 		{
-			printf("Tokenizer test: %d passed, tokenizer token count: %d, should be: %d\n", i, total_tokens, tokenize_tests[i].number_of_tokens);
+			printf("OK:		expected: %d, got: %d\n", tokenize_tests[i].number_of_tokens, total_tokens);
+			++passed;
 		}
 		++i;
 		free_tokens(&head);
 	}
-	return 0;
+	printf("\n%*s %d passed, %d failed\n", SPACES, "TOKENIZER", passed, failed);
+	return (failed > 0);
 }
