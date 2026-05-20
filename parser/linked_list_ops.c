@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_ops.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/19 17:55:32 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 10:57:58 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include "parser.h"
 
 t_token *new_token(char *value, int	type, int quote, int *ret)
@@ -50,7 +51,7 @@ void	append_token(t_token **head, t_token *token)
 void	free_tokens(t_token **head)
 {
 	t_token *next;
-	
+
 	if (!head)
 		return ;
 	while (*head)
