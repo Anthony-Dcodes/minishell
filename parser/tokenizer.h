@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:06:58 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 11:09:03 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/20 11:23:22 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 #include "structs.h"
 
-// Linked list ops
+// Tokenizer token utils
 t_token *new_token(char *value, int	type, int quote, int *ret);
 void	append_token(t_token **head, t_token *token);
 void	free_tokens(t_token **head);
 
-// String helpers
+// Tokenizer char utils
+int	detect_quote(char c);
+int	track_quote_state(int quote, char c);
+int	get_string_type(char c);
+
+// Tokenizer string utils
 int	find_start_index(char *str, int start);
 int find_end_index(char *str, int start, int quote);
 int	get_string(int start, int end, char *src, char **dst);
-int	detect_quote(char c);
-int	track_quote_state(int quote, char c);
 
-// Tokenizer utils
-int	get_string_type(char c);
+// Tokenizer
 int	tokenizer(t_token **head, char *src);
