@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:20:16 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/22 22:27:41 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 11:56:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@ typedef struct s_test
 	char	*input;
 	int		expected; // 0 = valid, 1 = syntax error
 } t_test;
+
+/*
+
+1.
+	| must have a complete command on both sides.
+
+2.
+	every redirection operator must be followed by exactly one word as its target.
+	Anything else (another operator, a pipe, end of line) is a syntax error.
+
+3.
+	every opening quote needs a matching closing quote of the same type.
+	In bash interactively this opens a continuation prompt; in minishell you report an unclosed-quote error.
+*/
 
 t_test tests[] = {
 	// Valid
@@ -58,6 +72,8 @@ t_test tests[] = {
 	{"< file cat", ERR_OK},
 	{"< file", ERR_OK},
 	{"> file", ERR_OK},
+	{"<< cat", ERR_OK},
+	{">> cat", ERR_OK},
 
 	// Chained pipes
 	{"cat | grep foo | wc -l", ERR_OK},
@@ -79,5 +95,14 @@ t_test tests[] = {
 	// Redirect followed by redirect
 	{"cat >> >> file", ERR_SYNTAX},
 	{"cat < < file", ERR_SYNTAX},
+
+	// More pipe rules
+	{"ls ||", ERR_SYNTAX},
+	{"ls | |", ERR_SYNTAX},
+	{"ls | | | |   | ", ERR_SYNTAX},
+	{"|", ERR_SYNTAX},
+	{" | ", ERR_SYNTAX},
+
+
 	{NULL, 0}
 };

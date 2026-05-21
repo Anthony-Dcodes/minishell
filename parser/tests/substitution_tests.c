@@ -6,10 +6,12 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 10:17:30 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 11:26:57 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "substitution_tests.h"
 #include <string.h>
 #include "macros.h"

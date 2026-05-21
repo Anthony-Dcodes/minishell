@@ -55,7 +55,7 @@ $(NAME_SUBST): $(OBJC_SUBST)
 run_tokenizer: $(NAME_TOKENIZER)
 	./$(NAME_TOKENIZER)
 
-run_syntax: all
+run_syntax: $(NAME_SYNTAX)
 	./$(NAME_SYNTAX)
 
 run_subst: $(NAME_SUBST)
