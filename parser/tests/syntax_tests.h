@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:20:16 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 11:56:11 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 12:05:04 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ t_test tests[] = {
 	// Heredoc edge cases
 	{"cat << EOF | grep foo", ERR_OK},
 	{"cat <<", ERR_SYNTAX},
+	{"ls >>", ERR_SYNTAX},
+	{"ls >> 	 ", ERR_SYNTAX},
+	{"ls >> 	 >", ERR_SYNTAX},
+	{"ls >> 	 > cat | grep", ERR_SYNTAX},
+	{"ls >> 	 > cat | >", ERR_SYNTAX},
 
 	// Redirect followed by redirect
 	{"cat >> >> file", ERR_SYNTAX},
