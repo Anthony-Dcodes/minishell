@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 18:09:05 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 18:13:31 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	substitute_vars(t_token *head)
 	int		quote;
 	int		end_index;
 	int		start_index;
-	int		end_of_sub_str;
 	char	*substring;
 	char	*env_var;
 
@@ -55,16 +54,7 @@ int	substitute_vars(t_token *head)
 						}
 						start_index = i + 1;
 						end_index = get_variable_end_index(str, start_index + 1);
-						if (!env_first_char_valid(str[start_index]))
-						{
-							i = start_index;
-							continue;
-						}
-						end_of_sub_str = get_substring_end_index(str, i);
-						//printf("start inde: %d, end index: %d\n", start_index, end_index);
-						if (end_index == -1 || start_index == -1)
-							return (ERR_VAR_SUBST);
-						if (get_string(start_index, end_of_sub_str, str, &substring) == ERR_MALLOC)
+						if (get_string(start_index, end_index, str, &substring) == ERR_MALLOC)
 							return (ERR_VAR_SUBST);
 						//printf("string to getenv: %s\n", substring);
 						env_var = getenv(substring);
@@ -96,30 +86,6 @@ int	get_variable_end_index(char	*string, int start_index)
 			break;
 	}
 	return (i);
-}
-
-int get_substring_end_index(char *string, int start_index)
-{
-	int	i;
-
-	i = start_index;
-	if (string[i + 1] == '?')
-		return (i + 2);
-	//else if (string[i + 1] == '{')
-	//	return (find_closing_bracket(string, i + 2) - 1);
-	else if (ft_isalnum(string[i + 1]) || string[i + 1] == '_')
-	{
-		++i;
-		while (string[i])
-		{
-			if (ft_isalnum(string[i]) || string[i] == '_')
-				++i;
-			else
-				break;
-		}
-		return (i);
-	}
-	return (-1);
 }
 
 
