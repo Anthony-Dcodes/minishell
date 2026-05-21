@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 11:26:57 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 14:50:35 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 #include <stdio.h>
 #include "substitution_tests.h"
 #include <string.h>
+#include "../macros.h"
 #include "macros.h"
+#include "../structs.h"
+#include "../parser.h"
 
 // Builds a single WORD token directly — bypasses the lexer
 // so we can test substitute_vars in isolation
@@ -36,12 +39,14 @@ int	main(void)
 	int			i;
 	int			passed;
 	int			failed;
+	int			wrong_error_code;
 	t_token		*head;
 	int			ret;
 
 	i = 0;
 	passed = 0;
 	failed = 0;
+	wrong_error_code = 0;
     setenv("B", "world", 1);
     setenv("B", "y", 1);
 	setenv("C", "x", 1);
@@ -76,15 +81,27 @@ int	main(void)
 			printf("OK:        %-30s → \"%s\"\n",
 				subst_tests[i].input, head->value);
 			passed++;
+			wrong_error_code++;
 		}
 		else
 		{
-			printf("FAIL:      %-30s → got \"%s\", expected \"%s\" (ret=%d)\n",
-				subst_tests[i].input,
-				head->value ? head->value : "(null)",
-				subst_tests[i].expected,
-				ret);
-			failed++;
+			if (strcmp(head->value, subst_tests[i].expected) == 0)
+			{
+				printf("OK:        %-30s → \"%s\", wrong error code, got %d, expected %d\n",
+				subst_tests[i].input, head->value,
+				ret,
+				subst_tests[i].expect_err);
+			passed++;
+			}
+			else
+			{
+				printf("FAIL:      %-30s → got \"%s\", expected \"%s\" (ret=%d)\n",
+					subst_tests[i].input,
+					head->value ? head->value : "(null)",
+					subst_tests[i].expected,
+					ret);
+				failed++;
+			}
 		}
 
 		// 5. Tear down — unset so tests don't bleed into each other
@@ -94,6 +111,6 @@ int	main(void)
 		// free_token_list(head);
 		i++;
 	}
-	printf("\n%*s %d passed, %d failed\n", SPACES, "SUBSTITUTIONS", passed, failed);
+	printf("\n%*s %d passed, %d failed, %d wrong error code of passed\n", SPACES, "SUBSTITUTIONS", passed, failed, wrong_error_code);
 	return (failed > 0);
 }
