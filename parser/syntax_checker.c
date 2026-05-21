@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   syntax_check.c                                     :+:      :+:    :+:   */
+/*   syntax_checker.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:29:28 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 12:18:34 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 12:25:05 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include "tokenizer.h"
+#include "syntax_checker.h"
 
 int	syntax_checker(t_token *head)
 {

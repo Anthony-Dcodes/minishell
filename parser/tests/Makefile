@@ -10,7 +10,7 @@ SRCS_TOKENIZER = \
 	../tokenizer_string_utils.c \
 	../tokenizer_token_utils.c \
 	../string_utils.c \
-	../syntax_check.c \
+	../syntax_checker.c \
 	../substitutions.c
 
 SRCS_SYNTAX = \
@@ -20,7 +20,7 @@ SRCS_SYNTAX = \
 	../tokenizer_string_utils.c \
 	../tokenizer_token_utils.c \
 	../string_utils.c \
-	../syntax_check.c \
+	../syntax_checker.c \
 	../substitutions.c
 
 SRCS_SUBST = \
@@ -30,7 +30,7 @@ SRCS_SUBST = \
 	../tokenizer_string_utils.c \
 	../tokenizer_token_utils.c \
 	../string_utils.c \
-	../syntax_check.c \
+	../syntax_checker.c \
 	../substitutions.c
 
 
