@@ -6,14 +6,14 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:29:28 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 22:36:28 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 12:14:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "tokenizer.h"
 
-int check_syntax(t_token *head)
+int syntax_checker(t_token *head)
 {
 	t_token *temp;
 	int		current_type;
@@ -63,6 +63,6 @@ int has_unclosed_quote(char *str)
 		++i;
 	}
 	if (quote_type == NO_QUOTE)
-		return (ERR_OK);
-	return (ERR_SYNTAX);
+		return (0);
+	return (1);
 }

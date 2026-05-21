@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 11:08:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 12:14:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_isspace(char c);
 int	ft_isalnum(int c);
 
 // Syntax check
-int check_syntax(t_token *head);
+int syntax_checker(t_token *head);
 int has_unclosed_quote(char *str);
 
 // Substitutions

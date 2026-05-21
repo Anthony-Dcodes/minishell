@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/26 22:57:21 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 12:14:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main(int argc, char *argv[], char **envp)
 	ret = tokenizer(&head, argv[1]);
 	if (ret != ERR_OK)
 		return (ret);
-	ret = check_syntax(head);
+	ret = syntax_checker(head);
 	if (ret != ERR_OK)
 		return (ret);
 	ret = substitute_vars(head);

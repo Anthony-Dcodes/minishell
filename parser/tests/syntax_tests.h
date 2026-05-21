@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:20:16 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 12:05:04 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 12:07:34 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_test
 /*
 
 1.
-	| must have a complete command on both sides.
+	Pipes must have a complete command on both sides.
 
 2.
 	every redirection operator must be followed by exactly one word as its target.

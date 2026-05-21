@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:27:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 22:40:15 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 12:14:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main(void)
 			i++;
 			continue ;
 		}
-		result = check_syntax(head);
+		result = syntax_checker(head);
 		if (result == tests[i].expected)
 		{
 			printf("OK:   %s\n", tests[i].input);
