@@ -6,16 +6,16 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:29:28 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 12:14:11 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 12:18:34 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "tokenizer.h"
 
-int syntax_checker(t_token *head)
+int	syntax_checker(t_token *head)
 {
-	t_token *temp;
+	t_token	*temp;
 	int		current_type;
 
 	temp = head;
@@ -24,33 +24,24 @@ int syntax_checker(t_token *head)
 		current_type = temp->type;
 		if (current_type == REDDIRECT)
 		{
-			if (temp->next == NULL)
-				return (ERR_SYNTAX);
-			else if (temp->next->type != WORD)
+			if (temp->next == NULL || temp->next->type != WORD)
 				return (ERR_SYNTAX);
 		}
 		else if (current_type == PIPE)
 		{
-			if (temp->previous == NULL)
+			if (temp->previous == NULL || temp->previous->type != WORD)
 				return (ERR_SYNTAX);
-			else if (temp->previous->type != WORD)
-				return (ERR_SYNTAX);
-			else if (temp->next == NULL)
-				return (ERR_SYNTAX);
-			else if (temp->next->type != WORD)
+			else if (temp->next == NULL || temp->next->type != WORD)
 				return (ERR_SYNTAX);
 		}
-		else if (current_type == WORD)
-		{
-			if (has_unclosed_quote(temp->value))
-				return (ERR_SYNTAX);
-		}
+		else if (current_type == WORD && has_unclosed_quote(temp->value))
+			return (ERR_SYNTAX);
 		temp = temp->next;
 	}
 	return (ERR_OK);
 }
 
-int has_unclosed_quote(char *str)
+int	has_unclosed_quote(char *str)
 {
 	int		i;
 	int		quote_type;
