@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 17:04:29 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 18:09:05 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,20 @@ int	substitute_vars(t_token *head)
 				{
 					if (str[i] == '$')
 					{
+						// special case need to replace $? with last exit code
 						if (str[i + 1] == '?')
 						{
 							++i;
 							continue;
 						}
-						end_index = get_variable_end_index(str, i);
-						start_index = get_variable_start_index(str, i);
-						if (!env_start_name_valid(str[start_index]))
+						if (!env_first_char_valid(str[i + 1]))
+						{
+							i += 1;
+							continue;
+						}
+						start_index = i + 1;
+						end_index = get_variable_end_index(str, start_index + 1);
+						if (!env_first_char_valid(str[start_index]))
 						{
 							i = start_index;
 							continue;
@@ -77,42 +83,19 @@ int	substitute_vars(t_token *head)
 	return (ERR_OK);
 }
 
-int	find_closing_bracket(char	*string, int start_index)
-{
-	while (string[start_index])
-	{
-		if (string[start_index] == '}')
-			return (start_index + 1);
-		else if (ft_isalnum(string[start_index]) || string[start_index] == '_')
-			++start_index;
-		else
-			return (-1);
-	}
-	return (-1);
-}
-
 int	get_variable_end_index(char	*string, int start_index)
 {
 	int	i;
 
 	i = start_index;
-	if (string[i + 1] == '?')
-		return (i + 2);
-	else if (string[i + 1] == '{')
-		return (find_closing_bracket(string, i + 2));
-	else if (ft_isalnum(string[i + 1]) || string[i + 1] == '_')
+	while (string[i])
 	{
-		++i;
-		while (string[i])
-		{
-			if (ft_isalnum(string[i]) || string[i] == '_')
-				++i;
-			else
-				break;
-		}
-		return (i);
+		if (env_whitelist_char(string[i]))
+			++i;
+		else
+			break;
 	}
-	return (-1);
+	return (i);
 }
 
 int get_substring_end_index(char *string, int start_index)
@@ -122,8 +105,8 @@ int get_substring_end_index(char *string, int start_index)
 	i = start_index;
 	if (string[i + 1] == '?')
 		return (i + 2);
-	else if (string[i + 1] == '{')
-		return (find_closing_bracket(string, i + 2) - 1);
+	//else if (string[i + 1] == '{')
+	//	return (find_closing_bracket(string, i + 2) - 1);
 	else if (ft_isalnum(string[i + 1]) || string[i + 1] == '_')
 	{
 		++i;
@@ -139,20 +122,6 @@ int get_substring_end_index(char *string, int start_index)
 	return (-1);
 }
 
-int	get_variable_start_index(char *string, int start_index)
-{
-	int	i;
-
-	i = start_index;
-	if (string[i + 1] == '?')
-		return (i + 1);
-	else if (string[i + 1] == '{')
-		return (i + 2);
-	else if (ft_isalnum(string[i + 1]) || string[i + 1] == '_')
-		return (i + 1);
-	return (-1);
-
-}
 
 int	replace_variable(t_token *token, char *evn_var, int start_index, int end_index)
 {

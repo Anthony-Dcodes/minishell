@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 15:06:51 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 18:09:53 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_subst_test subst_tests[] = {
 
 	// Var in the middle of a word
 	{"pre$FOO",     "FOO",  "bar",      "prebar",       ERR_OK},
-	{"${FOO}suf",     "FOO",  "bar",      "barsuf",       ERR_OK},  // careful: FOOsuf vs FOO
-	{"pre${FOO}suf",  "FOO",  "bar",      "prebarsuf",    ERR_OK},
+	{"${FOO}suf",     "FOO",  "bar",      "${FOO}suf",       ERR_OK},  // careful: FOOsuf vs FOO
+	{"pre${FOO}suf",  "FOO",  "bar",      "pre${FOO}suf",    ERR_OK},
 
 	// Two vars in one token
 	{"$A$B",        "A",    "hello",    "helloy",   ERR_OK},  // requires B=world too
@@ -95,7 +95,7 @@ t_subst_test subst_tests[] = {
 
 	// Special cases
 	{"echo$", NULL, NULL, "echo$", ERR_OK},
-	{"$?", NULL, NULL, "ERR_OK", ERR_OK},  // assumes last exit = ERR_OK
+	{"$?", NULL, NULL, "(int)", ERR_OK},  // assumes last exit = ERR_OK
 
 	// Sentinel
 	{NULL, NULL, NULL, NULL, 0}

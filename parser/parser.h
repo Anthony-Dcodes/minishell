@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 12:14:11 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 18:07:30 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ int	ft_isalnum(int c);
 // Syntax check
 int syntax_checker(t_token *head);
 int has_unclosed_quote(char *str);
-
-// Substitutions
-int	substitute_vars(t_token *head);
-int	find_closing_bracket(char	*string, int start_index);
-int	get_variable_end_index(char	*string, int start_index);
-int	replace_variable(t_token *token, char *evn_var, int start_index, int end_index);
-int	get_variable_start_index(char *string, int start_index);
-int get_substring_end_index(char *string, int start_index);
 
 // Remove quotes
 int	remove_quotes(t_token *head);
