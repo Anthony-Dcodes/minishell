@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 14:50:35 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 17:16:41 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "macros.h"
 #include "../structs.h"
 #include "../parser.h"
+#include "../substitution.h"
 
 // Builds a single WORD token directly — bypasses the lexer
 // so we can test substitute_vars in isolation
@@ -68,40 +69,33 @@ int	main(void)
 		// 3. Run substitution
 		ret = substitute_vars(head);
 
-		// 4. Check error expectation
-		if (subst_tests[i].expect_err && ret != ERR_OK)
+
+		if (strcmp(head->value, subst_tests[i].expected) == 0)
 		{
-			printf("OK (err):  %-30s → got expected error\n",
-				subst_tests[i].input);
-			passed++;
-		}
-		else if (!subst_tests[i].expect_err && ret == ERR_OK
-			&& strcmp(head->value, subst_tests[i].expected) == 0)
-		{
-			printf("OK:        %-30s → \"%s\"\n",
-				subst_tests[i].input, head->value);
-			passed++;
-			wrong_error_code++;
-		}
-		else
-		{
-			if (strcmp(head->value, subst_tests[i].expected) == 0)
+			if (subst_tests[i].expect_err == ret)
+			{
+				printf("OK:        %-30s → \"%s\"\n",
+					subst_tests[i].input, head->value);
+				passed++;
+			}
+			else
 			{
 				printf("OK:        %-30s → \"%s\", wrong error code, got %d, expected %d\n",
 				subst_tests[i].input, head->value,
 				ret,
 				subst_tests[i].expect_err);
-			passed++;
+				passed++;
+				wrong_error_code++;
 			}
-			else
-			{
-				printf("FAIL:      %-30s → got \"%s\", expected \"%s\" (ret=%d)\n",
-					subst_tests[i].input,
-					head->value ? head->value : "(null)",
-					subst_tests[i].expected,
-					ret);
-				failed++;
-			}
+		}
+		else
+		{
+			printf("FAIL:      %-30s → got \"%s\", expected \"%s\" (ret=%d)\n",
+				subst_tests[i].input,
+				head->value ? head->value : "(null)",
+				subst_tests[i].expected,
+				ret);
+			failed++;
 		}
 
 		// 5. Tear down — unset so tests don't bleed into each other

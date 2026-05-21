@@ -6,13 +6,14 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 22:39:15 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/21 17:04:29 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "tokenizer.h"
 #include <stdlib.h>
+#include "substitution.h"
 
 int	substitute_vars(t_token *head)
 {
@@ -41,8 +42,18 @@ int	substitute_vars(t_token *head)
 				{
 					if (str[i] == '$')
 					{
+						if (str[i + 1] == '?')
+						{
+							++i;
+							continue;
+						}
 						end_index = get_variable_end_index(str, i);
 						start_index = get_variable_start_index(str, i);
+						if (!env_start_name_valid(str[start_index]))
+						{
+							i = start_index;
+							continue;
+						}
 						end_of_sub_str = get_substring_end_index(str, i);
 						//printf("start inde: %d, end index: %d\n", start_index, end_index);
 						if (end_index == -1 || start_index == -1)

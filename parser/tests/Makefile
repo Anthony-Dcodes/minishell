@@ -11,7 +11,8 @@ SRCS_TOKENIZER = \
 	../tokenizer_token_utils.c \
 	../string_utils.c \
 	../syntax_checker.c \
-	../substitutions.c
+	../substitutions.c \
+	../substitution_utils.c
 
 SRCS_SYNTAX = \
 	syntax_tests.c \
@@ -21,7 +22,8 @@ SRCS_SYNTAX = \
 	../tokenizer_token_utils.c \
 	../string_utils.c \
 	../syntax_checker.c \
-	../substitutions.c
+	../substitutions.c \
+	../substitution_utils.c
 
 SRCS_SUBST = \
 	substitution_tests.c \
@@ -31,7 +33,8 @@ SRCS_SUBST = \
 	../tokenizer_token_utils.c \
 	../string_utils.c \
 	../syntax_checker.c \
-	../substitutions.c
+	../substitutions.c \
+	../substitution_utils.c
 
 
 OBJC_TOKENIZER = $(SRCS_TOKENIZER:.c=.o)
