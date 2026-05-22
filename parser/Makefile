@@ -3,14 +3,17 @@ CC = cc
 CFLAGS = -Wall -Wextra #-Werror
 
 SRCS = \
-	tokenizer.c \
-	linked_list_ops.c \
 	parser.c \
+	remove_quotes.c \
 	string_utils.c \
-	syntax_check.c \
-	tokenizer_utils.c \
+	substitution_utils.c \
+	substitution_valid_env_chars.c \
 	substitutions.c \
-	remove_quotes.c
+	syntax_checker.c \
+	tokenizer_char_utils.c \
+	tokenizer_string_utils.c \
+	tokenizer_token_utils.c \
+	tokenizer.c
 
 OBJC = $(SRCS:.c=.o)
 
