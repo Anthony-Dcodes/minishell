@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:44:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 22:36:11 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 13:13:22 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include <stdlib.h>
+#include "macros.h"
 
 size_t	ft_strlen(const char *s)
 {
