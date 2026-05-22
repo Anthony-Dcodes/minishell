@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   substitutions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 18:13:31 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 10:27:33 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	substitute_vars(t_token *head)
 						if (get_string(start_index, end_index, str, &substring) == ERR_MALLOC)
 							return (ERR_VAR_SUBST);
 						//printf("string to getenv: %s\n", substring);
-						env_var = getenv(substring);
+						env_var = get_env_value(substring);
 						free(substring);
 						if (replace_variable(temp, env_var, i, end_index) != ERR_OK)
 							return (ERR_VAR_SUBST);
