@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 16:09:50 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 16:51:38 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ t_quote_remove_test quote_remove_test[] = {
 	{"'\"echo\"'", "\"echo\"", 0},
 	{"\"'ec'ho'\"", "'ec'ho'", 0},
 	{"'\"ec\"ho\"'", "\"ec\"ho\"", 0},
+
+	// Quote in the middle left
+	{"\"ec'ho\"", "ec'ho", 0},
+	{"'ec\"ho'", "ec\"ho", 0},
 	
 	// Sentinel
 	{NULL, NULL, 0}
