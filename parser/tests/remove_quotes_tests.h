@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 15:21:48 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 16:09:50 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,26 @@ t_quote_remove_test quote_remove_test[] = {
 	{"'''echo'''", "echo", 0},
 	{"\"echo\"", "echo", 0},
 	{"\"\"echo\"\"", "echo", 0},
+	{"\"\"echo", "echo", 0},
+	{"echo\"\"", "echo", 0},
+	{"''echo", "echo", 0},
+	{"echo''", "echo", 0},
+	{"\"\"\"\"echo\"\"\"\"", "echo", 0},
+	{"''''echo''''", "echo", 0},
+	
+	// No quotes left same quote
+	{"\"echo\"a\"echo\"", "echoaecho", 0},
+	{"\"echoaecho\"", "echoaecho", 0},
+	{"'echo'a'echo'", "echoaecho", 0},
+	{"\"echo\"\"a\"\"echo\"", "echoaecho", 0},
+	{"'echo''a''echo'", "echoaecho", 0},
+
+	// Some quotes left
+	{"\"'echo'\"", "'echo'", 0},
+	{"'\"echo\"'", "\"echo\"", 0},
+	{"\"'ec'ho'\"", "'ec'ho'", 0},
+	{"'\"ec\"ho\"'", "\"ec\"ho\"", 0},
+	
 	// Sentinel
 	{NULL, NULL, 0}
 };
