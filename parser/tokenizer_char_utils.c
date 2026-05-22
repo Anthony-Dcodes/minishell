@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_char_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:21:55 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 23:11:52 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 11:13:19 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	track_quote_state(int quote, char c)
 			return (DOUBLE_QUOTE);
 		else if (c == '\'')
 			return (SINGLE_QUOTE);
+		return (NO_QUOTE);
 	}
 	return (quote);
 }

@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:49:13 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 11:02:29 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 11:34:34 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,4 @@ char	*get_env_value(char *string);
 int	substitute_vars(t_token *head);
 int	get_variable_end_index(char	*string, int start_index);
 int	replace_variable(t_token *token, char *evn_var, int start_index, int end_index);
+int	check_for_env_to_substitute(t_token *temp);
