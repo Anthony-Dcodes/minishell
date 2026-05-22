@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:27:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 12:14:11 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 13:17:18 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int main(void)
     int passed;
     int failed;
 	t_token *head;
-	int		ret;
 
     i = 0;
     passed = 0;
