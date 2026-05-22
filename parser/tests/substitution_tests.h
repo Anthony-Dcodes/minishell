@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 13:27:04 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 16:21:33 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,33 @@ t_subst_test subst_tests[] = {
 	{"$NAME/home$$NAME", "NAME", "sam", "sam/home$sam", ERR_OK},
 	{"$NAME/home$5$NAME", "NAME", "sam", "sam/home$5sam", ERR_OK},
 	{"$NAME/home$5$$$$NAME", "NAME", "sam", "sam/home$5$$$sam", ERR_OK},
+
+	// Expanding ENV names with quotes inside
+	{"$NAME/home", "NAME", "'sam'", "'sam'/home", ERR_OK},
+	{"$NAME/home", "NAME", "'sam''", "'sam''/home", ERR_OK},
+	{"$NAME/home", "NAME", "'sam'''", "'sam'''/home", ERR_OK},
+	{"$NAME/home", "NAME", "''sam'", "''sam'/home", ERR_OK},
+	{"$NAME/home", "NAME", "'''sam'", "'''sam'/home", ERR_OK},
+	
+	{"$NAME/home", "NAME", "\"sam\"", "\"sam\"/home", ERR_OK},
+	{"$NAME/home", "NAME", "\"sam\"\"", "\"sam\"\"/home", ERR_OK},
+	{"$NAME/home", "NAME", "\"sam\"\"\"", "\"sam\"\"\"/home", ERR_OK},
+	{"$NAME/home", "NAME", "\"\"sam\"", "\"\"sam\"/home", ERR_OK},
+	{"$NAME/home", "NAME", "\"\"\"sam\"", "\"\"\"sam\"/home", ERR_OK},
+
+	{"$NAME/home/$NAME", "NAME", "'sam'", "'sam'/home/'sam'", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "''sam", "''sam/home/''sam", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "'''sam", "'''sam/home/'''sam", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "sam''", "sam''/home/sam''", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "sam'''", "sam'''/home/sam'''", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "'''sam'''", "'''sam'''/home/'''sam'''", ERR_OK},
+
+	{"$NAME/home/$NAME", "NAME", "\"sam\"", "\"sam\"/home/\"sam\"", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "\"\"sam", "\"\"sam/home/\"\"sam", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "\"\"\"sam", "\"\"\"sam/home/\"\"\"sam", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "sam\"\"", "sam\"\"/home/sam\"\"", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "sam\"\"\"", "sam\"\"\"/home/sam\"\"\"", ERR_OK},
+	{"$NAME/home/$NAME", "NAME", "\"\"\"sam\"\"\"", "\"\"\"sam\"\"\"/home/\"\"\"sam\"\"\"", ERR_OK},
 	
 	// Expanding not-set ENV
 	{"$NAME/home", NULL, NULL, "/home", ERR_OK},
