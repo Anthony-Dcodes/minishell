@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   substitution_tests.c                               :+:      :+:    :+:   */
+/*   remove_quotes_tests.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 15:27:04 by advorace         ###   ########.fr       */
+/*   Created: 2026/05/22 15:13:41 by advorace          #+#    #+#             */
+/*   Updated: 2026/05/22 15:49:04 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
-#include "substitution_tests.h"
+#include <stdlib.h>
 #include <string.h>
-#include "../macros.h"
-#include "macros.h"
 #include "../structs.h"
+#include "macros.h"
+#include "remove_quotes_tests.h"
 #include "../parser.h"
-#include "../substitution.h"
 #include "../tokenizer.h"
 
 // Builds a single WORD token directly — bypasses the lexer
@@ -52,60 +50,52 @@ int	main(void)
     setenv("B", "world", 1);
     setenv("B", "y", 1);
 	setenv("C", "x", 1);
-	while (subst_tests[i].input != NULL)
+	while (quote_remove_test[i].input != NULL)
 	{
-		// 1. Set up environment
-		if (subst_tests[i].env_key)
-			setenv(subst_tests[i].env_key, subst_tests[i].env_val, 1);
-
-		// 2. Build a minimal token list
-		head = make_word_token(subst_tests[i].input);
+		// 1. Build a minimal token list
+		head = make_word_token(quote_remove_test[i].input);
 		if (!head)
 		{
-			printf("MALLOC ERR: %s\n", subst_tests[i].input);
+			printf("MALLOC ERR: %s\n", quote_remove_test[i].input);
 			i++;
 			continue ;
 		}
 
-		// 3. Run substitution
-		ret = substitute_vars(head);
+		// 2. Remove quotes
+		ret = remove_quotes(head);
 
 
-		if (strcmp(head->value, subst_tests[i].expected) == 0)
+		if (strcmp(head->value, quote_remove_test[i].expected) == 0)
 		{
-			if (subst_tests[i].expect_err == ret)
+			if (quote_remove_test[i].expect_err == ret)
 			{
-				printf("OK:        %-30s → \"%s\"\n",
-					subst_tests[i].input, head->value);
+				printf("OK:        %-30s → %s\n",
+					quote_remove_test[i].input, head->value);
 				passed++;
 			}
 			else
 			{
-				printf("OK:        %-30s → \"%s\", wrong error code, got %d, expected %d\n",
-				subst_tests[i].input, head->value,
+				printf("OK:        %-30s → %s, wrong error code, got %d, expected %d\n",
+				quote_remove_test[i].input, head->value,
 				ret,
-				subst_tests[i].expect_err);
+				quote_remove_test[i].expect_err);
 				passed++;
 				wrong_error_code++;
 			}
 		}
 		else
 		{
-			printf("FAIL:      %-30s → got \"%s\", expected \"%s\" (ret=%d)\n",
-				subst_tests[i].input,
+			printf("FAIL:      %-30s → got %s, expected %s (ret=%d)\n",
+				quote_remove_test[i].input,
 				head->value ? head->value : "(null)",
-				subst_tests[i].expected,
+				quote_remove_test[i].expected,
 				ret);
 			failed++;
 		}
 
-		// 5. Tear down — unset so tests don't bleed into each other
-		if (subst_tests[i].env_key)
-			unsetenv(subst_tests[i].env_key);
-
 		free_tokens(&head);
 		i++;
 	}
-	printf("\n%*s %d passed, %d failed, %d wrong error code of passed\n", SPACES, "SUBSTITUTIONS", passed, failed, wrong_error_code);
+	printf("\n%*s %d passed, %d failed, %d wrong error code of passed\n", SPACES, "REMOVE_QUOTES", passed, failed, wrong_error_code);
 	return (failed > 0);
 }

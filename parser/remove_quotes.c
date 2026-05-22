@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 21:21:02 by advorace          #+#    #+#             */
-/*   Updated: 2026/03/26 23:01:27 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 15:47:34 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include <stdlib.h>
 
 int	remove_quotes(t_token *head)
 {
 	t_token	*temp;
-	int		total_quotes;
+	//int		total_quotes;
 	int		i;
 	char	*str;
 	int		first_quote_index;
