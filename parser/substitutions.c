@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 10:27:33 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 11:05:56 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	substitute_vars(t_token *head)
 						end_index = get_variable_end_index(str, start_index + 1);
 						if (get_string(start_index, end_index, str, &substring) == ERR_MALLOC)
 							return (ERR_VAR_SUBST);
-						//printf("string to getenv: %s\n", substring);
 						env_var = get_env_value(substring);
 						free(substring);
 						if (replace_variable(temp, env_var, i, end_index) != ERR_OK)
@@ -88,8 +87,8 @@ int	get_variable_end_index(char	*string, int start_index)
 	return (i);
 }
 
-
-int	replace_variable(t_token *token, char *evn_var, int start_index, int end_index)
+int	replace_variable(t_token *token, char *evn_var,
+	int start_index, int end_index)
 {
 	char	*new_string;
 	char	*old_string;
@@ -97,29 +96,20 @@ int	replace_variable(t_token *token, char *evn_var, int start_index, int end_ind
 	int		j;
 	int		len;
 
+	j = 0;
+	i = 0;
 	old_string = token->value;
-	len =(int)ft_strlen(old_string) - (end_index - start_index) + (int)ft_strlen(evn_var);
+	len = (int)ft_strlen(old_string) - (end_index - start_index)
+		+ (int)ft_strlen(evn_var);
 	new_string = malloc(sizeof(char) * (len + 1));
 	if (!new_string)
 		return (ERR_MALLOC);
-	j = 0;
-	i = 0;
 	while (i < start_index)
-	{
-		new_string[i] = old_string[i];
-		++i;
-	}
+		new_string[i++] = old_string[i];
 	while (j < (int)ft_strlen(evn_var))
-	{
-		new_string[i + j] = evn_var[j];
-		++j;
-	}
+		new_string[i + j++] = evn_var[j];
 	while (old_string[end_index])
-	{
-		new_string[i + j] = old_string[end_index];
-		++end_index;
-		++j;
-	}
+		new_string[i + j++] = old_string[end_index++];
 	new_string[i + j] = 0;
 	free(old_string);
 	token->value = new_string;
