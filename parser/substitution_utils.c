@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:48:53 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 13:14:14 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 13:16:08 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,21 @@ int	replace_variable(t_token *token, char *evn_var,
 	if (!new_string)
 		return (ERR_MALLOC);
 	while (i < start_index)
-		new_string[i++] = old_string[i];
+	{
+		new_string[i] = old_string[i];
+		++i;
+	}
 	while (j < (int)ft_strlen(evn_var))
-		new_string[i + j++] = evn_var[j];
+	{
+		new_string[i + j] = evn_var[j];
+		++j;	
+	}
 	while (old_string[end_index])
-		new_string[i + j++] = old_string[end_index++];
+	{
+		new_string[i + j] = old_string[end_index];
+		++j;
+		++end_index;	
+	}
 	new_string[i + j] = 0;
 	free(old_string);
 	token->value = new_string;
