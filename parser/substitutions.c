@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 13:22:51 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 14:06:52 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ int	look_for_env_to_substitute(t_token *temp)
 			}
 			if (env_first_char_valid(str[i + 1]))
 			{
-				ret = isolate_and_replace_env(temp, i);
+				ret = isolate_and_replace_env(temp, &i);
 				if (ret != ERR_OK)
 					return (ret);
 				str = temp->value;
-				i = -1; // start from beggining of the string
+				continue;
 			}
 		}
 		++i;
@@ -70,7 +70,7 @@ int	look_for_env_to_substitute(t_token *temp)
 	return (ERR_OK);
 }
 
-int isolate_and_replace_env(t_token *temp, int index)
+int isolate_and_replace_env(t_token *temp, int *index)
 {
 	char	*str;
 	int		end_index;
@@ -78,14 +78,16 @@ int isolate_and_replace_env(t_token *temp, int index)
 	char	*substring;
 	char	*env_var;
 	
-	start_index = index + 1;
+	start_index = *index + 1;
 	str = temp->value;
 	end_index = get_variable_end_index(str, start_index + 1);
 	if (get_string(start_index, end_index, str, &substring) == ERR_MALLOC)
 		return (ERR_VAR_SUBST);
 	env_var = get_env_value(substring);
 	free(substring);
-	if (replace_variable(temp, env_var, index, end_index) != ERR_OK)
+	if (replace_variable(temp, env_var, *index, end_index) != ERR_OK)
 		return (ERR_VAR_SUBST);
+	if (env_var != NULL)
+		*index += ft_strlen(env_var);
 	return (ERR_OK);
 }
