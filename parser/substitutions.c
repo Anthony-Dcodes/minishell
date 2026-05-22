@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 13:07:21 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/22 13:22:51 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	substitute_vars(t_token *head)
 	{
 		if (temp->type == WORD)
 		{
-			ret = check_for_env_to_substitute(temp);
+			ret = look_for_env_to_substitute(temp);
 			if (ret != ERR_OK)
 				return (ret);
 		}
@@ -35,7 +35,7 @@ int	substitute_vars(t_token *head)
 	return (ret);
 }
 
-int	check_for_env_to_substitute(t_token *temp)
+int	look_for_env_to_substitute(t_token *temp)
 {
 	char	*str;
 	int		i;
