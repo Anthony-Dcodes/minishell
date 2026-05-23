@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:12:34 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 12:36:30 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 12:51:23 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,26 @@ t_skip_idxs	*create_skip_idx_node(int start_idx, int end_idx, int *ret)
 	return (new_node);
 }
 
-void	append_skip_idx_node(t_token **head, t_skip_idxs *node)
+void	append_skip_idx_node(t_token *head, t_skip_idxs *node)
 {
 	t_skip_idxs *skip_idxs_list;
 
-	if (!*head || !node)
+	if (!head || !node)
 		return ;
-	skip_idxs_list = (*head)->skip_idxs;
+	skip_idxs_list = head->skip_idxs;
 	while (skip_idxs_list)
 		skip_idxs_list = skip_idxs_list->next;
 	skip_idxs_list = node;
 	skip_idxs_list->next = NULL;
 }
 
-void	free_skip_idx_list(t_token **head)
+void	free_skip_idx_list(t_token *head)
 {
 	t_skip_idxs	*temp;
 	t_skip_idxs *list;
 
-	list = (*head)->skip_idxs;
-	if (!*head || !list)
+	list = head->skip_idxs;
+	if (!list)
 		return ;
 	while (list)
 	{
