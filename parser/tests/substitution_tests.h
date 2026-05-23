@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   substitution_tests.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 16:21:33 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 16:27:38 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include "../macros.h"
 
 typedef struct s_subst_test
@@ -92,7 +93,7 @@ t_subst_test subst_tests[] = {
 	{"$NAME/home", "NAME", "'sam'''", "'sam'''/home", ERR_OK},
 	{"$NAME/home", "NAME", "''sam'", "''sam'/home", ERR_OK},
 	{"$NAME/home", "NAME", "'''sam'", "'''sam'/home", ERR_OK},
-	
+
 	{"$NAME/home", "NAME", "\"sam\"", "\"sam\"/home", ERR_OK},
 	{"$NAME/home", "NAME", "\"sam\"\"", "\"sam\"\"/home", ERR_OK},
 	{"$NAME/home", "NAME", "\"sam\"\"\"", "\"sam\"\"\"/home", ERR_OK},
@@ -112,7 +113,7 @@ t_subst_test subst_tests[] = {
 	{"$NAME/home/$NAME", "NAME", "sam\"\"", "sam\"\"/home/sam\"\"", ERR_OK},
 	{"$NAME/home/$NAME", "NAME", "sam\"\"\"", "sam\"\"\"/home/sam\"\"\"", ERR_OK},
 	{"$NAME/home/$NAME", "NAME", "\"\"\"sam\"\"\"", "\"\"\"sam\"\"\"/home/\"\"\"sam\"\"\"", ERR_OK},
-	
+
 	// Expanding not-set ENV
 	{"$NAME/home", NULL, NULL, "/home", ERR_OK},
 	{"$NAME$$/home", NULL, NULL, "$$/home", ERR_OK},

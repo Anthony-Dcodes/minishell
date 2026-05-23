@@ -9,4 +9,5 @@ parser/tests/syntax_tests
 parser/tests/substitution_tests
 parser/tests/tokenizer_tests
 parser/tests/remove_quotes_tests
+parser/tests/quote_skipping
 libft.a
