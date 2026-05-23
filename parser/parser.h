@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 20:42:08 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 15:44:33 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 17:01:46 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,3 @@ int	ft_isalnum(int c);
 // Syntax check
 int syntax_checker(t_token *head);
 int has_unclosed_quote(char *str);
-
-// Remove quotes
-int	remove_quotes(t_token *head);
-int	find_next_quote(char *str, int start, char quote_char);
-int	remove_string_quotes(char *str, int first_quote, int second_quote, char **dest);

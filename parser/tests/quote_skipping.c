@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:43:06 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 16:50:21 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 17:02:39 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "../parser.h"
 #include "../substitution.h"
 #include "../tokenizer.h"
+#include "../remove_quotes.h"
 
 // Builds a single WORD token directly — bypasses the lexer
 // so we can test substitute_vars in isolation
