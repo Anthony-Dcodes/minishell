@@ -6,12 +6,13 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 21:21:02 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 15:39:02 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 18:28:21 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include <stdlib.h>
+#include "remove_quotes.h"
 
 int	remove_quotes(t_token *head)
 {
@@ -37,7 +38,7 @@ int	remove_quotes(t_token *head)
 				if (str[i] == '\'' || str[i] == '"')
 				{
 					first_quote_index = i;
-					second_quote_index = find_next_quote(str, i + 1, str[i]);
+					second_quote_index = find_next_quote(str, i + 1, str[i], temp);
 					if (second_quote_index == -1)
 						return (ERR_SYNTAX);
 					//printf("remove_quotes---\n");
@@ -59,10 +60,26 @@ int	remove_quotes(t_token *head)
 	return (ERR_OK);
 }
 
-int	find_next_quote(char *str, int start, char quote_char)
+#include <stdio.h>
+int	find_next_quote(char *str, int start, char quote_char, t_token *head)
 {
+	t_skip_idxs *skip;
+
+	skip = head->skip_idxs;
 	while(str[start])
 	{
+		//printf("find nex quote\n");
+		if (skip)
+		{
+			if (skip->start == start)
+			{
+				//printf("Skipping index: %d, %d\n", skip->start, skip->end);
+				while (start < skip->end)
+					++start;
+				skip = skip->next;
+				continue;
+			}
+		}
 		if (quote_char == '"' && str[start] == '"')
 			return (start);
 		else if (quote_char == '\'' && str[start] == '\'')

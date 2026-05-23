@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:26:44 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 16:41:37 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 18:41:05 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ t_subst_test subst_tests[] = {
 	{"echo 'hello_world'$NAME", "NAME", "\"sam\"", "echo hello_world\"sam\"", ERR_OK},
 	{"echo \"hello my name is $NAME\"", "NAME", "\"sam\"", "echo hello my name is \"sam\"", ERR_OK},
 	{"echo \"hello my name is $NAME\"", "NAME", "'sam'", "echo hello my name is 'sam'", ERR_OK},
+	{"a_$NAME_a", "NAME", "sam", "a_sam_a", ERR_OK},
+	{"hello_$NAME_how_are_you?", "NAME", "'sam'", "hello_'sam'_how_are_you?", ERR_OK},
+	{"'hello_'$NAME_'how_''are_''you?'", "NAME", "'sam'", "hello_'sam'_how_are_you?", ERR_OK},
 
 	// Sentinel
 	{NULL, NULL, NULL, NULL, 0}

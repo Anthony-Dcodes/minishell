@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 16:27:38 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 18:44:57 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_subst_test subst_tests[] = {
 	{"$\"NAME\".txt", "_NAME", "sam", "$\"NAME\".txt", ERR_OK},
 
 	// Expanding ENV names
+	{"home/$NAME/home", "NAME", "sam", "home/sam/home", ERR_OK},
 	{"$NAME/home", "NAME", "sam", "sam/home", ERR_OK},
 	{"$NAME.txt", "NAME", "sam", "sam.txt", ERR_OK},
 	{"$_NAME.txt", "_NAME", "sam", "sam.txt", ERR_OK},
@@ -88,6 +89,7 @@ t_subst_test subst_tests[] = {
 	{"$NAME/home$5$$$$NAME", "NAME", "sam", "sam/home$5$$$sam", ERR_OK},
 
 	// Expanding ENV names with quotes inside
+	{"home/$NAME/home", "NAME", "'sam'", "home/'sam'/home", ERR_OK},
 	{"$NAME/home", "NAME", "'sam'", "'sam'/home", ERR_OK},
 	{"$NAME/home", "NAME", "'sam''", "'sam''/home", ERR_OK},
 	{"$NAME/home", "NAME", "'sam'''", "'sam'''/home", ERR_OK},
