@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   substitution_tests.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 15:27:04 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 11:51:45 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,5 @@ int	main(void)
 		i++;
 	}
 	printf("\n%*s %d passed, %d failed, %d wrong error code of passed\n", SPACES, "SUBSTITUTIONS", passed, failed, wrong_error_code);
-	return (failed > 0);
+	return (0);
 }

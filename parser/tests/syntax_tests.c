@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:27:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 15:26:47 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 11:51:51 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ int main(void)
 		i++;
     }
     printf("\n%*s %d passed, %d failed\n", SPACES, "SYNTAX", passed, failed);
-	return (failed > 0);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes_tests.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:13:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 15:49:04 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 11:51:39 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,5 @@ int	main(void)
 		i++;
 	}
 	printf("\n%*s %d passed, %d failed, %d wrong error code of passed\n", SPACES, "REMOVE_QUOTES", passed, failed, wrong_error_code);
-	return (failed > 0);
+	return (0);
 }

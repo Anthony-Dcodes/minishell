@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 15:52:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 22:30:30 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 11:51:56 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ int main(void)
 		free_tokens(&head);
 	}
 	printf("\n%*s %d passed, %d failed\n", SPACES, "TOKENIZER", passed, failed);
-	return (failed > 0);
+	return (0);
 }

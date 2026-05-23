@@ -69,7 +69,7 @@ run_all: all
 	./$(NAME_SUBST)
 	./$(NAME_QUOTES)
 
-fclean: 
+fclean:
 	rm -f \
 		$(NAME_TOKENIZER) \
 		$(NAME_SYNTAX) \
