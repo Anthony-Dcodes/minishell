@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/21 12:14:11 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 12:38:47 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int main(int argc, char *argv[], char **envp)
 	// remove qutoes: hello"'man'hello" -> hello'man'hello
 
 	head = NULL;
+	head->skip_idxs = NULL;
 	ret = tokenizer(&head, argv[1]);
 	if (ret != ERR_OK)
 		return (ret);
