@@ -15,7 +15,8 @@ SRCS_COMMON = \
 	../substitutions.c \
 	../substitution_utils.c \
 	../substitution_valid_env_chars.c \
-	../remove_quotes.c
+	../remove_quotes.c \
+	../remove_quotes_skip_idx_list.c
 
 SRCS_TOKENIZER = \
 	tokenizer_tests.c
