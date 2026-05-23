@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:12:34 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 12:51:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/23 14:18:25 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,16 @@ void	append_skip_idx_node(t_token *head, t_skip_idxs *node)
 
 	if (!head || !node)
 		return ;
+	if (!head->skip_idxs)
+	{
+		head->skip_idxs = node;
+		return ;
+	}
 	skip_idxs_list = head->skip_idxs;
-	while (skip_idxs_list)
+	while (skip_idxs_list->next)
 		skip_idxs_list = skip_idxs_list->next;
-	skip_idxs_list = node;
-	skip_idxs_list->next = NULL;
+	skip_idxs_list->next = node;
+	return ;
 }
 
 void	free_skip_idx_list(t_token *head)
