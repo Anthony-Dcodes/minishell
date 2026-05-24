@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_tests.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 15:53:24 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/19 18:06:18 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 12:11:21 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 typedef struct s_tokenize_tests
 {
     char    *token;
-    int     number_of_tokens;    
+    int     number_of_tokens;
 } t_tokenize_tests;
 
 t_tokenize_tests tokenize_tests[] = {
@@ -160,6 +160,8 @@ t_tokenize_tests tokenize_tests[] = {
     {"' a  '", 1},
     {"  a   ", 1},
     {"\" a  \"", 1},
+    {"\" a'  \"", 1},
+    {"' a\"  '", 1},
     {"' a  '", 1},
     {"  a           ", 1},
     {"'     a                     ", 1},

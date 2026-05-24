@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 10:50:57 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 10:40:56 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 10:48:48 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,4 @@ typedef enum e_meta
 	IN_S_QUOTE,
 	IN_D_QUOTE,
 	EXPANSION
-} t_meta;
+} s_meta;
