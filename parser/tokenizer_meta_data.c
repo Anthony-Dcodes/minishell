@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 11:23:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 12:22:39 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 12:29:35 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,15 @@ void free_metadata(t_token *head)
 	if (head->meta)
 		free(head->meta);
 	return ;
+}
+
+void update_metadata(t_token *head, int start_idx, int end_idx, int char_type)
+{
+	if (head->type != WORD)
+		return ;
+	while (start_idx < end_idx)
+	{
+		head->meta[start_idx] = char_type;
+		++start_idx;
+	}
 }
