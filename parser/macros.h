@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 10:50:57 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 10:51:06 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 10:40:56 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,13 @@ typedef enum e_type
 	REDDIRECT,
 	END_FILE
 } t_type;
+
+typedef enum e_meta
+{
+	UNQOUTED_CHAR,
+	S_QUOTE,
+	D_QOUTE,
+	IN_S_QUOTE,
+	IN_D_QUOTE,
+	EXPANSION
+} t_meta;

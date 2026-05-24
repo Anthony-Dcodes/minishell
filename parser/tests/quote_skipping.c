@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:43:06 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 17:02:39 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 10:45:40 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,9 @@ static t_token	*make_word_token(char *value)
 	tok->type = WORD;
 	tok->value = strdup(value);
 	tok->next = NULL;
-	tok->skip_idxs = NULL;
 	return (tok);
 }
 
-static void show_skipped_idxs(t_token *head)
-{
-	t_skip_idxs *temp;
-
-	temp = head->skip_idxs;
-	while (temp)
-	{
-		printf("Skipping IDXs: %d, %d\n", temp->start, temp->end);
-		temp = temp->next;
-	}
-}
 
 int	main(void)
 {
@@ -85,9 +73,6 @@ int	main(void)
 		ret = substitute_vars(head);
 		ret = remove_quotes(head);
 
-		if (0) // Just so w_error doesnt yell
-			show_skipped_idxs(head);
-
 		if (strcmp(head->value, subst_tests[i].expected) == 0)
 		{
 			if (subst_tests[i].expect_err == ret)
@@ -95,7 +80,6 @@ int	main(void)
 				printf("OK:        %-30s → %s\n",
 					subst_tests[i].input, head->value);
 				passed++;
-				//show_skipped_idxs(head);
 			}
 			else
 			{
@@ -105,7 +89,6 @@ int	main(void)
 				subst_tests[i].expect_err);
 				passed++;
 				wrong_error_code++;
-				//show_skipped_idxs(head);
 			}
 		}
 		else

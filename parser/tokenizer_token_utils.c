@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 13:01:26 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 10:43:21 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	free_tokens(t_token **head)
 	while (*head)
 	{
 		next = (*head)->next;
-		free_skip_idx_list(*head);
 		free((*head)->value);
 		free(*head);
 		*head = next;

@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:08:09 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 12:08:25 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 10:42:01 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 #include "macros.h"
 #include <stddef.h>
 
-typedef struct s_skip_idxs
-{
-	int					start;
-	int					end;
-	struct s_skip_idxs	*next;
-} t_skip_idxs;
-
 typedef struct s_token
 {
 	char				*value;
@@ -29,7 +22,6 @@ typedef struct s_token
 	t_type				type;
 	struct s_token		*next;
 	struct s_token		*previous;
-	struct s_skip_idxs	*skip_idxs;
 } t_token;
 
 typedef struct s_listex

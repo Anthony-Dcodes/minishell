@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 14:33:03 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 10:43:51 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,7 @@ int isolate_and_replace_env(t_token *temp, int *index)
 	int		start_index;
 	char	*substring;
 	char	*env_var;
-	t_skip_idxs *new_node;
-	int		ret;
 
-	ret = ERR_OK;
 	start_index = *index + 1;
 	str = temp->value;
 	end_index = get_variable_end_index(str, start_index + 1);
@@ -93,9 +90,5 @@ int isolate_and_replace_env(t_token *temp, int *index)
 		return (ERR_VAR_SUBST);
 	if (env_var != NULL)
 		*index += ft_strlen(env_var);
-	new_node = create_skip_idx_node(start_index - 1, *index, &ret);
-	if (ret != ERR_OK)
-		return (ret);
-	append_skip_idx_node(temp, new_node);
 	return (ERR_OK);
 }
