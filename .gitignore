@@ -11,4 +11,4 @@ parser/tests/tokenizer_tests
 parser/tests/remove_quotes_tests
 parser/tests/quote_skipping
 libft.a
-/omayer_lib
+#/omayer_lib
