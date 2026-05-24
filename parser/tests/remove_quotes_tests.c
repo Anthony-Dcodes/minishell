@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:13:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 17:03:01 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 15:09:23 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static t_token	*make_word_token(char *value)
 	tok->type = WORD;
 	tok->value = strdup(value);
 	tok->next = NULL;
+	tok->len = ft_strlen(value);
+	assign_word_token_meta_data(tok);
 	return (tok);
 }
 

@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 14:47:47 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 15:15:52 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,11 @@ t_subst_test subst_tests[] = {
 	{"$\"NAME\".txt", "_NAME", "sam", "$\"NAME\".txt", ERR_OK},
 
 	// Expanding ENV names
+	{"$NAME", "NAME", "sam", "sam", ERR_OK},
+	{"a$NAMEa", "NAME", "sam", "asama", ERR_OK},
+	{"a_$NAME_a", "NAME", "sam", "a_sam_a", ERR_OK},
+	{"a-$NAME-a", "NAME", "sam", "a-sam-a", ERR_OK},
+	{"a/$NAME/a", "NAME", "sam", "a/sam/a", ERR_OK},
 	{"home/$NAME/home", "NAME", "sam", "home/sam/home", ERR_OK},
 	{"$NAME/home", "NAME", "sam", "sam/home", ERR_OK},
 	{"$NAME.txt", "NAME", "sam", "sam.txt", ERR_OK},
@@ -131,6 +136,8 @@ t_subst_test subst_tests[] = {
 
 	// Special cases
 	{"echo$", NULL, NULL, "echo$", ERR_OK},
+	{"a_$NAME_a", "NAME", "sam", "a_sam_a", ERR_OK},
+	{"'hello_'$NAME_'how_''are_''you?'", "NAME", "'sam'", "'hello_''sam''_how_''are_''you?'", ERR_OK},
 	{"$?", NULL, NULL, "(int)", ERR_OK},  // assumes last exit = ERR_OK
 
 	// Sentinel
