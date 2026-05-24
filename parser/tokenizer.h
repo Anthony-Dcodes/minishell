@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:06:58 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 22:28:34 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 10:53:33 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index);
 // Tokenizer char utils
 int	detect_quote(char c);
 int	track_quote_state(int quote, char c);
-int	get_char_type(char c);
+int	get_token_type(char c);
 
 // Tokenizer string utils
 int	find_start_index(char *str, int start);
