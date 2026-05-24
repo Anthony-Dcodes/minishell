@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 11:51:39 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 12:23:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	free_tokens(t_token **head)
 	{
 		next = (*head)->next;
 		free((*head)->value);
+		free_metadata(*head);
 		free(*head);
 		*head = next;
 	}

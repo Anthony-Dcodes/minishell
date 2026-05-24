@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 11:23:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 12:01:46 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 12:22:39 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,11 @@ void print_token_metadata(t_token *token)
 			++i;
 		}
 	}
+}
+
+void free_metadata(t_token *head)
+{
+	if (head->meta)
+		free(head->meta);
+	return ;
 }
