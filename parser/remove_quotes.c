@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 21:21:02 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 10:44:15 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 16:10:29 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,18 @@ int	remove_quotes(t_token *head)
 		if (temp->type == WORD)
 		{
 			str = temp->value;
-			//printf("evaluate quote removal on: |%s|\n", str);
 			i = 0;
 			while (str[i])
 			{
-				//printf("remove quotes str[i]: %c\n", str[i]);
-				if (str[i] == '\'' || str[i] == '"')
+				if ((str[i] == '\'' || str[i] == '"')
+					&& temp->meta[i] != EXPANSION)
 				{
 					first_quote_index = i;
-					second_quote_index = find_next_quote(str, i + 1, str[i]);
+					second_quote_index = find_next_quote(str, i + 1, str[i], temp);
 					if (second_quote_index == -1)
 						return (ERR_SYNTAX);
-					//printf("remove_quotes---\n");
-					if (remove_string_quotes(str, first_quote_index, second_quote_index, &new_string) != ERR_OK)
+					if (remove_string_quotes(str, first_quote_index, second_quote_index, &new_string, temp) != ERR_OK)
 						return (ERR_MALLOC);
-					//printf("After quote removal---\n");
 					free(temp->value);
 					temp->value = new_string;
 					str = new_string;
@@ -54,17 +51,21 @@ int	remove_quotes(t_token *head)
 					++i;
 			}
 		}
-		//printf("after removing quotes: |%s|\n", temp->value);
 		temp = temp->next;
 	}
 	return (ERR_OK);
 }
 
-#include <stdio.h>
-int	find_next_quote(char *str, int start, char quote_char)
+
+int	find_next_quote(char *str, int start, char quote_char, t_token *head)
 {
 	while(str[start])
 	{
+		if (head->meta[start] == EXPANSION)
+		{
+			++start;
+			continue;
+		}
 		if (quote_char == '"' && str[start] == '"')
 			return (start);
 		else if (quote_char == '\'' && str[start] == '\'')
@@ -74,32 +75,34 @@ int	find_next_quote(char *str, int start, char quote_char)
 	return (-1);
 }
 
-int	remove_string_quotes(char *str, int first_quote, int second_quote, char **dest)
+int	remove_string_quotes(char *str, int first_quote, int second_quote, char **dest, t_token *head)
 {
 	int	len;
 	int	i;
 	int	j;
+	s_meta	*new_meta;
 
 	len = (int)ft_strlen(str);
-	//printf("Allocate: %d bytes\n", len - 1);
 	*dest = malloc(sizeof(char) * (len - 1));
-	if (!*dest)
+	new_meta = malloc(sizeof(s_meta) * (len - 2));
+	if (!*dest || !new_meta)
 		return (ERR_MALLOC);
 	i = 0;
 	j = 0;
 	while (str[i])
 	{
-		//printf("str[i]: %c\n", str[i]);
 		if (i == first_quote || i == second_quote)
 		{
 			++i;
 			continue;
 		}
-		//printf("write to dest index: %d, char: %c\n", j, str[i]);
 		(*dest)[j] = str[i];
+		new_meta[j] = head->meta[i];
 		++j;
 		++i;
 	}
 	(*dest)[j] = 0;
+	free(head->meta);
+	head->meta = new_meta;
 	return (ERR_OK);
 }

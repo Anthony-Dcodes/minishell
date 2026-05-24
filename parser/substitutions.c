@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 14:41:19 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 15:32:00 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	look_for_env_to_substitute(t_token *temp)
 
 	str = temp->value;
 	i = 0;
+	quote = NO_QUOTE;
 	while(str[i])
 	{
 		quote = track_quote_state(quote, str[i]);

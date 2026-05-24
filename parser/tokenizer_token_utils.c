@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 12:23:11 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/24 14:50:32 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_token *create_new_token(char *value, int	type, int quote, int *ret)
 	node->next = NULL;
 	node->previous = NULL;
 	*ret = assign_word_token_meta_data(node);
-	print_token_metadata(node);
+	//print_token_metadata(node);
 	return (node);
 }
 
