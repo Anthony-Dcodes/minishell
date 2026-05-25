@@ -17,7 +17,8 @@ SRCS_COMMON = \
 	../substitution_utils.c \
 	../substitution_valid_env_chars.c \
 	../remove_quotes.c \
-	../tokenizer_meta_data.c
+	../tokenizer_meta_data.c \
+	../tokenizer_meta_data_utils.c
 
 SRCS_TOKENIZER = \
 	tokenizer_tests.c
@@ -78,9 +79,9 @@ run_skipping: $(NAME_SKIPPING)
 run_all: all
 	./$(NAME_TOKENIZER)
 	./$(NAME_SYNTAX)
-	./$(NAME_SUBST)
 	./$(NAME_QUOTES)
 	./$(NAME_SKIPPING)
+	./$(NAME_SUBST)
 
 fclean:
 	rm -f \

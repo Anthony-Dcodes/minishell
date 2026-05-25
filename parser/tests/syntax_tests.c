@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:27:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:28:38 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:15:37 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ int main(void)
 		i++;
     }
     printf("\n%*s %d passed, %d failed\n", SPACES, "SYNTAX", passed, failed);
-	return (0);
+	return (failed > 0);
 }

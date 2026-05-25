@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:13:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:35:02 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:15:22 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,5 @@ int	main(void)
 		i++;
 	}
 	printf("\n%*s %d passed, %d failed, %d wrong error code of passed\n", SPACES, "REMOVE_QUOTES", passed, failed, wrong_error_code);
-	return (0);
+	return (failed > 0);
 }

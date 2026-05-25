@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_tests.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 15:52:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 11:51:56 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:15:45 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ int main(void)
 		free_tokens(&head);
 	}
 	printf("\n%*s %d passed, %d failed\n", SPACES, "TOKENIZER", passed, failed);
-	return (0);
+	return (failed > 0);
 }

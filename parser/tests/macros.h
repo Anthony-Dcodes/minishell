@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 10:05:19 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 10:10:46 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:16:42 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#define SPACES 60
+#define SPACES 40
