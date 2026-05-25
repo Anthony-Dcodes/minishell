@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:08:09 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:36:37 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 12:23:15 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ typedef struct s_token
 	struct s_token		*next;
 	struct s_token		*previous;
 }	t_token;
+
+typedef struct s_copy_job
+{
+	int		i;
+	int		j;
+	char	*new_string;
+	char	*old_string;
+	t_meta	*new_meta;
+	t_meta	*old_meta;
+}	t_copy_job;
 
 typedef struct s_listex
 {

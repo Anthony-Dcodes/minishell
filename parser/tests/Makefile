@@ -18,7 +18,8 @@ SRCS_COMMON = \
 	../substitution_valid_env_chars.c \
 	../remove_quotes.c \
 	../tokenizer_meta_data.c \
-	../tokenizer_meta_data_utils.c
+	../tokenizer_meta_data_utils.c \
+	../substitution_copy_job.c
 
 SRCS_TOKENIZER = \
 	tokenizer_tests.c

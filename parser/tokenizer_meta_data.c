@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 11:23:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 11:13:45 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 13:01:23 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	assign_word_token_meta_data(t_token *token)
 	i = 0;
 	str = token->value;
 	quote = NO_QUOTE;
+	if (token->type != WORD)
+		return (ERR_OK);
 	token->meta = malloc(sizeof(t_meta) * token->len);
 	if (!token->meta)
 		return (ERR_MALLOC);
