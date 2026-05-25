@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_string_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:58:11 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/20 22:34:00 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:30:52 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "macros.h"
-#include "parser.h"
+#include "string_utils.h"
 #include "tokenizer.h"
 
 int	find_start_index(char *str, int start)

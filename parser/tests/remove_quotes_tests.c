@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes_tests.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:13:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 15:09:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:35:02 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include "../structs.h"
 #include "macros.h"
 #include "remove_quotes_tests.h"
-#include "../parser.h"
 #include "../tokenizer.h"
 #include "../remove_quotes.h"
+#include "../string_utils.h"
 
 // Builds a single WORD token directly — bypasses the lexer
 // so we can test substitute_vars in isolation

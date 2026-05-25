@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   substitution_tests.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:00:00 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 14:47:54 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:34:27 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include "../macros.h"
 #include "macros.h"
 #include "../structs.h"
-#include "../parser.h"
 #include "../substitution.h"
 #include "../tokenizer.h"
+#include "../string_utils.h"
 
 // Builds a single WORD token directly — bypasses the lexer
 // so we can test substitute_vars in isolation

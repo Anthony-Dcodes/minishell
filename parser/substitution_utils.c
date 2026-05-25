@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:48:53 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:25:20 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:31:51 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "macros.h"
 #include "structs.h"
 #include "substitution.h"
-#include "utils.h"
+#include "string_utils.h"
 
 char	*get_env_value(char *string)
 {

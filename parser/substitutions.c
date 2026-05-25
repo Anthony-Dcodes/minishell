@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   substitutions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 15:32:00 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:31:36 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include "tokenizer.h"
 #include <stdlib.h>
 #include "substitution.h"
 #include "remove_quotes.h"
+#include "string_utils.h"
 
 int	substitute_vars(t_token *head)
 {

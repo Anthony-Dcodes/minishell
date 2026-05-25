@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_token_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 14:50:32 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:31:01 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "parser.h"
 #include "tokenizer.h"
 #include "remove_quotes.h"
+#include "string_utils.h"
 
 t_token *create_new_token(char *value, int	type, int quote, int *ret)
 {

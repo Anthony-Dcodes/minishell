@@ -6,13 +6,13 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 21:21:02 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:25:20 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:32:37 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include <stdlib.h>
 #include "remove_quotes.h"
+#include "string_utils.h"
 
 int	remove_quotes(t_token *head)
 {

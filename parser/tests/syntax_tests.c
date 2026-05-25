@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:27:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 11:51:51 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:28:38 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "syntax_tests.h"
 #include "../tokenizer.h"
+#include "../syntax_checker.h"
 #include "macros.h"
 #include <stdio.h>
 

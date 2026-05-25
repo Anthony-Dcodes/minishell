@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_tests.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:20:16 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 15:33:55 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:33:51 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parser.h"
+#include <stddef.h>
+#include "../macros.h"
 
 typedef struct s_test
 {
