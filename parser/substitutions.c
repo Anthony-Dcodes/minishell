@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:31:36 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:32:52 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	look_for_env_to_substitute(t_token *temp)
 				++i;
 				continue;
 			}
-			if (env_first_char_valid(str[i + 1]))
+			if (envar_first_char_valid(str[i + 1]))
 			{
 				ret = isolate_and_replace_env(temp, &i);
 				if (ret != ERR_OK)

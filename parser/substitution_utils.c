@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:48:53 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:31:51 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:33:42 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	get_variable_end_index(char	*string, int start_index)
 	i = start_index;
 	while (string[i])
 	{
-		if (env_whitelist_char(string[i]))
+		if (envar_char_valid(string[i]))
 			++i;
 		else
-			break;
+			break ;
 	}
 	return (i);
 }

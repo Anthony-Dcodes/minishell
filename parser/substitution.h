@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:49:13 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:37:48 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:33:42 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "structs.h"
 
 // Substitution valid env chars
-int		env_first_char_valid(char c);
-int		env_whitelist_char(char c);
+int		envar_first_char_valid(char c);
+int		envar_char_valid(char c);
 
 // Substitution
 char	*get_env_value(char *string);
