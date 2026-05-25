@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:58:11 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:30:52 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:43:50 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	find_start_index(char *str, int start)
 		if (ft_isspace(str[start]))
 		{
 			++start;
-			continue;
+			continue ;
 		}
 		return (start);
 	}
@@ -29,7 +29,7 @@ int	find_start_index(char *str, int start)
 }
 
 // Return last index of the string (exclusive)
-int find_end_index(char *str, int start, int quote)
+int	find_end_index(char *str, int start, int quote)
 {
 	int		end;
 	char	c;

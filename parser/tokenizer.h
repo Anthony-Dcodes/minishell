@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:06:58 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:40:37 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:06:55 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index);
 int		assign_word_token_meta_data(t_token *token);
 void	print_token_metadata(t_token *token);
 void	free_metadata(t_token *head);
+
+// Tokenizer metadata utils
+void	handle_no_quotes(t_token *token, int idx);
+void	handle_single_quotes(t_token *token, int idx, char c);
+void	handle_double_quotes(t_token *token, int idx, char c);
 
 // Tokenizer char utils
 int		detect_quote(char c);

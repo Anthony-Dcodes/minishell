@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_char_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:21:55 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 10:53:33 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:42:14 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	track_quote_state(int quote, char c)
 	else if (quote == DOUBLE_QUOTE)
 	{
 		if (c == '"')
-			return(NO_QUOTE);
+			return (NO_QUOTE);
 	}
 	else
 	{
@@ -56,5 +56,4 @@ int	get_token_type(char c)
 	else if (c == '\0')
 		return (END_FILE);
 	return (WORD);
-
 }

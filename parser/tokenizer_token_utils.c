@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:31:01 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:13:27 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "remove_quotes.h"
 #include "string_utils.h"
 
-t_token *create_new_token(char *value, int	type, int quote, int *ret)
+t_token	*create_new_token(char *value, int type, int quote, int *ret)
 {
-	t_token *node;
+	t_token	*node;
 
 	node = malloc(sizeof(t_token));
 	if (!node)
@@ -31,14 +31,15 @@ t_token *create_new_token(char *value, int	type, int quote, int *ret)
 	node->len = ft_strlen(value);
 	node->next = NULL;
 	node->previous = NULL;
-	*ret = assign_word_token_meta_data(node);
-	//print_token_metadata(node);
+	node->meta = NULL;
+	if (node->type == WORD)
+		*ret = assign_word_token_meta_data(node);
 	return (node);
 }
 
 void	append_token(t_token **head, t_token *token)
 {
-	t_token *temp_head;
+	t_token	*temp_head;
 
 	if (*head == NULL)
 	{
@@ -55,7 +56,7 @@ void	append_token(t_token **head, t_token *token)
 
 void	free_tokens(t_token **head)
 {
-	t_token *next;
+	t_token	*next;
 
 	if (!head)
 		return ;
