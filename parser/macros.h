@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 10:50:57 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 10:48:48 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:25:20 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ typedef enum e_error
 	ERR_MALLOC,
 	ERR_SYNTAX,
 	ERR_VAR_SUBST,
-} t_error;
+}	t_error;
 
 typedef enum e_quote
 {
 	SINGLE_QUOTE,
 	DOUBLE_QUOTE,
 	NO_QUOTE
-} t_quote;
+}	t_quote;
 
 typedef enum e_type
 {
@@ -35,7 +35,7 @@ typedef enum e_type
 	PIPE,
 	REDDIRECT,
 	END_FILE
-} t_type;
+}	t_type;
 
 typedef enum e_meta
 {
@@ -45,4 +45,4 @@ typedef enum e_meta
 	IN_S_QUOTE,
 	IN_D_QUOTE,
 	EXPANSION
-} s_meta;
+}	t_meta;

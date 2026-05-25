@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_meta_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 11:23:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 14:41:06 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:25:20 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	assign_word_token_meta_data(t_token *token)
 		token->meta = NULL;
 		return (ERR_OK);
 	}
-	token->meta = malloc(sizeof(s_meta) * token->len);
+	token->meta = malloc(sizeof(t_meta) * token->len);
 	if (!token->meta)
 		return (ERR_MALLOC);
 	while (str[i])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   substitution_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:48:53 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/24 14:44:46 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 10:25:20 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	replace_variable(t_token *token, char *evn_var,
 {
 	char	*new_string;
 	char	*old_string;
-	s_meta	*new_metadata;
+	t_meta	*new_metadata;
 	int		i;
 	int		j;
 	int		len;
@@ -52,7 +52,7 @@ int	replace_variable(t_token *token, char *evn_var,
 	len = (int)ft_strlen(old_string) - (end_index - start_index)
 		+ (int)ft_strlen(evn_var);
 	new_string = malloc(sizeof(char) * (len + 1));
-	new_metadata = malloc(sizeof(s_meta) * len);
+	new_metadata = malloc(sizeof(t_meta) * len);
 	if (!new_string || !new_metadata)
 		return (ERR_MALLOC);
 	while (i < start_index)
