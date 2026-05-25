@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_checker.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:29:28 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 15:35:20 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:18:10 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	syntax_checker(t_token *head)
 		{
 			if (temp->previous == NULL || temp->previous->type != WORD)
 				return (ERR_SYNTAX);
-			else if (temp->next == NULL || (temp->next->type != WORD && temp->next->type != REDDIRECT))
+			else if (temp->next == NULL || (temp->next->type != WORD
+					&& temp->next->type != REDDIRECT))
 				return (ERR_SYNTAX);
 		}
 		else if (current_type == WORD && has_unclosed_quote(temp->value))
