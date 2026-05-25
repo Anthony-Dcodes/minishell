@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:48:53 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 13:22:37 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 13:25:35 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	get_variable_end_index(char	*string, int start_index)
 	return (i);
 }
 
-#include <stdio.h>
 int	replace_variable(t_token *token, char *evn_var,
 	int start_index, int end_index)
 {
@@ -45,7 +44,7 @@ int	replace_variable(t_token *token, char *evn_var,
 	int			ret;
 
 	len = (int)ft_strlen(token->value) - (end_index - start_index)
-			+ (int)ft_strlen(evn_var);
+		+ (int)ft_strlen(evn_var);
 	ret = init_copy_job(&copy_job, token, len);
 	if (ret != ERR_OK)
 		return (ret);
@@ -56,4 +55,3 @@ int	replace_variable(t_token *token, char *evn_var,
 	assign_to_token(token, &copy_job);
 	return (ERR_OK);
 }
-

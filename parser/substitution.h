@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:49:13 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 12:49:44 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 13:24:42 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		look_for_env_to_substitute(t_token *temp);
 int		isolate_and_replace_env(t_token *temp, int *index);
 
 // Substitutions copy job
-int	init_copy_job(t_copy_job *copy_job, t_token *token, int len);
+int		init_copy_job(t_copy_job *copy_job, t_token *token, int len);
 void	copy_upto_envar(t_copy_job *job, int end);
 void	copy_envar_update_meta(t_copy_job *job, char *envar, int end);
 void	copy_rest(t_copy_job *job, int end);

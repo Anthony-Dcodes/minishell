@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:48:23 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 13:23:01 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/25 13:24:35 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	init_copy_job(t_copy_job *copy_job, t_token *token, int len)
 void	copy_upto_envar(t_copy_job *job, int end)
 {
 	int		i;
-	
+
 	i = job->i;
 	while (i < end)
 	{
@@ -45,7 +45,7 @@ void	copy_envar_update_meta(t_copy_job *job, char *envar, int end)
 {
 	int	i;
 	int	j;
-	
+
 	i = job->i;
 	j = job->j;
 	while (j < end)
