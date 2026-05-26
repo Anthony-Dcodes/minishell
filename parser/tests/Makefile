@@ -19,7 +19,9 @@ SRCS_COMMON = \
 	../remove_quotes.c \
 	../tokenizer_meta_data.c \
 	../tokenizer_meta_data_utils.c \
-	../substitution_copy_job.c
+	../substitution_copy_job.c \
+	../convert_to_tlistx_helpers.c \
+	../convert_to_tlistx.c
 
 SRCS_TOKENIZER = \
 	tokenizer_tests.c
@@ -42,7 +44,7 @@ OBJC_SUBST = $(SRCS_COMMON:.c=.o) $(SRCS_SUBST:.c=.o)
 OBJC_QUOTES = $(SRCS_COMMON:.c=.o) $(SRCS_QUOTES:.c=.o)
 OBJC_SKIPPING = $(SRCS_COMMON:.c=.o) $(SRCS_SKIPPING:.c=.o)
 
-%.o: %.c tokenizer_tests.h syntax_tests.h substitution_tests.h macros.h remove_quotes_tests.h quote_skipping.h
+%.o: %.c tokenizer_tests.h syntax_tests.h substitution_tests.h macros.h remove_quotes_tests.h quote_skipping.h convert_to_tlistx.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME_TOKENIZER) $(NAME_SYNTAX) $(NAME_SUBST) $(NAME_QUOTES) $(NAME_SKIPPING)

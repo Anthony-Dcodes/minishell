@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conver_to_tlistx.c                                 :+:      :+:    :+:   */
+/*   convert_to_tlistx.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:34:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/26 10:01:26 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/26 10:19:08 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "structs.h"
-#include "conver_to_tlistx.h"
+#include "convert_to_tlistx.h"
 #include "string_utils.h"
 #include "macros.h"
 
@@ -44,4 +44,5 @@ int	fill_tlistx(t_token *tokens, t_listex ***listex)
 		ft_memmove((*listex)[j]->items[i], tokens->value, len + 1);
 		++i;
 	}
+	return (ERR_OK);
 }
