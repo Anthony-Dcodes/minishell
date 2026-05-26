@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:44:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/22 13:13:22 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/26 09:57:38 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,31 @@ int	ft_isalnum(int c)
 		return (1);
 	else
 		return (0);
+}
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	size_t				i;
+	unsigned char		*d;
+	const unsigned char	*s;
+
+	d = (unsigned char *)dst;
+	s = (const unsigned char *)src;
+	if (d == s || len == 0)
+		return (dst);
+	if (d < s)
+	{
+		i = 0;
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
+	else
+	{
+		i = len;
+		while (i-- > 0)
+			d[i] = s[i];
+	}
+	return (dst);
 }
