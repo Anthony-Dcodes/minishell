@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 14:15:54 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 14:22:22 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:36:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,14 @@ t_tlistex_tests tlistex_tests[] = {
 	{"echo hello"},
 	{"echo hello_world"},
 	{"echo hello world"},
+	{"echo 'single_quotes'"},
+	{"echo \"double_quotes\""},
+	{"cat one_pipe | ls"},
+	{"cat first_pipe | second_pipe | no_more_pipe"},
+	{"cat 'single' nex is pipe | \"double\" next on more pipe | ls"},
+	{"hello world > file.txt | cat myname"},
+	{"'every' 'word' 'in' 'single' 'quote' ' ' '|' '<' '>' '<<' '>>' 'end'"},
+	{"a | b | c | d | e | f"},
+	{"\"every\" \"word\" \"in\" \"double\" \"quote\" \" \" \"|\" \"<\" \">\" \"<<\" \">>\" \"end\""},
 	{NULL}
 };

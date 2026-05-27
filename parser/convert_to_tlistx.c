@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:34:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 18:07:05 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:36:43 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	fill_tlistx(t_token *tokens, t_listex ***listex)
 		return (ret);
 	while (tokens)
 	{
-		printf("j=%d, ptr=%p\n", j, (void *)(*listex)[j]);
 		if (i == 0)
 			(*listex)[j]->xattr_qc = NULL;
 		if (tokens->type == PIPE)

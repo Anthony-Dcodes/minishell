@@ -6,10 +6,11 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:37:31 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 18:08:36 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:16:29 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "structs.h"
 #include "string_utils.h"
@@ -40,6 +41,7 @@ int	assign_quote(t_listex *listex, int quote)
 		return (ERR_MALLOC);
 	new_quote[0] = quote_to_char(quote);
 	new_quote[1] = '\0';
+	//printf("quote int: %d translated str: %c\n", quote, quote_to_char(quote));
 	if (!listex->xattr_qc)
 	{
 		listex->xattr_qc = new_quote;
@@ -115,6 +117,6 @@ int	get_n_tokens_before_next_pipe(t_token *head, int nth_pipe)
 			++n_pipes;
 		head = head->next;
 	}
-	printf("N_tokens: %d, before pipe: %d\n", n_tokens, nth_pipe);
+	//printf("N_tokens: %d, before pipe: %d\n", n_tokens, nth_pipe);
 	return (n_tokens);
 }

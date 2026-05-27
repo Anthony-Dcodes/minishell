@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 14:16:03 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 18:08:13 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:34:35 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,22 @@ int main(void)
 			return (ret);
 		}
 		x = 0;
+		printf("%d.Test: \"%s\"\n", i, tlistex_tests[i].input);
+		printf("------------------------\n");
 		while (listex[x])
 		{
 			y = 0;
+			printf("listx[%d]\n", x);
 			while (y < (int)listex[x]->size)
 			{
-				printf("listx items[%d]: %s, quotes: %c\n", y, listex[x]->items[y], listex[x]->xattr_qc[y]);
+				printf("	items[%d]: %30s, quotes int/char: [%d/%c]\n", y, listex[x]->items[y], listex[x]->xattr_qc[y], listex[x]->xattr_qc[y]);
 				++y;
 			}
-			printf("listx size: %zu\n", listex[x]->size);
+			printf("	listx size: %zu\n", listex[x]->size);
 			++x;
 		}
-		return (ERR_OK);
+		printf("------------------------\n\n");
+		++i;
 	}
+	return (ERR_OK);
 }
