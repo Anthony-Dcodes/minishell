@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:37:31 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 13:05:37 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 13:11:00 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,12 @@ int	assing_string(t_listex *listex, char *str, int i)
 		return (ERR_MALLOC);
 	ft_memmove(listex->items[i], str, len + 1);
 	return (ERR_OK);
+}
+
+void assign_size(t_listex *listex, int size)
+{
+	size_t new_size;
+
+	new_size = (size_t)size;
+	listex->size = new_size;
 }
