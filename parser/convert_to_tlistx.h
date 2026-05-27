@@ -6,9 +6,11 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:40:21 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 13:11:08 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 14:13:58 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "structs.h"
 
