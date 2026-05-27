@@ -6,58 +6,34 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/23 12:38:47 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 14:12:32 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "parser.h"
+#include "structs.h"
+#include "macros.h"
+#include "substitution.h"
+#include "syntax_checker.h"
+#include "tokenizer.h"
+#include "remove_quotes.h"
 
-//int ft_parsecmd(t_s *s, char *src, t_listex **dst, char **envp)
-// {
-// 	t_token	**head;
-// 	int			ret;
-
-// 	ret = ERR_OK;
-// 	*head = NULL;
-// 	ret = lexer(head, src);
-// 	while (*head)
-// 	{
-// 		printf("word:\n", *head->value)
-// 	}
-// }
-
-int main(int argc, char *argv[], char **envp)
+int parser(t_token **head, char *input)
 {
 	t_token *head;
-	t_token *current;
 	int	ret;
-	char	*string = "echo '\"hello\"' \"hello\"";
-	// remove quotes: "hello'man'hello" -> hello'man'hello
-	// remove qutoes: hello"'man'hello" -> hello'man'hello
 
 	head = NULL;
-	head->skip_idxs = NULL;
-	ret = tokenizer(&head, argv[1]);
+	ret = tokenizer(head, input);
 	if (ret != ERR_OK)
 		return (ret);
-	ret = syntax_checker(head);
+	ret = syntax_checker(*head);
 	if (ret != ERR_OK)
 		return (ret);
-	ret = substitute_vars(head);
+	ret = substitute_vars(*head);
 	if (ret != ERR_OK)
 		return (ret);
-	ret = remove_quotes(head);
+	ret = remove_quotes(*head);
 	if (ret != ERR_OK)
 		return (ret);
-	current = head;
-	while (current)
-	{
-		//if (current->previous)
-			//printf("previous: %s\n", current->previous->value);
-		printf("%s\n", current->value);
-		//if (current->next)
-			//printf("next: %s\n", current->next->value);
-		current = current->next;
-	}
 	return (ret);
 }
