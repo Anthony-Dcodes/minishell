@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:37:31 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 12:44:43 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 13:05:37 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,16 @@ int	assign_quote(t_listex *listex, int quote)
 	new_quote[0] = quote_to_char(quote);
 	new_quote[1] = '\0';
 	if (!listex->xattr_qc)
-		new_xattr_qc = ft_strdup(new_quote);
-	else
 	{
-		new_xattr_qc = ft_strjoin(listex->xattr_qc, new_quote);
-		free(listex->xattr_qc);
+		listex->xattr_qc = new_quote;
+		return (ERR_OK);
 	}
-	if (!new_xattr_qc)
-	{
-		free(new_quote);
-		return (ERR_MALLOC);
-	}
-	listex->xattr_qc = new_xattr_qc;
+	new_xattr_qc = ft_strjoin(listex->xattr_qc, new_quote);
 	free(new_quote);
+	if (!new_xattr_qc)
+		return (ERR_MALLOC);
+	free(listex->xattr_qc);
+	listex->xattr_qc = new_xattr_qc;
 	return (ERR_OK);
 }
 
@@ -76,5 +73,17 @@ int	allocate_t_listex_mem(t_listex ***listex, t_token *head)
 		++i;
 	}
 	(*listex)[i] = NULL;
+	return (ERR_OK);
+}
+
+int	assing_string(t_listex *listex, char *str, int i)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	listex->items[i] = malloc(len + 1);
+	if (listex->items[i])
+		return (ERR_MALLOC);
+	ft_memmove(listex->items[i], str, len + 1);
 	return (ERR_OK);
 }

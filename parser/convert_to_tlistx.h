@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:40:21 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 12:35:49 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 13:05:55 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,3 +16,4 @@ int	get_n_pipes(t_token *head);
 int	fill_tlistx(t_token *tokens, t_listex ***listex);
 int	assign_quote(t_listex *listex, int quote);
 int	allocate_t_listex_mem(t_listex ***listex, t_token *head);
+int	assing_string(t_listex *listex, char *str, int i);
