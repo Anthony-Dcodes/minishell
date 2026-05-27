@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:34:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/26 10:19:08 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 13:13:48 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,29 @@
 
 int	fill_tlistx(t_token *tokens, t_listex ***listex)
 {
-	int	n_pipes;
 	int	i;
 	int	j;
-	int	len;
+	int ret;
 
 	i = 0;
 	j = 0;
-	n_pipes = get_n_pipes(tokens);
-	**listex = malloc(sizeof(t_listex) * (n_pipes + 1));
-	if (!**listex)
-		return (ERR_MALLOC);
+	ret = allocate_t_listex_mem(listex, tokens);
+	if (ret != ERR_OK)
+		return (ret);
 	while (tokens)
 	{
+		if (i == 0)
+			(*listex)[j]->xattr_qc = NULL;
 		if (tokens->type == PIPE)
 		{
+			assign_size((*listex)[j], j);
 			++j;
 			i = 0;
 			continue ;
 		}
-		len = ft_strlen(tokens->value);
-		(*listex)[j]->items[i] = malloc(len + 1);
-		if (!(*listex)[j]->items[i])
-			return (ERR_MALLOC);
-		ft_memmove((*listex)[j]->items[i], tokens->value, len + 1);
+		assing_string((*listex)[j], tokens->value, i);
+		assign_quote((*listex)[j], tokens->quote);
+		tokens = tokens->next;
 		++i;
 	}
 	return (ERR_OK);

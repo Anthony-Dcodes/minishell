@@ -21,7 +21,8 @@ SRCS_COMMON = \
 	../tokenizer_meta_data_utils.c \
 	../substitution_copy_job.c \
 	../convert_to_tlistx_helpers.c \
-	../convert_to_tlistx.c
+	../convert_to_tlistx.c \
+	../string_utils2.c
 
 SRCS_TOKENIZER = \
 	tokenizer_tests.c
