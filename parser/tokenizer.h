@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:06:58 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 11:06:55 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 11:01:22 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	handle_double_quotes(t_token *token, int idx, char c);
 int		detect_quote(char c);
 int		track_quote_state(int quote, char c);
 int		get_token_type(char c);
+char	quote_to_char(int quote);
 
 // Tokenizer string utils
 int		find_start_index(char *str, int start);
