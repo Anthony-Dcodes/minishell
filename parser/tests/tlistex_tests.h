@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_to_tlistx.h                                :+:      :+:    :+:   */
+/*   tlistex_tests.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 09:40:21 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 17:53:20 by advorace         ###   ########.fr       */
+/*   Created: 2026/05/27 14:15:54 by advorace          #+#    #+#             */
+/*   Updated: 2026/05/27 14:22:22 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "structs.h"
+#include <stddef.h>
 
-int	get_n_pipes(t_token *head);
-int	fill_tlistx(t_token *tokens, t_listex ***listex);
-int	assign_quote(t_listex *listex, int quote);
-int	allocate_t_listex_mem(t_listex ***listex, t_token *head);
-int	assing_string(t_listex *listex, char *str, int i);
-void assign_size(t_listex *listex, int size);
-int	get_n_tokens_before_next_pipe(t_token *head, int nth_pipe);
+typedef struct s_tlistex_tests
+{
+    char    *input;
+} t_tlistex_tests;
+
+t_tlistex_tests tlistex_tests[] = {
+	{"echo hello"},
+	{"echo hello_world"},
+	{"echo hello world"},
+	{NULL}
+};

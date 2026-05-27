@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:34:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 13:13:48 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:07:05 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "string_utils.h"
 #include "macros.h"
 
+#include <stdio.h>
 int	fill_tlistx(t_token *tokens, t_listex ***listex)
 {
 	int	i;
@@ -29,15 +30,17 @@ int	fill_tlistx(t_token *tokens, t_listex ***listex)
 		return (ret);
 	while (tokens)
 	{
+		printf("j=%d, ptr=%p\n", j, (void *)(*listex)[j]);
 		if (i == 0)
 			(*listex)[j]->xattr_qc = NULL;
 		if (tokens->type == PIPE)
 		{
-			assign_size((*listex)[j], j);
 			++j;
 			i = 0;
+			tokens = tokens->next;
 			continue ;
 		}
+		assign_size((*listex)[j], i + 1);
 		assing_string((*listex)[j], tokens->value, i);
 		assign_quote((*listex)[j], tokens->quote);
 		tokens = tokens->next;

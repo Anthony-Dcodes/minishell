@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 14:12:32 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 14:55:40 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 
 int parser(t_token **head, char *input)
 {
-	t_token *head;
 	int	ret;
 
-	head = NULL;
+	*head = NULL;
 	ret = tokenizer(head, input);
 	if (ret != ERR_OK)
 		return (ret);

@@ -3,6 +3,7 @@ NAME_SYNTAX = syntax_tests
 NAME_SUBST = substitution_tests
 NAME_QUOTES = remove_quotes_tests
 NAME_SKIPPING = quote_skipping
+NAME_LISTEX = listex_tests
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
@@ -40,16 +41,20 @@ SRCS_QUOTES = \
 SRCS_SKIPPING = \
 	quote_skipping.c
 
+SRCS_LISTEX = \
+	tlistex_tests.c
+
 OBJC_TOKENIZER = $(SRCS_COMMON:.c=.o) $(SRCS_TOKENIZER:.c=.o)
 OBJC_SYNTAX = $(SRCS_COMMON:.c=.o) $(SRCS_SYNTAX:.c=.o)
 OBJC_SUBST = $(SRCS_COMMON:.c=.o) $(SRCS_SUBST:.c=.o)
 OBJC_QUOTES = $(SRCS_COMMON:.c=.o) $(SRCS_QUOTES:.c=.o)
 OBJC_SKIPPING = $(SRCS_COMMON:.c=.o) $(SRCS_SKIPPING:.c=.o)
+OBJC_LISTEXT = $(SRCS_COMMON:.c=.o) $(SRCS_LISTEX:.c=.o)
 
-%.o: %.c tokenizer_tests.h syntax_tests.h substitution_tests.h macros.h remove_quotes_tests.h quote_skipping.h convert_to_tlistx.h parser.h
+%.o: %.c tokenizer_tests.h syntax_tests.h substitution_tests.h macros.h remove_quotes_tests.h quote_skipping.h tlistex_tests.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME_TOKENIZER) $(NAME_SYNTAX) $(NAME_SUBST) $(NAME_QUOTES) $(NAME_SKIPPING)
+all: $(NAME_TOKENIZER) $(NAME_SYNTAX) $(NAME_SUBST) $(NAME_QUOTES) $(NAME_SKIPPING) $(NAME_LISTEX)
 
 $(NAME_TOKENIZER): $(OBJC_TOKENIZER)
 	$(CC) $(OBJC_TOKENIZER) -o $(NAME_TOKENIZER)
@@ -66,6 +71,9 @@ $(NAME_QUOTES): $(OBJC_QUOTES)
 $(NAME_SKIPPING): $(OBJC_SKIPPING)
 	$(CC) $(OBJC_SKIPPING) -o $(NAME_SKIPPING)
 
+$(NAME_LISTEX): $(OBJC_LISTEXT)
+	$(CC) $(OBJC_LISTEXT) -o $(NAME_LISTEX)
+
 run_tokenizer: $(NAME_TOKENIZER)
 	./$(NAME_TOKENIZER)
 
@@ -81,12 +89,16 @@ run_quotes: $(NAME_QUOTES)
 run_skipping: $(NAME_SKIPPING)
 	./$(NAME_SKIPPING)
 
+run_listex: $(NAME_LISTEX)
+	./$(NAME_LISTEX)
+
 run_all: all
 	./$(NAME_TOKENIZER)
 	./$(NAME_SYNTAX)
 	./$(NAME_QUOTES)
 	./$(NAME_SKIPPING)
 	./$(NAME_SUBST)
+	./$(NAME_LISTEX)
 
 fclean:
 	rm -f \
@@ -99,7 +111,9 @@ fclean:
 		$(OBJC_SYNTAX) \
 		$(OBJC_SUBST) \
 		$(OBJC_QUOTES) \
-		$(OBJC_SKIPPING)
+		$(OBJC_SKIPPING) \
+		$(NAME_LISTEX) \
+		$(OBJC_LISTEXT)
 
 re: fclean all
 
@@ -111,4 +125,5 @@ re: fclean all
 	run_tokenizer \
 	re \
 	run_all \
-	run_quotes
+	run_quotes \
+	run_listex
