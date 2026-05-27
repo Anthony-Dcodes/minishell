@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conver_to_tlistx_helpers.c                         :+:      :+:    :+:   */
+/*   convert_to_tlistx_helpers.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:37:31 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/26 09:47:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/27 12:10:13 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "structs.h"
+#include "string_utils.h"
+#include "tokenizer.h"
 
 int	get_n_pipes(t_token *head)
 {
@@ -24,4 +27,31 @@ int	get_n_pipes(t_token *head)
 		head = head->next;
 	}
 	return (n_pipes);
+}
+
+int	assign_quote(t_listex *listex, int quote)
+{
+	char	*new_quote;
+	char	*new_xattr_qc;
+
+	new_quote = malloc(2 * sizeof(char));
+	if (!new_quote)
+		return (ERR_MALLOC);
+	new_quote[0] = quote_to_char(quote);
+	new_quote[1] = '\0';
+	if (!listex->xattr_qc)
+		new_xattr_qc = ft_strdup(new_quote);
+	else
+	{
+		new_xattr_qc = ft_strjoin(listex->xattr_qc, new_quote);
+		free(listex->xattr_qc);
+	}
+	if (!new_xattr_qc)
+	{
+		free(new_quote);
+		return (ERR_MALLOC);
+	}
+	listex->xattr_qc = new_xattr_qc;
+	free(new_quote);
+	return (ERR_OK);
 }
