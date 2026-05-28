@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 14:55:40 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/28 21:32:26 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 #include "syntax_checker.h"
 #include "tokenizer.h"
 #include "remove_quotes.h"
+#include "convert_to_tlistx.h"
 
-int parser(t_token **head, char *input)
+int parser(char *input, t_listex ***listex)
 {
-	int	ret;
+	int		ret;
+	t_token **head;
 
-	*head = NULL;
+	head = NULL;
 	ret = tokenizer(head, input);
 	if (ret != ERR_OK)
 		return (ret);
@@ -34,5 +36,7 @@ int parser(t_token **head, char *input)
 	ret = remove_quotes(*head);
 	if (ret != ERR_OK)
 		return (ret);
+	ret = fill_tlistx(*head, listex);
+	free_tokens(head);
 	return (ret);
 }

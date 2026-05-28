@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 14:12:57 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 14:13:18 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/28 21:34:10 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,4 @@
 
 #include "structs.h"
 
-int parser(t_token **head, char *input);
+int parser(char *input, t_listex ***listex);
