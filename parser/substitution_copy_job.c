@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   substitution_copy_job.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:48:23 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 13:24:35 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 08:46:47 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	assign_to_token(t_token *token, t_copy_job *job)
 {
 	free(token->value);
 	token->value = job->new_string;
-	token->len = ft_strlen(job->new_string);
+	token->len = ad_strlen(job->new_string);
 	free(token->meta);
 	token->meta = job->new_meta;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes_tests.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:13:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 11:15:22 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 08:46:47 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_token	*make_word_token(char *value)
 	tok->type = WORD;
 	tok->value = strdup(value);
 	tok->next = NULL;
-	tok->len = ft_strlen(value);
+	tok->len = ad_strlen(value);
 	assign_word_token_meta_data(tok);
 	return (tok);
 }

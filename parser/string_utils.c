@@ -6,14 +6,14 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:44:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/26 09:57:38 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 08:47:16 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "macros.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ad_strlen(const char *s)
 {
 	size_t	i;
 
@@ -25,7 +25,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_isspace(char c)
+int	ad_isspace(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\n'
 		|| c == '\v' || c == '\f' || c == '\r');
@@ -51,7 +51,7 @@ int	get_string(int start, int end, char *src, char **dst)
 }
 
 // Return 1 if c is alphanumeric (letter or digit)
-int	ft_isalnum(int c)
+int	ad_isalnum(int c)
 {
 	if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')
 		|| (c >= 'a' && c <= 'z'))
@@ -59,7 +59,7 @@ int	ft_isalnum(int c)
 	else
 		return (0);
 }
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ad_memmove(void *dst, const void *src, size_t len)
 {
 	size_t				i;
 	unsigned char		*d;

@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 10:56:35 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 11:05:41 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 08:47:41 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 // Retrun a pointer to new string which is duplicate of s
 // If malloc fails return NULL
-char	*ft_strdup(const char *s)
+char	*ad_strdup(const char *s)
 {
 	char	*str;
 	int		i;
 	int		len;
 
-	len = (int)ft_strlen(s);
+	len = (int)ad_strlen(s);
 	i = 0;
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
@@ -37,7 +37,7 @@ char	*ft_strdup(const char *s)
 
 // Allocate mem, join s1, s2
 // Return resulting string or NULL
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ad_strjoin(char const *s1, char const *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
@@ -46,9 +46,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	str = ft_calloc(s1_len + s2_len + 1, sizeof(char));
+	s1_len = ad_strlen(s1);
+	s2_len = ad_strlen(s2);
+	str = ad_calloc(s1_len + s2_len + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -60,7 +60,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ad_calloc(size_t nmemb, size_t size)
 {
 	size_t			total_mem;
 	size_t			i;

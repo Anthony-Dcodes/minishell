@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   substitutions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 11:32:52 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 08:46:47 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ int isolate_and_replace_env(t_token *temp, int *index)
 	if (replace_variable(temp, env_var, *index, end_index) != ERR_OK)
 		return (ERR_VAR_SUBST);
 	if (env_var != NULL)
-		*index += ft_strlen(env_var);
+		*index += ad_strlen(env_var);
 	return (ERR_OK);
 }

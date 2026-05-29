@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:37:31 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 18:16:29 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 08:47:32 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	assign_quote(t_listex *listex, int quote)
 		listex->xattr_qc = new_quote;
 		return (ERR_OK);
 	}
-	new_xattr_qc = ft_strjoin(listex->xattr_qc, new_quote);
+	new_xattr_qc = ad_strjoin(listex->xattr_qc, new_quote);
 	free(new_quote);
 	if (!new_xattr_qc)
 		return (ERR_MALLOC);
@@ -86,11 +86,11 @@ int	assing_string(t_listex *listex, char *str, int i)
 {
 	int	len;
 
-	len = ft_strlen(str);
+	len = ad_strlen(str);
 	listex->items[i] = malloc(len + 1);
 	if (!listex->items[i])
 		return (ERR_MALLOC);
-	ft_memmove(listex->items[i], str, len + 1);
+	ad_memmove(listex->items[i], str, len + 1);
 	return (ERR_OK);
 }
 

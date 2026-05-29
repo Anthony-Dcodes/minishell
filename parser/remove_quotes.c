@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 21:21:02 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:32:37 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 08:46:47 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	remove_string_quotes(char *str, int first_quote, int second_quote, char **de
 	int	j;
 	t_meta	*new_meta;
 
-	len = (int)ft_strlen(str);
+	len = (int)ad_strlen(str);
 	*dest = malloc(sizeof(char) * (len - 1));
 	new_meta = malloc(sizeof(t_meta) * (len - 2));
 	if (!*dest || !new_meta)

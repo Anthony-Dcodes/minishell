@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_token_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 11:13:27 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 08:46:47 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_token	*create_new_token(char *value, int type, int quote, int *ret)
 	node->type = type;
 	node->quote = quote;
 	node->value = value;
-	node->len = ft_strlen(value);
+	node->len = ad_strlen(value);
 	node->next = NULL;
 	node->previous = NULL;
 	node->meta = NULL;

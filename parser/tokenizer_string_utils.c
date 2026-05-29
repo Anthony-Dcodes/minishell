@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_string_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:58:11 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:43:50 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 08:46:26 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	find_start_index(char *str, int start)
 {
 	while (str[start])
 	{
-		if (ft_isspace(str[start]))
+		if (ad_isspace(str[start]))
 		{
 			++start;
 			continue ;
@@ -49,7 +49,7 @@ int	find_end_index(char *str, int start, int quote)
 		quote = track_quote_state(quote, c);
 		if (quote == NO_QUOTE)
 		{
-			if (c == '<' || c == '>' || c == '|' || ft_isspace(c))
+			if (c == '<' || c == '>' || c == '|' || ad_isspace(c))
 				return (end);
 		}
 		++end;
