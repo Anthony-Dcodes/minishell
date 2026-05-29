@@ -53,6 +53,7 @@ arch: $(OBJC)
 
 integrate: arch integrate_rm integrate_cp
 	$(MAKE) -C $(INTEGRATE_DEST) re
+	$(MAKE) -C ../omayer_lib/v10_library/ librarybuild
 
 integrate_rm:
 	rm -f $(addprefix $(INTEGRATE_DEST), $(ARCH) $(ARCH_H) $(HEADERS))
@@ -75,5 +76,7 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+tc: fclean integrate_rm
 
 .PHONY: all clean fclean re run test
