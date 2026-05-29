@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:21:55 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/27 18:12:14 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 10:23:23 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	get_token_type(char c)
 char	quote_to_char(int quote)
 {
 	if (quote == NO_QUOTE)
-		return (' ');
+		return ('0');
 	else if (quote == SINGLE_QUOTE)
 		return ('\'');
 	else
