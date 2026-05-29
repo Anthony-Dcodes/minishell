@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:37:31 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/29 08:47:32 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 10:09:22 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,27 @@ int	get_n_tokens_before_next_pipe(t_token *head, int nth_pipe)
 	}
 	//printf("N_tokens: %d, before pipe: %d\n", n_tokens, nth_pipe);
 	return (n_tokens);
+}
+
+void	print_t_listex(t_listex ***head)
+{
+	t_listex	**listex;
+	int			x;
+	int			y;
+
+	x = 0;
+	y = 0;
+	listex = *head;
+	while (listex[x])
+	{
+		y = 0;
+		printf("listx[%d]\n", x);
+		while (y < (int)listex[x]->size)
+		{
+			printf("	items[%d]: %30s, quotes int/char: [%d/%c]\n", y, listex[x]->items[y], listex[x]->xattr_qc[y], listex[x]->xattr_qc[y]);
+			++y;
+		}
+		printf("	listx size: %zu\n", listex[x]->size);
+		++x;
+	}
 }
