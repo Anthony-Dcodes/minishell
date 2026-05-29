@@ -78,5 +78,6 @@ fclean: clean
 re: fclean all
 
 tc: fclean integrate_rm
+	$(MAKE) -C tests/ fclean
 
 .PHONY: all clean fclean re run test
