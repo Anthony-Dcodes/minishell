@@ -6,13 +6,14 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:16 by omayer            #+#    #+#             */
-/*   Updated: 2026/05/29 08:52:43 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 10:12:02 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pr_dparser.h"
 #include "unistd.h"
 #include "parser_advorace.h"
+#include <stdio.h>
 
 // Toto je fce kterou volas
 
@@ -30,8 +31,9 @@ int	ft_eparsermain(char *src, t_listex ***dst, char **envp)
 	{
 		parser(src, &result);
 	}
-	write(1, "Hi from external parser!/n", 24);
-	sleep(5);
+	write(1, "Hi from external parser!\n", 26);
+	sleep(1);
 	*dst = result;
+	print_t_listex(dst);
 	return (SUCCESS);
 }
