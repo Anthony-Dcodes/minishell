@@ -1,5 +1,7 @@
 NAME = parser
 ARCH = parser_advorace.a
+ARCH_H = parser_advorace.h
+INTEGRATE_DEST = ../omayer_lib/v10_library/libsrc/dparser/
 CC = cc
 CFLAGS = -Wall -Wextra #-Werror
 
@@ -22,6 +24,17 @@ SRCS = \
 	tokenizer_string_utils.c \
 	tokenizer_token_utils.c
 
+HEADERS = \
+	convert_to_tlistx.h \
+	macros.h \
+	parser.h \
+	remove_quotes.h \
+	string_utils.h \
+	structs.h \
+	substitution.h \
+	syntax_checker.h \
+	tokenizer.h \
+
 OBJC = $(SRCS:.c=.o)
 
 # --- Rebuild if headers change ---
@@ -37,6 +50,12 @@ $(NAME): $(OBJC)
 
 arch: $(OBJC)
 	ar rcs $(ARCH) $(OBJC)
+
+integrate: arch
+	rm -f $(addprefix $(INTEGRATE_DEST), $(ARCH) $(ARCH_H) $(HEADERS))
+	cp $(ARCH) $(ARCH_H) $(HEADERS) $(INTEGRATE_DEST)
+
+#$(INTEGRATE_DEST)$(HEADERS)
 
 run: all
 	./$(NAME); echo "exit status: $$?"

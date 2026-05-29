@@ -12,3 +12,4 @@ parser/tests/remove_quotes_tests
 parser/tests/quote_skipping
 libft.a
 #/omayer_lib
+parser/parser_advorace.a
