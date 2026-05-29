@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:08:09 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 12:23:15 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 09:45:57 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_copy_job
 	t_meta	*old_meta;
 }	t_copy_job;
 
+# ifndef EXT_PARSER
 typedef struct s_listex
 {
 	char		**items;
@@ -46,3 +47,4 @@ typedef struct s_listex
 	char		*xattr_rc;
 	size_t		size;
 }	t_listex;
+# endif

@@ -38,7 +38,7 @@ HEADERS = \
 OBJC = $(SRCS:.c=.o)
 
 # --- Rebuild if headers change ---
-%.o: %.c parser.h
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # --- Build rules ---
@@ -51,12 +51,15 @@ $(NAME): $(OBJC)
 arch: $(OBJC)
 	ar rcs $(ARCH) $(OBJC)
 
-integrate: arch
-	rm -f $(addprefix $(INTEGRATE_DEST), $(ARCH) $(ARCH_H) $(HEADERS))
-	cp $(ARCH) $(ARCH_H) $(HEADERS) $(INTEGRATE_DEST)
+integrate: arch integrate_rm integrate_cp
 	$(MAKE) -C $(INTEGRATE_DEST) re
 
-#$(INTEGRATE_DEST)$(HEADERS)
+integrate_rm:
+	rm -f $(addprefix $(INTEGRATE_DEST), $(ARCH) $(ARCH_H) $(HEADERS))
+
+integrate_cp:
+	cp $(ARCH) $(ARCH_H) $(HEADERS) $(INTEGRATE_DEST)
+
 
 run: all
 	./$(NAME); echo "exit status: $$?"
