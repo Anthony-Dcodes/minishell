@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+         #
+#    By: advorace <advorace@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 09:22:10 by omayer            #+#    #+#              #
-#    Updated: 2026/05/22 12:12:49 by oem5491          ###   ########.fr        #
+#    Updated: 2026/05/29 09:53:39 by advorace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@ CC := clang
 SRCL := pr_dparser_a.c \
 		pr_dparser_b.c \
 		pr_dparser_c.c \
-		pr_dparser.c \
+		pr_dparser.c
 
 OBJL := $(patsubst %.c, %.o, $(SRCL))
 
-%: %.c
-	$(CC) -Wall -Wextra -Werror pr_dparser.h -c $(SRCL)
+%.o: %.c pr_dparser.h parser_advorace.h
+	$(CC) -Wall -Wextra -Werror -D EXT_PARSER=1 -c $< -o $@
 
 all: $(NAME)
 

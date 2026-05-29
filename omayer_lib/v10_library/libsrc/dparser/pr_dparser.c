@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:16 by omayer            #+#    #+#             */
-/*   Updated: 2026/05/28 21:38:28 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 09:54:12 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ft_eparsermain(char *src, t_listex ***dst, char **envp)
 	//ft_enewlistexarr2(&result, 1);
 	//ft_enewlistex2(result[0], 1, TRUE);
 	//result[0]->size = 0;
+	result = NULL;
 	if ((src[0] == '#') && (envp))
 		ft_elistaddex2(result[0], "exit");
 	else
