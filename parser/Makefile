@@ -54,6 +54,7 @@ arch: $(OBJC)
 integrate: arch
 	rm -f $(addprefix $(INTEGRATE_DEST), $(ARCH) $(ARCH_H) $(HEADERS))
 	cp $(ARCH) $(ARCH_H) $(HEADERS) $(INTEGRATE_DEST)
+	$(MAKE) -C $(INTEGRATE_DEST) re
 
 #$(INTEGRATE_DEST)$(HEADERS)
 
