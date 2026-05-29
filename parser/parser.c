@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:11:29 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/28 21:32:26 by advorace         ###   ########.fr       */
+/*   Updated: 2026/05/29 09:40:27 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@
 int parser(char *input, t_listex ***listex)
 {
 	int		ret;
-	t_token **head;
+	t_token *head;
 
 	head = NULL;
-	ret = tokenizer(head, input);
+	ret = tokenizer(&head, input);
 	if (ret != ERR_OK)
 		return (ret);
-	ret = syntax_checker(*head);
+	ret = syntax_checker(head);
 	if (ret != ERR_OK)
 		return (ret);
-	ret = substitute_vars(*head);
+	ret = substitute_vars(head);
 	if (ret != ERR_OK)
 		return (ret);
-	ret = remove_quotes(*head);
+	ret = remove_quotes(head);
 	if (ret != ERR_OK)
 		return (ret);
-	ret = fill_tlistx(*head, listex);
-	free_tokens(head);
+	ret = fill_tlistx(head, listex);
+	free_tokens(&head);
 	return (ret);
 }
