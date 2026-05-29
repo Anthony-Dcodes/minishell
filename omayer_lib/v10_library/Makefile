@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: advorace <advorace@student.42.fr>          +#+  +:+       +#+         #
+#    By: advorace <advorace@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 09:22:10 by omayer            #+#    #+#              #
-#    Updated: 2026/05/25 15:49:43 by advorace         ###   ########.fr        #
+#    Updated: 2026/05/29 08:44:13 by advorace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,16 @@ HLIB := lib/l_lib.a \
 		lib/l_writef.a \
 		lib/l_parser.a \
 		lib/l_dparser.a \
-		lib/l_sbin.a
+		lib/l_sbin.a \
+		libsrc/dparser/parser_advorace.a
+
 HDRSLIB := libsrc/echo/ft_writef.h \
 		   libsrc/lib/lib.h \
 		   libsrc/mini/mini.h \
 		   libsrc/parser/pr_parser.h \
 		   libsrc/path/path.h \
-		   libsrc/sbin/sbin.h 
+		   libsrc/sbin/sbin.h
+
 HDRS := mshell.h \
 		src/types/types.h \
 		const.h

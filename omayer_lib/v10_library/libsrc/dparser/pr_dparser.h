@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pr_dparser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:06:03 by omayer            #+#    #+#             */
-/*   Updated: 2026/03/19 22:21:19 by oem5491          ###   ########.fr       */
+/*   Updated: 2026/05/29 08:20:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_listex
 	char		*xattr_rc;
 	size_t		size;
 }	t_listex;
+
+# include "parser_advorace.h"
 
 void	*ft_ewmem(size_t size);
 int		ft_efreemem(void *ptr);

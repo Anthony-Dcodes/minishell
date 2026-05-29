@@ -6,7 +6,7 @@
 #    By: advorace <advorace@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 09:22:10 by omayer            #+#    #+#              #
-#    Updated: 2026/05/29 09:53:39 by advorace         ###   ########.fr        #
+#    Updated: 2026/05/29 08:15:17 by advorace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ clean:
 	rm -f $(OBJL)
 
 fclean:	clean
-		rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
