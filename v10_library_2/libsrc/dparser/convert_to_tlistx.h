@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:40:21 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/01 14:38:33 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/01 16:47:22 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,5 @@ int		assing_string(t_listex *listex, char *str, int i);
 void	assign_size(t_listex *listex, int size);
 int		get_n_tokens_before_next_pipe(t_token *head, int nth_pipe);
 void	print_t_listex(t_listex ***head);
+void	set_attr_to_null(t_token *head, t_listex **result);
+void	memset_attr(t_token *head, t_listex **result);

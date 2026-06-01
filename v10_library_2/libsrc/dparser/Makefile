@@ -6,7 +6,7 @@
 #    By: advorace <advorace@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 09:22:10 by omayer            #+#    #+#              #
-#    Updated: 2026/06/01 10:27:41 by advorace         ###   ########.fr        #
+#    Updated: 2026/06/01 16:13:33 by advorace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCL := pr_dparser.c \
 		pr_dparser_c.c \
 		convert_to_tlistx.c \
 		convert_to_tlistx_helpers.c \
+		convert_to_tlistx_helpers2.c \
 		remove_quotes.c \
 		string_utils2.c \
 		string_utils.c \
