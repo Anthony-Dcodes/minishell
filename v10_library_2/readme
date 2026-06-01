@@ -1,0 +1,6 @@
+1. V adresari /libsrc/dparser je parser, ktery napojis na ten tvuj
+2. Kdyz zmenis soubor pr_dparser.c, kde je ta funkce, je potreba vytvorit znovu
+pomoci make soubor l_dparser.a, ktery se nachazi v /lib.
+3. Pote v hlavnim adresari udelas novy build minishellu "make librarybuild"
+
+Az ti to bude fungovat, budeme ladit dalsi veci.
