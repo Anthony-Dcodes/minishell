@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_add_spaces.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:18:12 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 14:18:35 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 12:22:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "structs.h"
 #include "macros.h"
+#include "tokenizer.h"
+#include "string_utils.h"
 
 int	add_spaces(t_token **head)
 {
