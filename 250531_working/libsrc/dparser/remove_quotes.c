@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 21:21:02 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/01 15:21:55 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:11:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int	remove_string_quotes(int first_quote, int second_quote,
 	(*dest)[j] = 0;
 	free(head->meta);
 	head->meta = new_meta;
+	head->len = ad_strlen(*dest);
 	return (ERR_OK);
 }
 
