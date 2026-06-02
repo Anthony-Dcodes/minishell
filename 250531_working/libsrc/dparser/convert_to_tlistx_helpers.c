@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:37:31 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/29 10:09:22 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/01 14:55:44 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	assign_quote(t_listex *listex, int quote)
 		return (ERR_MALLOC);
 	new_quote[0] = quote_to_char(quote);
 	new_quote[1] = '\0';
-	//printf("quote int: %d translated str: %c\n", quote, quote_to_char(quote));
 	if (!listex->xattr_qc)
 	{
 		listex->xattr_qc = new_quote;
@@ -64,7 +63,7 @@ int	allocate_t_listex_mem(t_listex ***listex, t_token *head)
 
 	i = 0;
 	n_pipes = get_n_pipes(head);
-	*listex = malloc(sizeof(t_listex*) * (n_pipes + 2));
+	*listex = malloc(sizeof(t_listex *) * (n_pipes + 2));
 	if (!*listex)
 		return (ERR_MALLOC);
 	while (i < n_pipes + 1)
@@ -92,54 +91,4 @@ int	assing_string(t_listex *listex, char *str, int i)
 		return (ERR_MALLOC);
 	ad_memmove(listex->items[i], str, len + 1);
 	return (ERR_OK);
-}
-
-void assign_size(t_listex *listex, int size)
-{
-	size_t new_size;
-
-	new_size = (size_t)size;
-	listex->size = new_size;
-}
-
-int	get_n_tokens_before_next_pipe(t_token *head, int nth_pipe)
-{
-	int	n_tokens;
-	int	n_pipes;
-
-	n_pipes = 0;
-	n_tokens = 0;
-	while (head)
-	{
-		if (n_pipes == nth_pipe - 1 && head->type != PIPE)
-			++n_tokens;
-		if (head->type == PIPE)
-			++n_pipes;
-		head = head->next;
-	}
-	//printf("N_tokens: %d, before pipe: %d\n", n_tokens, nth_pipe);
-	return (n_tokens);
-}
-
-void	print_t_listex(t_listex ***head)
-{
-	t_listex	**listex;
-	int			x;
-	int			y;
-
-	x = 0;
-	y = 0;
-	listex = *head;
-	while (listex[x])
-	{
-		y = 0;
-		printf("listx[%d]\n", x);
-		while (y < (int)listex[x]->size)
-		{
-			printf("	items[%d]: %30s, quotes int/char: [%d/%c]\n", y, listex[x]->items[y], listex[x]->xattr_qc[y], listex[x]->xattr_qc[y]);
-			++y;
-		}
-		printf("	listx size: %zu\n", listex[x]->size);
-		++x;
-	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 10:50:57 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 10:25:20 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/01 12:23:13 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef enum e_quote
 {
 	SINGLE_QUOTE,
 	DOUBLE_QUOTE,
-	NO_QUOTE
+	NO_QUOTE,
+	END_QUOTE
 }	t_quote;
 
 typedef enum e_type

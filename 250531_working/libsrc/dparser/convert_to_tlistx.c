@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_to_tlistx.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:34:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/29 22:41:11 by oem5491          ###   ########.fr       */
+/*   Updated: 2026/06/02 09:38:53 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 #include "tokenizer.h"
 #include "pr_dparser.h"
 
-#include <stdio.h>
 int	fill_tlistx(t_token *tokens, t_listex ***listex)
 {
-	int			j;
-	int 		ret;
+	int	j;
+	int	ret;
 
 	j = 0;
 	while (tokens)
@@ -38,9 +37,9 @@ int	fill_tlistx(t_token *tokens, t_listex ***listex)
 
 int	fill_quotes(t_token *tokens, t_listex ***listex)
 {
-	int			i;
-	int			j;
-	int 		ret;
+	int	i;
+	int	j;
+	int	ret;
 
 	i = 0;
 	j = 0;
@@ -49,7 +48,7 @@ int	fill_quotes(t_token *tokens, t_listex ***listex)
 		if (tokens->type == PIPE)
 		{
 			i++;
-			j = 0;			
+			j = 0;
 		}
 		else
 			(*listex)[i]->xattr_qc[j++] = quote_to_char(tokens->quote);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_char_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:21:55 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/29 22:21:00 by oem5491          ###   ########.fr       */
+/*   Updated: 2026/06/01 14:35:21 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,24 @@ int	detect_quote(char c)
 		return (NO_QUOTE);
 }
 
-int	track_quote_state(int quote, char c)
+int	track_quote_state_v2(int quote, char c)
 {
 	if (quote == SINGLE_QUOTE)
 	{
 		if (c == '\'')
-			return (NO_QUOTE);
+			return (END_QUOTE);
 	}
 	else if (quote == DOUBLE_QUOTE)
 	{
 		if (c == '"')
-			return (NO_QUOTE);
+			return (END_QUOTE);
 	}
-	else
+	else if (quote == NO_QUOTE)
 	{
 		if (c == '"')
 			return (DOUBLE_QUOTE);
 		else if (c == '\'')
 			return (SINGLE_QUOTE);
-		return (NO_QUOTE);
 	}
 	return (quote);
 }
@@ -66,4 +65,27 @@ char	quote_to_char(int quote)
 		return ('\'');
 	else
 		return ('"');
+}
+
+int	track_quote_state(int quote, char c)
+{
+	if (quote == SINGLE_QUOTE)
+	{
+		if (c == '\'')
+			return (NO_QUOTE);
+	}
+	else if (quote == DOUBLE_QUOTE)
+	{
+		if (c == '"')
+			return (NO_QUOTE);
+	}
+	else
+	{
+		if (c == '"')
+			return (DOUBLE_QUOTE);
+		else if (c == '\'')
+			return (SINGLE_QUOTE);
+		return (NO_QUOTE);
+	}
+	return (quote);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+         #
+#    By: advorace <advorace@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 09:22:10 by omayer            #+#    #+#              #
-#    Updated: 2026/05/29 14:54:14 by oem5491          ###   ########.fr        #
+#    Updated: 2026/06/02 09:36:48 by advorace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCL := pr_dparser.c \
 		pr_dparser_c.c \
 		convert_to_tlistx.c \
 		convert_to_tlistx_helpers.c \
+		convert_to_tlistx_helpers2.c \
 		remove_quotes.c \
 		string_utils2.c \
 		string_utils.c \

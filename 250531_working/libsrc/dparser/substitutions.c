@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   substitutions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/30 10:08:20 by oem5491          ###   ########.fr       */
+/*   Updated: 2026/06/01 15:45:54 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int	substitute_vars(t_s *s, t_token *head)
 {
-	t_token *temp;
+	t_token	*temp;
 	int		ret;
 
 	temp = head;
@@ -43,12 +43,11 @@ int	look_for_env_to_substitute(t_s *s, t_token *temp)
 	char	*str;
 	int		i;
 	int		quote;
-	int		ret;
 
 	str = temp->value;
 	i = 0;
 	quote = NO_QUOTE;
-	while(str[i])
+	while (str[i])
 	{
 		quote = track_quote_state(quote, str[i]);
 		if ((quote == NO_QUOTE || quote == DOUBLE_QUOTE)
@@ -56,11 +55,10 @@ int	look_for_env_to_substitute(t_s *s, t_token *temp)
 		{
 			if (envar_first_char_valid(str[i + 1]))
 			{
-				ret = isolate_and_replace_env(s, temp, &i);
-				if (ret != ERR_OK)
-					return (ret);
+				if (isolate_and_replace_env(s, temp, &i) != ERR_OK)
+					return (ERR_VAR_SUBST);
 				str = temp->value;
-				continue;
+				continue ;
 			}
 		}
 		++i;
@@ -68,7 +66,7 @@ int	look_for_env_to_substitute(t_s *s, t_token *temp)
 	return (ERR_OK);
 }
 
-int isolate_and_replace_env(t_s *s, t_token *temp, int *index)
+int	isolate_and_replace_env(t_s *s, t_token *temp, int *index)
 {
 	char	*str;
 	int		end_index;

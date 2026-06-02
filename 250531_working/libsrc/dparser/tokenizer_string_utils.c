@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:58:11 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/29 08:46:26 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/01 15:30:02 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,24 @@ int	find_end_index(char *str, int start, int quote)
 	char	c;
 
 	end = start + 1;
-	if (str[start] == '|')
-		return (end);
-	if (str[start] == '<' || str[start] == '>')
+	c = str[start];
+	if (c == '|' || c == '<' || c == '>')
 	{
-		if (str[start] == str[end] && str[end])
+		if (c == str[end])
 			return (end + 1);
 		return (end);
 	}
 	while (str[end])
 	{
 		c = str[end];
-		quote = track_quote_state(quote, c);
-		if (quote == NO_QUOTE)
-		{
-			if (c == '<' || c == '>' || c == '|' || ad_isspace(c))
-				return (end);
-		}
+		if (quote == NO_QUOTE && (c == '\'' || c == '"'))
+			return (end);
+		quote = track_quote_state_v2(quote, c);
+		if (quote == NO_QUOTE
+			&& (c == '<' || c == '>' || c == '|' || ad_isspace(c)))
+			return (end);
+		else if (quote == END_QUOTE)
+			return (end + 1);
 		++end;
 	}
 	return (end);
