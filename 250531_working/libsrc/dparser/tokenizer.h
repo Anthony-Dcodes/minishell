@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:06:58 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 11:59:13 by codespace        ###   ########.fr       */
+/*   Updated: 2026/06/02 14:19:48 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ int		get_string(int start, int end, char *src, char **dst);
 
 // Tokenizer
 int		tokenizer(t_token **head, char *src);
+
+// Tokenizer add spaces
 int		add_spaces(t_token **head);
 int		create_extra_spaced_str(char **str, t_token *token);
 void	assing_tokens_and_free(t_token **bef, t_token **aft, t_token **temp);
-void	reassing_tokens_and_advance(t_token **bef, t_token **aft, t_token **temp);
+void	reassing_tokens_and_advance(t_token **bef,
+			t_token **aft, t_token **temp);
+int		not_valid_add_spaces_token(t_token *token);
