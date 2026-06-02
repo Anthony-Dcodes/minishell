@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pr_dparser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:16 by omayer            #+#    #+#             */
-/*   Updated: 2026/05/31 18:06:53 by oem5491          ###   ########.fr       */
+/*   Updated: 2026/06/02 09:08:32 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,39 @@
 #include "convert_to_tlistx.h"
 #include <stdio.h>
 
+static int	prepare_result(t_listex ***result, t_token *head)
+{
+	int			ret;
+	int			i;
+	int			n_pipes;
+	t_listex	**tmp;
+
+	tmp = *result;
+	n_pipes = get_n_pipes(head) + 1;
+	ft_enewlistexarr2(&tmp, n_pipes);
+	i = 0;
+	while (i < n_pipes)
+		ft_enewlistex2(tmp[i++], FALSE, TRUE);
+	ret = fill_tlistx(head, &tmp);
+	if (ret != ERR_OK)
+		return (ret);
+	i = 0;
+	while (tmp[i++])
+		ft_eresetnewlist(tmp[i - 1], tmp[i - 1]->size, FALSE);
+	ret = fill_quotes(head, &tmp);
+	if (ret != ERR_OK)
+		return (ret);
+	*result = tmp;
+	return (SUCCESS);
+}
+
 int	ft_eparsermain(t_s *s, char *src, t_listex ***dst, char **envp)
 {
 	int			ret;
-	t_token 	*head;
+	t_token		*head;
 	t_listex	**result;
-	int			i;
-	int			j;
-	int			n_pipes;
-	
-	write(1, "Hi from external parser_!\n", 26);
+
+	write(1, "Hi from external parser !!\n", 27);
 	head = NULL;
 	ret = tokenizer(&head, src);
 	if (ret != ERR_OK)
@@ -44,48 +67,7 @@ int	ft_eparsermain(t_s *s, char *src, t_listex ***dst, char **envp)
 	ret = remove_quotes(head);
 	if (ret != ERR_OK)
 		return (ret);
-	///// TBD
-			n_pipes = get_n_pipes(head) + 1;
-			ft_enewlistexarr2(&result, n_pipes);
-			i = 0;
-			while (i < n_pipes)
-			{
-				result[i]->items = NULL;
-				result[i]->size = 0;
-				result[i]->xattr_qc = NULL;
-				result[i]->xattr_sc = NULL;
-				result[i]->xattr_pc = NULL;
-				result[i]->xattr_pidx = NULL;
-				result[i]->xattr_rc = NULL;
-				i++;
-			}
-	///// TBD
-	ret = fill_tlistx(head, &result);
-	if (ret != ERR_OK)
-		return (ret);
-	///// TBD
-			printf("ready pipes : %i\n", n_pipes);
-			i = 0;
-			j = 0;
-			while (result[i])
-			{
-				result[i]->xattr_qc = malloc(sizeof(char) * (result[i]->size));
-				result[i]->xattr_sc = malloc(sizeof(char) * (result[i]->size));
-				result[i]->xattr_pc = malloc(sizeof(char) * (result[i]->size));
-				result[i]->xattr_pidx = malloc(sizeof(char) * (result[i]->size));
-				result[i]->xattr_rc = malloc(sizeof(char) * (result[i]->size));
-				ft_ememset(result[i]->xattr_qc, 0, result[i]->size);
-				ft_ememset(result[i]->xattr_sc, 0, result[i]->size);
-				ft_ememset(result[i]->xattr_pc, 0, result[i]->size);
-				ft_ememset(result[i]->xattr_pidx, 0, result[i]->size);
-				ft_ememset(result[i]->xattr_rc, 0, result[i]->size);
-				j = 0;
-				while (j++ < result[i]->size)
-					printf("ready %i, %i(%lu) : %s\n", i, j - 1, result[i]->size, result[i]->items[j - 1]);
-				i++;
-			}
-	///// TBD
-	ret = fill_quotes(head, &result);
+	ret = prepare_result(&result, head);
 	if (ret != ERR_OK)
 		return (ret);
 	free_tokens(&head);
