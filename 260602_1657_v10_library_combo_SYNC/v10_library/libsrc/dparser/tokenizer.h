@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:06:58 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 14:19:48 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 14:53:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_token_metadata(t_token *token);
 void	free_metadata(t_token *head);
 
 // Tokenizer metadata utils
-void	handle_no_quotes(t_token *token, int idx);
+void	handle_no_quotes(t_token *token, int idx, char c);
 void	handle_single_quotes(t_token *token, int idx, char c);
 void	handle_double_quotes(t_token *token, int idx, char c);
 

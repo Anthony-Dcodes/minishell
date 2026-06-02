@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pr_dparser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:16 by omayer            #+#    #+#             */
-/*   Updated: 2026/06/02 17:14:33 by oem5491          ###   ########.fr       */
+/*   Updated: 2026/06/02 15:07:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,21 @@ int	ft_eparsermain(t_s *s, char *src, t_listex ***dst, char **envp)
 	ret = syntax_checker(head);
 	if (ret != ERR_OK)
 		return (ret);
-	ret = substitute_vars(s, head, envp);
+	//print_token_metadata(head);
+	ret = substitute_vars(s, head);
 	if (ret != ERR_OK)
 		return (ret);
+	//print_token_metadata(head);
 	ret = remove_quotes(head);
 	if (ret != ERR_OK)
 		return (ret);
+	//print_token_metadata(head);
 	ret = prepare_result(&result, head);
 	if (ret != ERR_OK)
 		return (ret);
+	print_token_metadata(head);
 	free_tokens(&head);
 	*dst = result;
+	print_t_listex(dst);
 	return (SUCCESS);
 }

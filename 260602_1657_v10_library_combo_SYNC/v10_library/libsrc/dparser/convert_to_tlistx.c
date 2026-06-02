@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_to_tlistx.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:34:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 17:13:54 by oem5491          ###   ########.fr       */
+/*   Updated: 2026/06/02 12:23:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 int	fill_tlistx(t_token *tokens, t_listex ***listex)
 {
 	int	j;
+	int	ret;
 
 	j = 0;
 	while (tokens)
@@ -40,6 +41,7 @@ int	fill_quotes(t_token *tokens, t_listex ***listex)
 {
 	int	i;
 	int	j;
+	int	ret;
 
 	i = 0;
 	j = 0;
