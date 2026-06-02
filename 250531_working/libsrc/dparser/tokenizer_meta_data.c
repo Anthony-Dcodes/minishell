@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_meta_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 11:23:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/25 13:01:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 14:53:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	assign_word_token_meta_data(t_token *token)
 	{
 		quote = track_quote_state(quote, str[i]);
 		if (quote == NO_QUOTE)
-			handle_no_quotes(token, i);
+			handle_no_quotes(token, i, str[i]);
 		else if (quote == SINGLE_QUOTE)
 			handle_single_quotes(token, i, str[i]);
 		else if (quote == DOUBLE_QUOTE)
