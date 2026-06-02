@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_char_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:21:55 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/01 14:35:21 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:12:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	get_token_type(char c)
 	else if (c == '|')
 		return (PIPE);
 	else if (c == '<' || c == '>')
-		return (REDDIRECT);
+		return (WORD);
 	else if (c == '\0')
 		return (END_FILE);
 	return (WORD);

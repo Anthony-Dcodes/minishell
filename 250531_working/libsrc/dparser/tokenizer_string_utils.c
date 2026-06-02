@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:58:11 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 09:00:21 by codespace        ###   ########.fr       */
+/*   Updated: 2026/06/02 11:07:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,8 @@ int	find_end_index(char *str, int start, int quote)
 
 	end = start + 1;
 	c = str[start];
-	if (c == '|' || c == '<' || c == '>')
-	{
-		if (c == str[end] && (c != '|'))
-			return (end + 1);
+	if (c == '|')
 		return (end);
-	}
 	while (str[end])
 	{
 		c = str[end];
@@ -49,7 +45,7 @@ int	find_end_index(char *str, int start, int quote)
 			return (end);
 		quote = track_quote_state_v2(quote, c);
 		if (quote == NO_QUOTE
-			&& (c == '<' || c == '>' || c == '|' || ad_isspace(c)))
+			&& (c == '|' || ad_isspace(c)))
 			return (end);
 		else if (quote == END_QUOTE)
 			return (end + 1);
