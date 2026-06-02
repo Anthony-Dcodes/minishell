@@ -6,7 +6,7 @@
 #    By: advorace <advorace@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 09:22:10 by omayer            #+#    #+#              #
-#    Updated: 2026/06/02 09:36:48 by advorace         ###   ########.fr        #
+#    Updated: 2026/06/02 14:21:10 by advorace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ SRCL := pr_dparser.c \
 		tokenizer_meta_data.c \
 		tokenizer_meta_data_utils.c \
 		tokenizer_string_utils.c \
-		tokenizer_token_utils.c
+		tokenizer_token_utils.c \
+		tokenizer_add_spaces.c
 
 OBJL := $(patsubst %.c, %.o, $(SRCL))
 
