@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_string_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:58:11 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/01 15:30:02 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 09:00:21 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	find_end_index(char *str, int start, int quote)
 	c = str[start];
 	if (c == '|' || c == '<' || c == '>')
 	{
-		if (c == str[end])
+		if (c == str[end] && (c != '|'))
 			return (end + 1);
 		return (end);
 	}
