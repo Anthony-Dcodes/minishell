@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_token_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/29 08:46:47 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:49:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,13 @@ t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index)
 		return (NULL);
 	token = create_new_token(string, token_type, quote, ret);
 	return (token);
+}
+
+void	free_token(t_token *token)
+{
+	if (!token)
+		return ;
+	free(token->value);
+	free_metadata(token);
+	free(token);
 }

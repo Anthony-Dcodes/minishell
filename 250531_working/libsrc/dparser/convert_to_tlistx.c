@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_to_tlistx.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 09:34:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 09:38:53 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:37:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	fill_tlistx(t_token *tokens, t_listex ***listex)
 		if (tokens->type == PIPE)
 			j++;
 		else
+		{
+			print_token_metadata(tokens);
 			ft_elistaddex2((*listex)[j], tokens->value);
+		}
 		tokens = tokens->next;
 	}
 	return (ERR_OK);
