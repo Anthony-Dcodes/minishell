@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_to_tlistx_helpers2.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 14:54:33 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/01 14:56:23 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:20:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	print_t_listex(t_listex ***head)
 		printf("listx[%d]\n", x);
 		while (y < (int)listex[x]->size)
 		{
-			printf("	items[%d]: %30s, quotes int/char: [%d/%c]\n",
+			printf("	items[%d]: '%s', quotes int/char: [%d/%c]\n",
 				y, listex[x]->items[y], listex[x]->xattr_qc[y],
 				listex[x]->xattr_qc[y]);
 			++y;
