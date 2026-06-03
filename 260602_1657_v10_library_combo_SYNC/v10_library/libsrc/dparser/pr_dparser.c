@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pr_dparser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:16 by omayer            #+#    #+#             */
-/*   Updated: 2026/06/02 16:49:36 by codespace        ###   ########.fr       */
+/*   Updated: 2026/06/03 10:01:19 by oem5491          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 #include "tokenizer.h"
 #include "remove_quotes.h"
 #include "convert_to_tlistx.h"
+#include "string_utils.h"
 #include <stdio.h>
+#include "../../lib/l_lib.h"
+#include "../../lib/types/t_list/t_list.h"
 
 static int	prepare_result(t_listex ***result, t_token *head)
 {
@@ -47,49 +50,17 @@ static int	prepare_result(t_listex ***result, t_token *head)
 	return (SUCCESS);
 }
 
-static int replace_empty_cmds(t_listex **result)
+static int	replace_empty_cmds(t_listex ***result, t_s *s)
 {
 	t_listex	**list;
 	int			i;
-	int			j;
-	int			z;
-	int			replace;
-	char		*new_str;
 
-	list = result;
+	list = *result;
 	i = 0;
-	while (list[i])
-	{
-		replace = 1;
-		j = 0;
-		while (j < (int)list[i]->size)
-		{
-			z = 0;
-			while (list[i]->items[j][z])
-			{
-				if (list[i]->items[j][z] != ' ')
-					replace = 0;
-				++z;
-			}
-			++j;
-		}
-		if (replace)
-		{
-			z = 0;
-			while (z < (int)list[i]->size)
-			{
-				new_str = malloc(sizeof(char) * 2);
-				if (!new_str)
-					return (ERR_MALLOC);
-				new_str[0] = 'x';
-				new_str[1] = '\0';
-				free(list[i]->items[z]);
-				list[i]->items[z] = new_str;
-				++z;
-			}
-		}
-		++i;
-	}
+	while (list[i++])
+		if (ft_isemptyitem2(s, list[i - 1]->items[0]))
+			ft_listreplace2(s, &list[i - 1]->items, "x", 0);
+	*result = list;
 	return (ERR_OK);
 }
 
@@ -107,22 +78,17 @@ int	ft_eparsermain(t_s *s, char *src, t_listex ***dst, char **envp)
 	ret = syntax_checker(head);
 	if (ret != ERR_OK)
 		return (ret);
-	//print_token_metadata(head);
-	ret = substitute_vars(s, head);
+	ret = substitute_vars(s, head, envp);
 	if (ret != ERR_OK)
 		return (ret);
-	//print_token_metadata(head);
 	ret = remove_quotes(head);
 	if (ret != ERR_OK)
 		return (ret);
-	//print_token_metadata(head);
 	ret = prepare_result(&result, head);
 	if (ret != ERR_OK)
 		return (ret);
-	//print_token_metadata(head);
 	free_tokens(&head);
-	replace_empty_cmds(result);
+	replace_empty_cmds(&result, s);
 	*dst = result;
-	print_t_listex(dst);
 	return (SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   substitutions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:38:41 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/01 15:45:54 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/02 17:17:22 by oem5491          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "stdio.h"
 #include "../../src/shell/sh/sh_env2.h"
 
-int	substitute_vars(t_s *s, t_token *head)
+int	substitute_vars(t_s *s, t_token *head, char **envp)
 {
 	t_token	*temp;
 	int		ret;
@@ -29,7 +29,7 @@ int	substitute_vars(t_s *s, t_token *head)
 	{
 		if (temp->type == WORD)
 		{
-			ret = look_for_env_to_substitute(s, temp);
+			ret = look_for_env_to_substitute(s, temp, envp);
 			if (ret != ERR_OK)
 				return (ret);
 		}
@@ -38,7 +38,7 @@ int	substitute_vars(t_s *s, t_token *head)
 	return (ret);
 }
 
-int	look_for_env_to_substitute(t_s *s, t_token *temp)
+int	look_for_env_to_substitute(t_s *s, t_token *temp, char **envp)
 {
 	char	*str;
 	int		i;
@@ -55,7 +55,7 @@ int	look_for_env_to_substitute(t_s *s, t_token *temp)
 		{
 			if (envar_first_char_valid(str[i + 1]))
 			{
-				if (isolate_and_replace_env(s, temp, &i) != ERR_OK)
+				if (isolate_and_replace_env(s, temp, &i, envp) != ERR_OK)
 					return (ERR_VAR_SUBST);
 				str = temp->value;
 				continue ;
@@ -66,7 +66,7 @@ int	look_for_env_to_substitute(t_s *s, t_token *temp)
 	return (ERR_OK);
 }
 
-int	isolate_and_replace_env(t_s *s, t_token *temp, int *index)
+int	isolate_and_replace_env(t_s *s, t_token *temp, int *index, char **envp)
 {
 	char	*str;
 	int		end_index;
@@ -80,9 +80,9 @@ int	isolate_and_replace_env(t_s *s, t_token *temp, int *index)
 	if (get_string(start_index, end_index, str, &substring) == ERR_MALLOC)
 		return (ERR_VAR_SUBST);
 	if (ft_equal2(s, substring, "?", TRUE))
-		ft_getenv2d(s, s->p->lenv.items, L_SHLES, &env_var);
+		ft_getenv2d(s, envp, L_SHLES, &env_var);
 	else
-		ft_wgetenv2d(s, s->p->lenv.items, substring, &env_var);
+		ft_wgetenv2d(s, envp, substring, &env_var);
 	free(substring);
 	if (replace_variable(temp, env_var, *index, end_index) != ERR_OK)
 		return (ERR_VAR_SUBST);

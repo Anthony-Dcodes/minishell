@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_token_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 11:49:26 by codespace        ###   ########.fr       */
+/*   Updated: 2026/06/03 09:22:40 by oem5491          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	free_tokens(t_token **head)
 {
 	t_token	*next;
 
-	if (!head)
+	if (*head == NULL)
 		return ;
 	while (*head)
 	{
@@ -92,9 +92,9 @@ t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index)
 
 void	free_token(t_token *token)
 {
-	if (!token)
+	if (token == NULL)
 		return ;
 	free(token->value);
-	free_metadata(token);
+	free(token->meta);
 	free(token);
 }
