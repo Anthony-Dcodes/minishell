@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:18:12 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 12:22:36 by codespace        ###   ########.fr       */
+/*   Updated: 2026/06/03 09:31:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,11 @@ void	reassing_tokens_and_advance(t_token **bef,
 
 int	not_valid_add_spaces_token(t_token *token)
 {
-	return (token->previous == NULL || token->previous->type == PIPE
-		|| token->next == NULL || token->next->type == PIPE
+	if (token->previous == NULL)
+		return (1);
+	if (token->next == NULL)
+		return (1);
+	return (token->previous->type == PIPE
+		|| token->next->type == PIPE
 		|| token->type == PIPE);
 }
