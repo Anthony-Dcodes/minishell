@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pr_dparser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:16 by omayer            #+#    #+#             */
-/*   Updated: 2026/06/03 15:17:28 by oem5491          ###   ########.fr       */
+/*   Updated: 2026/06/03 15:49:53 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include "convert_to_tlistx.h"
 #include "string_utils.h"
 #include <stdio.h>
-#include "../../libsrc/lib/lib.h"
-#include "../../src/types/t_list/t_list.h"
+#include "../../lib/l_lib.h"
+#include "../../lib/types/t_list/t_list.h"
 
 static int	free_result(t_s *s, t_listex ***result, t_token *head, int ret)
 {
