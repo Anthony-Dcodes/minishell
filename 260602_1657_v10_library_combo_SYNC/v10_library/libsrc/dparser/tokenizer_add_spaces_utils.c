@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_add_spaces_utils.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
+/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 12:39:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/03 12:39:44 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/03 14:20:25 by oem5491          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ int	relink_tokens(t_token **bef, t_token **aft, t_token **temp, int ret)
 {
 	(*bef)->next = *aft;
 	(*aft)->previous = *bef;
-	return(free_token(*temp, ret));
+	return (free_token(*temp, ret));
 }
