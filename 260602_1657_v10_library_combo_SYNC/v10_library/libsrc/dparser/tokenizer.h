@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:06:58 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/03 12:38:43 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/03 12:45:30 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // Tokenizer token utils
 t_token	*create_new_token(char *value, int type, int quote, int *ret);
 void	append_token(t_token **head, t_token *token);
-void	free_tokens(t_token **head);
+int		free_tokens(t_token **head, int ret);
 t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index);
 int		free_token(t_token *token, int ret);
 
