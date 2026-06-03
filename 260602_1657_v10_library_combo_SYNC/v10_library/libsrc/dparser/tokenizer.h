@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 11:06:58 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 14:53:25 by codespace        ###   ########.fr       */
+/*   Updated: 2026/06/03 12:38:43 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_token	*create_new_token(char *value, int type, int quote, int *ret);
 void	append_token(t_token **head, t_token *token);
 void	free_tokens(t_token **head);
 t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index);
-void	free_token(t_token *token);
+int		free_token(t_token *token, int ret);
 
 // Token metadata
 int		assign_word_token_meta_data(t_token *token);
@@ -53,3 +53,4 @@ void	assing_tokens_and_free(t_token **bef, t_token **aft, t_token **temp);
 void	reassing_tokens_and_advance(t_token **bef,
 			t_token **aft, t_token **temp);
 int		not_valid_add_spaces_token(t_token *token);
+int		relink_tokens(t_token **bef, t_token **aft, t_token **temp, int ret);

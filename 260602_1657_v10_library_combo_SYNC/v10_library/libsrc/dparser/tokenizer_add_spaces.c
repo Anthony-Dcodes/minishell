@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_add_spaces.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:18:12 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/03 09:31:30 by codespace        ###   ########.fr       */
+/*   Updated: 2026/06/03 12:39:40 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	add_spaces(t_token **head)
 		temp = create_new_token(extra_space, WORD,
 				detect_quote(extra_space[0]), &ret);
 		if (ret != ERR_OK)
-			return (ret);
+			return (relink_tokens(&bef, &aft, &temp, ret));
 		reassing_tokens_and_advance(&bef, &aft, &temp);
 	}
 	return (ERR_OK);
@@ -56,21 +56,6 @@ int	create_extra_spaced_str(char **str, t_token *token)
 	(*str)[len] = ' ';
 	(*str)[len + 1] = '\0';
 	return (ERR_OK);
-}
-
-void	assing_tokens_and_free(t_token **bef, t_token **aft, t_token **temp)
-{
-	*bef = (*temp)->previous;
-	*aft = (*temp)->next;
-	free_token(*temp);
-}
-
-void	reassing_tokens_and_advance(t_token **bef,
-		t_token **aft, t_token **temp)
-{
-	(*bef)->next = *temp;
-	(*temp)->next = *aft;
-	(*temp) = (*temp)->next;
 }
 
 int	not_valid_add_spaces_token(t_token *token)

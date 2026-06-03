@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_token_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oem5491 <oem5491@student.42.fr>            +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/03 09:22:40 by oem5491          ###   ########.fr       */
+/*   Updated: 2026/06/03 12:14:11 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_token	*create_new_token(char *value, int type, int quote, int *ret)
 	if (!node)
 	{
 		*ret = ERR_MALLOC;
+		free(value);
 		return (NULL);
 	}
 	node->type = type;
@@ -90,11 +91,12 @@ t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index)
 	return (token);
 }
 
-void	free_token(t_token *token)
+int	free_token(t_token *token, int ret)
 {
 	if (token == NULL)
-		return ;
+		return (ret);
 	free(token->value);
 	free(token->meta);
 	free(token);
+	return (ret);
 }

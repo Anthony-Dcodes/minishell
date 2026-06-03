@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:08:51 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 14:19:07 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/03 12:14:46 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	tokenizer(t_token **head, char *src)
 	{
 		next_token = get_next_token(start_index, src, &ret, &end_index);
 		if (ret != ERR_OK)
-			return (ret);
+			return (free_token(next_token, ret));
 		if (!next_token)
 			break ;
 		append_token(head, next_token);
