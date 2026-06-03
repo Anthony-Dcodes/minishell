@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:16 by omayer            #+#    #+#             */
-/*   Updated: 2026/06/03 13:03:28 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/03 13:06:37 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ int	ft_eparsermain(t_s *s, char *src, t_listex ***dst, char **envp)
 	ret = prepare_result(&result, head);
 	if (ret != ERR_OK)
 		return (ret);
-	free_tokens(&head, ERR_OK);
 	replace_empty_cmds(&result, s);
 	*dst = result;
-	return (SUCCESS);
+	return (free_tokens(&head, ret));
 }
