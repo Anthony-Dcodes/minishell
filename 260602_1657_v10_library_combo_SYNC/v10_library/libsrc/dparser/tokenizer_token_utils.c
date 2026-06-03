@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 21:39:39 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/03 12:46:35 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/03 12:48:51 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,6 @@ void	append_token(t_token **head, t_token *token)
 	return ;
 }
 
-int	free_tokens(t_token **head, int ret)
-{
-	t_token	*next;
-
-	if (*head == NULL)
-		return (ret);
-	while (*head)
-	{
-		next = (*head)->next;
-		free_token(*head, ERR_OK);
-		*head = next;
-	}
-	return (ret);
-}
-
 t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index)
 {
 	int		quote;
@@ -88,14 +73,4 @@ t_token	*get_next_token(int start_index, char *src, int *ret, int *end_index)
 		return (NULL);
 	token = create_new_token(string, token_type, quote, ret);
 	return (token);
-}
-
-int	free_token(t_token *token, int ret)
-{
-	if (token == NULL)
-		return (ret);
-	free(token->value);
-	free_metadata(token);
-	free(token);
-	return (ret);
 }

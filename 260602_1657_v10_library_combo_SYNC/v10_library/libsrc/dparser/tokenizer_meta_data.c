@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_meta_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 11:23:07 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 14:53:36 by codespace        ###   ########.fr       */
+/*   Updated: 2026/06/03 12:48:12 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,4 @@ void	print_token_metadata(t_token *token)
 			++i;
 		}
 	}
-}
-
-void	free_metadata(t_token *head)
-{
-	if (head->meta)
-		free(head->meta);
-	return ;
 }
