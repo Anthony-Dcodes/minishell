@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:48:23 by advorace          #+#    #+#             */
-/*   Updated: 2026/05/29 08:46:47 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/03 12:57:34 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,14 @@
 int	init_copy_job(t_copy_job *copy_job, t_token *token, int len)
 {
 	copy_job->new_string = malloc(sizeof(char) * (len + 1));
-	copy_job->new_meta = malloc(sizeof(t_meta) * len);
-	if (!copy_job->new_string || !copy_job->new_meta)
+	if (!copy_job->new_string)
 		return (ERR_MALLOC);
+	copy_job->new_meta = malloc(sizeof(t_meta) * len);
+	if (!copy_job->new_meta)
+	{
+		free(copy_job->new_string);
+		return (ERR_MALLOC);
+	}
 	copy_job->i = 0;
 	copy_job->j = 0;
 	copy_job->old_string = token->value;
@@ -78,7 +83,7 @@ void	assign_to_token(t_token *token, t_copy_job *job)
 {
 	free(token->value);
 	token->value = job->new_string;
-	token->len = ad_strlen(job->new_string);
 	free(token->meta);
 	token->meta = job->new_meta;
+	token->len = ad_strlen(job->new_string);
 }

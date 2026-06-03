@@ -6,7 +6,7 @@
 /*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:16 by omayer            #+#    #+#             */
-/*   Updated: 2026/06/03 12:45:51 by advorace         ###   ########.fr       */
+/*   Updated: 2026/06/03 12:58:32 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ int	ft_eparsermain(t_s *s, char *src, t_listex ***dst, char **envp)
 	head = NULL;
 	ret = tokenizer(&head, src);
 	if (ret != ERR_OK)
-		return (ret);
+		return (free_tokens(&head, ret));
 	ret = syntax_checker(head);
 	if (ret != ERR_OK)
-		return (ret);
+		return (free_tokens(&head, ret));
 	ret = substitute_vars(s, head, envp);
 	if (ret != ERR_OK)
-		return (ret);
+		return (free_tokens(&head, ret));
 	ret = remove_quotes(head);
 	if (ret != ERR_OK)
 		return (ret);
