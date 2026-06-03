@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: advorace <advorace@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 21:21:02 by advorace          #+#    #+#             */
-/*   Updated: 2026/06/02 15:11:28 by codespace        ###   ########.fr       */
+/*   Updated: 2026/06/03 13:00:43 by advorace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,13 @@ int	alloc_dest_new_meta(t_token *head, char **dest, t_meta **new_meta)
 
 	len = (int)ad_strlen(head->value);
 	*dest = malloc(sizeof(char) * (len - 1));
-	*new_meta = malloc(sizeof(t_meta) * (len - 2));
-	if (!*dest || !*new_meta)
+	if (!*dest)
 		return (ERR_MALLOC);
+	*new_meta = malloc(sizeof(t_meta) * (len - 2));
+	if (!*new_meta)
+	{
+		free(*dest);
+		return (ERR_MALLOC);
+	}
 	return (ERR_OK);
 }
